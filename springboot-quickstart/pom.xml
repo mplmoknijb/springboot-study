@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.leon</groupId>
-    <artifactId>spring-boot-1-quickstart</artifactId>
+    <artifactId>springboot-quickstart</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>spring-boot-1-quickstart</name>
-    <description>spring-boot-1-quickstart</description>
+    <name>springboot-quickstart</name>
+    <description>springboot-quickstart</description>
 
     <parent>
         <groupId>cn.leon</groupId>
@@ -56,6 +56,6 @@
     </dependencies>
 
     <build>
-        <finalName>spring-boot-1-qucikstart</finalName>
+        <finalName>springboot-quickstart</finalName>
     </build>
 </project>

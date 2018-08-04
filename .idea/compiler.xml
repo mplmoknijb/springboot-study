@@ -6,6 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sprinboot-async" />
+        <module name="springboot-aop" />
+        <module name="springboot-elk" />
+        <module name="springboot-logs-Logback" />
+        <module name="springboot-restful" />
+        <module name="springboot-schedule" />
         <module name="springboot-study" />
       </profile>
     </annotationProcessing>
