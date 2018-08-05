@@ -9,6 +9,7 @@
         <module name="sprinboot-async" />
         <module name="springboot-aop" />
         <module name="springboot-elk" />
+        <module name="springboot-globalexception" />
         <module name="springboot-logs-Logback" />
         <module name="springboot-restful" />
         <module name="springboot-schedule" />
