@@ -11,7 +11,7 @@ public class FirstController {
 
     @RequestMapping({"/first"})
     public Object first() {
-        return "first controller";
+        return "first service";
     }
 
     @RequestMapping({"/doError"})
@@ -24,6 +24,6 @@ public class FirstController {
             desc = "seond"
     )
     public Object second() {
-        return "second controller";
+        return "second service";
     }
 }

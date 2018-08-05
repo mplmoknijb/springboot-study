@@ -18,7 +18,7 @@ public class LogAspect {
     public LogAspect() {
     }
 
-    @Pointcut("execution(public * com.boot.controller.*.*(..))")
+    @Pointcut("execution(public * com.boot.service.*.*(..))")
     public void weblog() {
     }
 

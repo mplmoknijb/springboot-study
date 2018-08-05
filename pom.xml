@@ -22,6 +22,7 @@
         <module>springboot-aop</module>
         <module>springboot-logs</module>
         <module>springboot-schedule</module>
+        <module>sprinboot-async</module>
     </modules>
 
 
