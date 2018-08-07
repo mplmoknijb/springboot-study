@@ -24,6 +24,7 @@
         <module>springboot-schedule</module>
         <module>sprinboot-async</module>
         <module>springboot-globalexception</module>
+        <module>springboot-aop-new</module>
     </modules>
 
 
