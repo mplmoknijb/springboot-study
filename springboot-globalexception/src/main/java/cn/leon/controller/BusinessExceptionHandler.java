@@ -49,7 +49,7 @@ public class BusinessExceptionHandler {
         result.setData("");
         return result;
     }
-
+    @ExceptionHandler(value = Exception.class)
     public ModelAndView ErrorHandler(HttpServletRequest request, Exception e) throws Exception {
         ModelAndView mav = new ModelAndView();
         Result<Exception> error = new Result<>();

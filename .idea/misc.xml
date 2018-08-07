@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/spring-boot-1-quickstart/pom.xml" />
         <option value="$PROJECT_DIR$/sprinboot-async/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-globalexception/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-aop-new/pom.xml" />
       </list>
     </option>
   </component>

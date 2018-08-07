@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="sprinboot-async" />
         <module name="springboot-aop" />
+        <module name="springboot-aop-new" />
         <module name="springboot-elk" />
         <module name="springboot-globalexception" />
         <module name="springboot-logs-Logback" />
