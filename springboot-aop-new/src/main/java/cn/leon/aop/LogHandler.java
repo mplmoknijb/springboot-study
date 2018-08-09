@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Order(1) 越小，越优先执行，排在最外层
+ * <p>
+ * 尝试自定义注解封装(@Component/@Aspect)运行报错
  */
 @Component
 @Aspect
