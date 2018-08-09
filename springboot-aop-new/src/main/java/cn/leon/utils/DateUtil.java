@@ -8,7 +8,7 @@ public class DateUtil {
 
     public static String now() {
         Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
         String now = simpleDateFormat.format(date);
         return now;
     }

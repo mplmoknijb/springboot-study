@@ -1,5 +1,6 @@
 package cn.leon.service.user.Impl;
 
+import cn.leon.annotation.leonBean;
 import cn.leon.annotation.leonMethod;
 import cn.leon.service.user.UserInfoService;
 import org.slf4j.Logger;
