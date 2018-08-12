@@ -1,0 +1,35 @@
+server.port: 1337
+
+spring:
+  application.name: leon
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    ip: localhost
+    port: 3306
+    name: spring
+    username: root
+    password: 123456
+    url: jdbc:mysql://${spring.datasource.ip}:${spring.datasource.port}/${spring.datasource.name}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+
+# 生成工具配置
+cn.leon:
+  moduleName: springboot-mybatis
+  tables: r_role_user,sys_menu  #逗号分隔
+  java:
+    rootPackage: cn.leon
+    mybatis:
+      domain: entity
+      mapper: dao
+      xml: mapper
+  view:
+    project:
+      enable: true
+      path: d://gitspace/springboot-study
+      js: js
+      html: module
+  generator:
+    project:
+      enable: false
+      name: leon
+      path: d://gitspace/springboot-study
+

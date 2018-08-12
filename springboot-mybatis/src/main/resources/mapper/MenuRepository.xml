@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.leon.repository.MenuRepository">
+
+    <select id="queryList" resultType="cn.leon.bo.MenuBo">
+        SELECT
+            *
+        FROM sys_menu
+    </select>
+
+    <insert id="insertList">
+        INSERT INTO sys_menu
+          (
+            id,
+            name,
+            url,
+            parent_id,
+            sort,
+            remark,
+            icon
+          )
+        <foreach collection="menus" item="m" open="VALUES (" separator="), (" close=")">
+            #{m.id,jdbcType=INT},
+            #{m.name,jdbcType=VARCHAR},
+            #{m.url,jdbcType=VARCHAR},
+            #{m.parent_id,jdbcType=INT},
+            #{m.sort,jdbcType=TINYINT},
+            #{m.remark,jdbcType=TEXT},
+            #{m.icon,jdbcType=VARCHAR}
+        </foreach>
+    </insert>
+</mapper>

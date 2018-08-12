@@ -7,12 +7,13 @@
     <groupId>cn.leon</groupId>
     <artifactId>springboot-study</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.16.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <dependencyManagement>
@@ -26,7 +27,7 @@
     </dependencyManagement>
 
     <modules>
-        <module>springboot-mybatis</module>
+        <module>mybatis-generator</module>
         <module>springboot-quickstart</module>
         <module>springboot-elk</module>
         <module>springboot-restful</module>
@@ -36,6 +37,7 @@
         <module>sprinboot-async</module>
         <module>springboot-globalexception</module>
         <module>springboot-aop-new</module>
+        <module>springboot-mybatis</module>
     </modules>
 
     <build>
@@ -46,25 +48,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <pluginRepositories>
         <pluginRepository>
