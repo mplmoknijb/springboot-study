@@ -1,7 +1,23 @@
 package cn.leon.bo;
 
-import cn.leon.entity.RoleUser;
+public class RoleUserBo{
 
-public class RoleUserBo extends RoleUser {
+    private String userId;
+    private String roleId;
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
 }

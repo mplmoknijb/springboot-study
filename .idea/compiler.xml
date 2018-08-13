@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sprinboot-async" />
+        <module name="springboot-aop" />
+        <module name="springboot-aop-new" />
+        <module name="springboot-elk" />
+        <module name="springboot-globalexception" />
+        <module name="springboot-logs-Logback" />
+        <module name="springboot-restful" />
+        <module name="springboot-schedule" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mybatis-generator" target="1.8" />
+      <module name="sprinboot-async" target="1.8" />
+      <module name="springboot-aop" target="1.8" />
+      <module name="springboot-aop-new" target="1.8" />
+      <module name="springboot-elk" target="1.8" />
+      <module name="springboot-globalexception" target="1.8" />
+      <module name="springboot-logs" target="1.8" />
+      <module name="springboot-logs-Logback" target="1.8" />
+      <module name="springboot-mybatis" target="1.8" />
+      <module name="springboot-quickstart" target="1.8" />
+      <module name="springboot-restful" target="1.8" />
+      <module name="springboot-schedule" target="1.8" />
+      <module name="springboot-study" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

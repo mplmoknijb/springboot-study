@@ -210,15 +210,15 @@ public class MybatisGenerator extends AbstractGenerator {
 
     @Override
     public void generator() {
-        try {
-            if (properties.isEnable()) {
-                buildAllMappers();
-            } else {
-                generateStubs(properties.getTables());
-                generateDomainConstants(properties.getTables());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            if (properties.isEnable()) {
+//                buildAllMappers();
+//            } else {
+//                generateStubs(properties.getTables());
+//                generateDomainConstants(properties.getTables());
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

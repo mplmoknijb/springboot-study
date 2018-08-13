@@ -104,14 +104,14 @@ public class ViewCodeGenerator extends AbstractGenerator {
 
     @Override
     public void generator() {
-        try {
-            if (properties.isEnable()) {
-                buildAllViews();
-            } else if (properties.getView().isEnable()) {
-                generateViews(properties.getTables());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            if (properties.isEnable()) {
+//                buildAllViews();
+//            } else if (properties.getView().isEnable()) {
+//                generateViews(properties.getTables());
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

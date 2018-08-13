@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  context-path: /mybatis
+  error:
+    path: /error
+  session-timeout: 60
+
+
+#druid
+druid:
+  url: jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false
+  driver-class: com.mysql.jdbc.Driver
+  username: root
+  password: 123456
+#  初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
+  initial-size: 1
+#  最小连接池数量
+  min-idle: 1
+#  最大连接池数量
+  max-active: 20
+#  申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
+  test-on-borrow: true

@@ -14,7 +14,7 @@ spring:
 # 生成工具配置
 cn.leon:
   moduleName: springboot-mybatis
-  tables: r_role_user,sys_menu  #逗号分隔
+  tables: r_role_user  #逗号分隔
   java:
     rootPackage: cn.leon
     mybatis:
@@ -23,13 +23,14 @@ cn.leon:
       xml: mapper
   view:
     project:
-      enable: true
+      enable: false
       path: d://gitspace/springboot-study
       js: js
       html: module
-  generator:
-    project:
-      enable: false
-      name: leon
-      path: d://gitspace/springboot-study
+
+#  generator:
+#    project:
+#      enable: false
+#      name: leon
+#      path: d://gitspace/springboot-study
 
