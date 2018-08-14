@@ -14,7 +14,8 @@
       <module fileurl="file://$PROJECT_DIR$/springboot-quickstart/springboot-quickstart.iml" filepath="$PROJECT_DIR$/springboot-quickstart/springboot-quickstart.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-restful/springboot-restful.iml" filepath="$PROJECT_DIR$/springboot-restful/springboot-restful.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-schedule/springboot-schedule.iml" filepath="$PROJECT_DIR$/springboot-schedule/springboot-schedule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-study.iml" filepath="$PROJECT_DIR$/springboot-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-security/springboot-security.iml" filepath="$PROJECT_DIR$/springboot-security/springboot-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/springboot-study.iml" filepath="$PROJECT_DIR$/.idea/springboot-study.iml" />
     </modules>
   </component>
 </project>

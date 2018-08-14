@@ -14,6 +14,7 @@
         <module name="springboot-logs-Logback" />
         <module name="springboot-restful" />
         <module name="springboot-schedule" />
+        <module name="springboot-security" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,6 +22,7 @@
       <module name="sprinboot-async" target="1.8" />
       <module name="springboot-aop" target="1.8" />
       <module name="springboot-aop-new" target="1.8" />
+      <module name="springboot-ehcache" target="1.8" />
       <module name="springboot-elk" target="1.8" />
       <module name="springboot-globalexception" target="1.8" />
       <module name="springboot-logs" target="1.8" />
@@ -29,6 +31,7 @@
       <module name="springboot-quickstart" target="1.8" />
       <module name="springboot-restful" target="1.8" />
       <module name="springboot-schedule" target="1.8" />
+      <module name="springboot-security" target="1.8" />
       <module name="springboot-study" target="1.8" />
     </bytecodeTargetLevel>
   </component>
