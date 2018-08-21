@@ -13,20 +13,20 @@ spring:
 
 # 生成工具配置
 cn.leon:
-  moduleName: springboot-mybatis
-  tables: r_role_user  #逗号分隔
+  moduleName: self-login
+  tables: r_role_user,sys_menu,sys_user,sys_role,oauth_client_details  #逗号分隔
   java:
     rootPackage: cn.leon
     mybatis:
       domain: entity
       mapper: dao
       xml: mapper
-  view:
-    project:
-      enable: false
-      path: d://gitspace/springboot-study
-      js: js
-      html: module
+#  view:
+#    project:
+#      enable: false
+#      path: d://gitspace/self-login
+#      js: js
+#      html: module
 
 #  generator:
 #    project:
