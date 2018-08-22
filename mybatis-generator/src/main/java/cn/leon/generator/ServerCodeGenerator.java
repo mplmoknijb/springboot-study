@@ -33,8 +33,8 @@ public class ServerCodeGenerator extends AbstractGenerator {
             "bo.java.ftl",
             "command.java.ftl",
             "controller.java.ftl",
-            "repository.java.ftl",
-            "service.java.ftl",
+            "dao.java.ftl",
+            "serviceImpl.java.ftl",
             "repository.xml.ftl",
             "entity.java.ftl"
     );
@@ -54,7 +54,11 @@ public class ServerCodeGenerator extends AbstractGenerator {
         for (String table : tableNames) {
             //获取表全部字段
             List<TableMetaData> meta = super.getTableMetaData(table);
-
+            //列名转驼峰
+            for (TableMetaData aMeta : meta) {
+                aMeta.setColumnName(aMeta.getFieldName());
+                aMeta.setDataType(aMeta.getDataType());
+            }
             //获取表名称驼峰, 去掉第一个下划线前字符
             String domainName = GeneratorHelper.buildDomainName(table);
             String variableName = GeneratorHelper.buildVariableName(table);

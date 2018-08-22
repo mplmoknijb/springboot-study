@@ -16,30 +16,40 @@ class TableMetaData {
 
     Integer length
 
-    String getFieldName(){
+    String getFieldName() {
         String[] elements = columnName.split("_")
         String name = ""
-        for(String e : elements){
+        for (String e : elements) {
             name += StringUtils.capitalize(e)
         }
         StringUtils.uncapitalize(name)
     }
 
-    String getCommentHeader(){
+    String getDataType() {
+        switch (this.dataType) {
+            case "varchar": case "char":
+                this.dataType = "String"; break;
+            case "datetime": case "timestamp":
+                this.dataType = "Date"; break;
+            default: this.dataType = "Integer"; break;
+        }
+    }
+
+    String getCommentHeader() {
         String header = columnName
-        if(comment != null && comment.trim().length() > 0){
+        if (comment != null && comment.trim().length() > 0) {
             header = comment.trim().split("\\s+")[0].replaceAll(":", "")
         }
         return header
     }
 
-    List<CommentElement> getCommentElements(){
+    List<CommentElement> getCommentElements() {
         List<CommentElement> elements = new ArrayList<>()
 
-        if(comment != null && comment.contains("#") && comment.trim().length() > 0){
+        if (comment != null && comment.contains("#") && comment.trim().length() > 0) {
             String[] parts = comment.split("\\s+")
-            for(int i = 1; i < parts.length; i++){
-                if(parts[i].contains("-") && parts[i].contains("#")){
+            for (int i = 1; i < parts.length; i++) {
+                if (parts[i].contains("-") && parts[i].contains("#")) {
                     String value = parts[i].split("-")[0]
                     String text = parts[i].split("-")[1].split("#")[0]
                     CommentElement e = new CommentElement()
@@ -49,7 +59,6 @@ class TableMetaData {
                 }
             }
         }
-        elements
     }
 
 }

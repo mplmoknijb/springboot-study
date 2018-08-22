@@ -1,5 +1,4 @@
 server.port: 1337
-
 spring:
   application.name: leon
   datasource:
@@ -21,6 +20,9 @@ cn.leon:
       domain: entity
       mapper: dao
       xml: mapper
+mybatis:
+  configLocation: classpath:Mybatis.xml
+  mapperLocations: classpath:mapper/**/*.xml
 #  view:
 #    project:
 #      enable: false
