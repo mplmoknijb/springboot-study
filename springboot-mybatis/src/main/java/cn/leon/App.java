@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import java.util.Arrays;
 
 @SpringBootApplication
-@ServletComponentScan
+@ServletComponentScan  /*druid listen*/
 public class App {
 
     public static void main(String[] args) {

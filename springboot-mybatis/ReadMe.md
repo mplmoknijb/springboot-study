@@ -1,6 +1,8 @@
 
 springboot 整合 mybatis
 
-tk mybatis 插件
+1.tk mybatis 插件
 
-druid连接池，包括监控界面 
+2.druid连接池，包括监控界面 
+
+3.增加Mybatis plus

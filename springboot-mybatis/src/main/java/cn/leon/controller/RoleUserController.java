@@ -23,5 +23,4 @@ public class RoleUserController {
     public List<RoleUserEntity> query() {
         return roleUserService.queryList();
     }
-
 }
