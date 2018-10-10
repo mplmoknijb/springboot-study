@@ -1,6 +1,3 @@
-server:
-  port: 8080
-#spring默认配置
 spring:
   redis:
     timeout: 0

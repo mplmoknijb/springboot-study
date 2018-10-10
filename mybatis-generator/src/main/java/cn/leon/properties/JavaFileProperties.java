@@ -8,7 +8,7 @@ public class JavaFileProperties {
     private String rootPackage = "org.ko.api";
 
     /**
-     * controller service repository xml
+     * cn.leon.controller service repository xml
      */
     private BasicFileProperties basic = new BasicFileProperties();
 

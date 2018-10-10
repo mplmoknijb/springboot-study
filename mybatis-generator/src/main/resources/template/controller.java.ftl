@@ -1,4 +1,4 @@
-package ${rootPackage}.controller;
+package ${rootPackage}.cn.leon.controller;
 
 @Api("${domainName}Controller")
 @RestController

@@ -32,7 +32,7 @@ public class ServerCodeGenerator extends AbstractGenerator {
     private static List<String> ENV_JAVA = Arrays.asList(
             "bo.java.ftl",
             "command.java.ftl",
-            "controller.java.ftl",
+            "cn.leon.controller.java.ftl",
             "dao.java.ftl",
             "serviceImpl.java.ftl",
             "repository.xml.ftl",
