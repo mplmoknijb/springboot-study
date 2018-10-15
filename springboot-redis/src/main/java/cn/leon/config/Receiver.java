@@ -7,6 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.concurrent.CountDownLatch;
 
+
+/**
+ * Redis默认是守护进程的-只能在本地使用localhost访问
+ * 开启IP访问需要配置
+ */
+
 public class Receiver {
 
     private static final Logger log = LoggerFactory.getLogger(Receiver.class);

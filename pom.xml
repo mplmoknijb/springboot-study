@@ -76,6 +76,7 @@
         <module>springboot-globalexception</module>
         <module>springboot-aop-new</module>
         <module>springboot-mybatis</module>
+        <module>springboot-cache</module>
     </modules>
     <repositories>
         <repository>
