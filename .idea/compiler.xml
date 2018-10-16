@@ -12,6 +12,7 @@
         <module name="springboot-elk" />
         <module name="springboot-globalexception" />
         <module name="springboot-logs-Logback" />
+        <module name="springboot-rabbitmq" />
         <module name="springboot-redis" />
         <module name="springboot-restful" />
         <module name="springboot-schedule" />
@@ -30,6 +31,7 @@
       <module name="springboot-logs-Logback" target="1.8" />
       <module name="springboot-mybatis" target="1.8" />
       <module name="springboot-quickstart" target="1.8" />
+      <module name="springboot-rabbitmq" target="1.8" />
       <module name="springboot-redis" target="1.8" />
       <module name="springboot-redis-cache" target="1.8" />
       <module name="springboot-restful" target="1.8" />
