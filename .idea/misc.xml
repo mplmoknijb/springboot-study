@@ -11,11 +11,20 @@
         <option value="$PROJECT_DIR$/springboot-redis/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-redis-cache/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-rabbitmq/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-freemarker/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq_hello/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq/rabbitmq_queue/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq/rabbitmq-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq/rabbitmq-queue/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/rabbitmq/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq/rabbitmq-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq/rabbitmq_queue/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-cache/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-rabbitmq/pom.xml" />
       </set>
     </option>
   </component>
