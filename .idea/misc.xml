@@ -16,12 +16,11 @@
         <option value="$PROJECT_DIR$/rabbitmq/rabbitmq_queue/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq/rabbitmq-hello/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq/rabbitmq-queue/pom.xml" />
+        <option value="$PROJECT_DIR$/rabbitmq/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/rabbitmq/pom.xml" />
-        <option value="$PROJECT_DIR$/rabbitmq/rabbitmq-hello/pom.xml" />
         <option value="$PROJECT_DIR$/rabbitmq/rabbitmq_queue/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-cache/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-rabbitmq/pom.xml" />
