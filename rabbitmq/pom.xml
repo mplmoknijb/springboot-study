@@ -19,6 +19,9 @@
     <modules>
         <module>rabbitmq-hello</module>
         <module>rabbitmq-queue</module>
+        <module>rabbitmq-release</module>
+        <module>rabbitmq-routing</module>
+        <module>rabbitmq-topic</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -36,6 +39,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>4.0.3</version>
         </dependency>
     </dependencies>
 

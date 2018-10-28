@@ -25,7 +25,7 @@ public class FairNewTask {
         int prefetchCount = 1;
         channel.basicQos(prefetchCount);
         // 发送消息
-        for (int i = 10; i >0; i--) {
+        for (int i = 10; i > 0; i--) {
             String message = "leon:" + i;
             channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
             System.out.println(" [x] Sent '" + message + "'");

@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq-hello/rabbitmq-hello.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq-hello/rabbitmq-hello.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq-queue/rabbitmq-queue.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq-queue/rabbitmq-queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq-release/rabbitmq-release.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq-release/rabbitmq-release.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq-routing/rabbitmq-routing.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq-routing/rabbitmq-routing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitmq/rabbitmq-topic/rabbitmq-topic.iml" filepath="$PROJECT_DIR$/rabbitmq/rabbitmq-topic/rabbitmq-topic.iml" />
       <module fileurl="file://$PROJECT_DIR$/sprinboot-async/sprinboot-async.iml" filepath="$PROJECT_DIR$/sprinboot-async/sprinboot-async.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-aop/springboot-aop.iml" filepath="$PROJECT_DIR$/springboot-aop/springboot-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-aop-new/springboot-aop-new.iml" filepath="$PROJECT_DIR$/springboot-aop-new/springboot-aop-new.iml" />
@@ -16,6 +19,7 @@
       <module fileurl="file://$PROJECT_DIR$/springboot-logs/springboot-logs-Logback/springboot-logs-Logback.iml" filepath="$PROJECT_DIR$/springboot-logs/springboot-logs-Logback/springboot-logs-Logback.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-mybatis/springboot-mybatis.iml" filepath="$PROJECT_DIR$/springboot-mybatis/springboot-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-quickstart/springboot-quickstart.iml" filepath="$PROJECT_DIR$/springboot-quickstart/springboot-quickstart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-rabbitmq/springboot-rabbitmq.iml" filepath="$PROJECT_DIR$/springboot-rabbitmq/springboot-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-redis/springboot-redis.iml" filepath="$PROJECT_DIR$/springboot-redis/springboot-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-redis-cache/springboot-redis-cache.iml" filepath="$PROJECT_DIR$/springboot-redis-cache/springboot-redis-cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-restful/springboot-restful.iml" filepath="$PROJECT_DIR$/springboot-restful/springboot-restful.iml" />

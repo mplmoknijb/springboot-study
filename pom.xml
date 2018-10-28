@@ -80,5 +80,6 @@
         <module>springboot-redis-cache</module>
         <module>springboot-freemarker</module>
         <module>rabbitmq</module>
+        <module>springboot-rabbitmq</module>
     </modules>
 </project>

@@ -8,6 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="rabbitmq-hello" />
         <module name="rabbitmq-queue" />
+        <module name="rabbitmq-release" />
+        <module name="rabbitmq-routing" />
+        <module name="rabbitmq-topic" />
         <module name="sprinboot-async" />
         <module name="springboot-aop" />
         <module name="springboot-aop-new" />
@@ -15,6 +18,7 @@
         <module name="springboot-freemarker" />
         <module name="springboot-globalexception" />
         <module name="springboot-logs-Logback" />
+        <module name="springboot-rabbitmq" />
         <module name="springboot-redis" />
         <module name="springboot-restful" />
         <module name="springboot-schedule" />
@@ -27,6 +31,9 @@
       <module name="rabbitmq" target="1.8" />
       <module name="rabbitmq-hello" target="1.8" />
       <module name="rabbitmq-queue" target="1.8" />
+      <module name="rabbitmq-release" target="1.8" />
+      <module name="rabbitmq-routing" target="1.8" />
+      <module name="rabbitmq-topic" target="1.8" />
       <module name="rabbitmq_hello" target="1.8" />
       <module name="rabbitmq_queue" target="1.8" />
       <module name="rabbitmqhello" target="1.8" />
