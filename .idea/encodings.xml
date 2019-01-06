@@ -3,10 +3,17 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-generator" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitmq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitmq/rabbitmq-hello" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitmq/rabbitmq-queue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitmq/rabbitmq-release" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitmq/rabbitmq-routing" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rabbitmq/rabbitmq-topic" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sprinboot-async" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-aop" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-aop-new" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-elk" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-freemarker" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-globalexception" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-logs" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-logs/springboot-logs-Logback" charset="UTF-8" />
