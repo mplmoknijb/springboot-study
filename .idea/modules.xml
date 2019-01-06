@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/springboot-security/authorization/authorization.iml" filepath="$PROJECT_DIR$/springboot-security/authorization/authorization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-security/client/client.iml" filepath="$PROJECT_DIR$/springboot-security/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-security/config/config.iml" filepath="$PROJECT_DIR$/springboot-security/config/config.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-generator/mybatis-generator.iml" filepath="$PROJECT_DIR$/mybatis-generator/mybatis-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-security/resource/resource.iml" filepath="$PROJECT_DIR$/springboot-security/resource/resource.iml" />
       <module fileurl="file://$PROJECT_DIR$/sprinboot-async/sprinboot-async.iml" filepath="$PROJECT_DIR$/sprinboot-async/sprinboot-async.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-aop/springboot-aop.iml" filepath="$PROJECT_DIR$/springboot-aop/springboot-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-aop-new/springboot-aop-new.iml" filepath="$PROJECT_DIR$/springboot-aop-new/springboot-aop-new.iml" />
@@ -14,8 +18,6 @@
       <module fileurl="file://$PROJECT_DIR$/springboot-quickstart/springboot-quickstart.iml" filepath="$PROJECT_DIR$/springboot-quickstart/springboot-quickstart.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-rabbitmq/springboot-rabbitmq.iml" filepath="$PROJECT_DIR$/springboot-rabbitmq/springboot-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-redis/springboot-redis.iml" filepath="$PROJECT_DIR$/springboot-redis/springboot-redis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-redis/springboot-redis.iml" filepath="$PROJECT_DIR$/springboot-redis/springboot-redis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-redis-cache/springboot-redis-cache.iml" filepath="$PROJECT_DIR$/springboot-redis-cache/springboot-redis-cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-redis-cache/springboot-redis-cache.iml" filepath="$PROJECT_DIR$/springboot-redis-cache/springboot-redis-cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-restful/springboot-restful.iml" filepath="$PROJECT_DIR$/springboot-restful/springboot-restful.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-schedule/springboot-schedule.iml" filepath="$PROJECT_DIR$/springboot-schedule/springboot-schedule.iml" />

@@ -6,6 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="authorization" />
+        <module name="client" />
+        <module name="config" />
+        <module name="resource" />
         <module name="sprinboot-async" />
         <module name="springboot-aop" />
         <module name="springboot-aop-new" />
@@ -16,11 +20,14 @@
         <module name="springboot-redis" />
         <module name="springboot-restful" />
         <module name="springboot-schedule" />
-        <module name="springboot-security" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authorization" target="1.8" />
+      <module name="client" target="1.8" />
+      <module name="config" target="1.8" />
       <module name="mybatis-generator" target="1.8" />
+      <module name="resource" target="1.8" />
       <module name="sprinboot-async" target="1.8" />
       <module name="springboot-aop" target="1.8" />
       <module name="springboot-aop-new" target="1.8" />
