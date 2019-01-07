@@ -1,14 +1,19 @@
-package ${rootPackage}.repository;
+package ${rootPackage}.dao;
 
-import ${rootPackage}.bo.${domainName}Bo;
-import ${rootPackage}.command.${domainName}Entity;
+import ${rootPackage}.bo.${domainName}BO;
+import ${rootPackage}.entity.${domainName}Entity;
 import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
 @Mapper
 public interface ${domainName}Dao{
 
-    List<${domainName}Bo> queryList(${domainName}Entity entity);
+    List<${domainName}${r'BO'}> queryList(${domainName}Entity ${variableName}Entity);
 
-    int insertList (List<${domainName}> ${variableName}s);
+    int save(List<${domainName}${r'BO'}> ${variableName}List);
+
+    void update(${domainName}Entity ${variableName}Entity);
+
+    void delete(String ${variableName}Id);
 }

@@ -31,12 +31,13 @@ public class ServerCodeGenerator extends AbstractGenerator {
 
     private static List<String> ENV_JAVA = Arrays.asList(
             "bo.java.ftl",
-            "command.java.ftl",
-            "cn.leon.controller.java.ftl",
+            "vo.java.ftl",
+            "entity.java.ftl",
             "dao.java.ftl",
-            "serviceImpl.java.ftl",
-            "repository.xml.ftl",
-            "entity.java.ftl"
+            "service.java.ftl",
+            "Impl.java.ftl",
+            "controller.java.ftl",
+            "mapper.xml.ftl"
     );
 
     protected void generateStubs(String... tableNames) throws Exception {
@@ -54,11 +55,6 @@ public class ServerCodeGenerator extends AbstractGenerator {
         for (String table : tableNames) {
             //获取表全部字段
             List<TableMetaData> meta = super.getTableMetaData(table);
-            //列名转驼峰
-            for (TableMetaData aMeta : meta) {
-                aMeta.setColumnName(aMeta.getFieldName());
-                aMeta.setDataType(aMeta.getDataType());
-            }
             //获取表名称驼峰, 去掉第一个下划线前字符
             String domainName = GeneratorHelper.buildDomainName(table);
             String variableName = GeneratorHelper.buildVariableName(table);
@@ -112,8 +108,20 @@ public class ServerCodeGenerator extends AbstractGenerator {
         if (!file.exists()) {
             file.mkdirs();
         }
-        String contentName = domainName + StringUtils.capitalize(ary[0] + "." + ary[1]);
+
+        String contentName = domainName + this.checkDto(ary[0]) + "." + ary[1];
         return dirPath + contentName;
+    }
+
+    private String checkDto(String suffix) {
+        switch (suffix) {
+            case "vo": case "bo":
+                return StringUtils.upperCase(suffix);
+            case "Impl":
+                return StringUtils.capitalize("Service" + suffix);
+            default:
+                return StringUtils.capitalize(suffix);
+        }
     }
 
     private void buildAllRepositories() throws Exception {

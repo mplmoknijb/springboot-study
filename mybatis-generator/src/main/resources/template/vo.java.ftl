@@ -1,6 +1,6 @@
-package ${rootPackage}.bo;
+package ${rootPackage}.vo;
 import java.util.Date;
-public class ${domainName}BO{
+public class ${domainName}VO{
 <#list meta as a>
  /**
   * ${a.comment}

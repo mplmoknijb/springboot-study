@@ -29,9 +29,11 @@ class TableMetaData {
         switch (this.dataType) {
             case "varchar": case "char":
                 this.dataType = "String"; break;
-            case "datetime": case "timestamp":
+            case "datetime": case "timestamp": case "date":
                 this.dataType = "Date"; break;
-            default: this.dataType = "Integer"; break;
+            case "String": case "Integer": case "Date":
+                return this.dataType;
+            default: this.dataType = "Integer";
         }
     }
 

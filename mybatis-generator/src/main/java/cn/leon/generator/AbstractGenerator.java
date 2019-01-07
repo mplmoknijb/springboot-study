@@ -80,6 +80,7 @@ public abstract class AbstractGenerator implements ICodeGenerator {
             data.setComment(StringUtils.trimToEmpty(rs.getString(GeneratorConstants.SchemaColumnName.COLUMN_COMMENT)));
             data.setDataType(rs.getString(GeneratorConstants.SchemaColumnName.DATA_TYPE).toLowerCase());
             data.setPrimaryKey(GeneratorConstants.SchemaColumnName.PRI.equalsIgnoreCase(rs.getString(GeneratorConstants.SchemaColumnName.COLUMN_KEY)));
+            data.setName(rs.getString(GeneratorConstants.SchemaColumnName.COLUMN_NAME));
             String len, scale = null;
             do {
                 len = rs.getString(GeneratorConstants.SchemaColumnName.CHARACTER_MAXIMUM_LENGTH);
