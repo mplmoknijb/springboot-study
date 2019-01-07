@@ -25,5 +25,11 @@
     <file url="file://$PROJECT_DIR$/springboot-restful" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-schedule" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-security" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-security/authorization" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-security/client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-security/client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-security/config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-security/resource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-security/user" charset="UTF-8" />
   </component>
 </project>
