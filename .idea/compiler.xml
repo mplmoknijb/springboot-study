@@ -9,11 +9,17 @@
         <module name="authorization" />
         <module name="client" />
         <module name="config" />
+        <module name="rabbitmq-hello" />
+        <module name="rabbitmq-queue" />
+        <module name="rabbitmq-release" />
+        <module name="rabbitmq-routing" />
+        <module name="rabbitmq-topic" />
         <module name="resource" />
         <module name="sprinboot-async" />
         <module name="springboot-aop" />
         <module name="springboot-aop-new" />
         <module name="springboot-elk" />
+        <module name="springboot-freemarker" />
         <module name="springboot-globalexception" />
         <module name="springboot-logs-Logback" />
         <module name="springboot-rabbitmq" />
@@ -27,12 +33,19 @@
       <module name="client" target="1.8" />
       <module name="config" target="1.8" />
       <module name="mybatis-generator" target="1.8" />
+      <module name="rabbitmq" target="1.8" />
+      <module name="rabbitmq-hello" target="1.8" />
+      <module name="rabbitmq-queue" target="1.8" />
+      <module name="rabbitmq-release" target="1.8" />
+      <module name="rabbitmq-routing" target="1.8" />
+      <module name="rabbitmq-topic" target="1.8" />
       <module name="resource" target="1.8" />
       <module name="sprinboot-async" target="1.8" />
       <module name="springboot-aop" target="1.8" />
       <module name="springboot-aop-new" target="1.8" />
       <module name="springboot-ehcache" target="1.8" />
       <module name="springboot-elk" target="1.8" />
+      <module name="springboot-freemarker" target="1.8" />
       <module name="springboot-globalexception" target="1.8" />
       <module name="springboot-logs" target="1.8" />
       <module name="springboot-logs-Logback" target="1.8" />

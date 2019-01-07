@@ -19,10 +19,10 @@
         <spring-cloud.version>Edgware.SR1</spring-cloud.version>
     </properties>
     <modules>
-        <module>client</module>
-        <module>config</module>
         <module>authorization</module>
+        <module>client</module>
         <module>resource</module>
+        <module>config</module>
     </modules>
     <dependencies>
         <dependency>
