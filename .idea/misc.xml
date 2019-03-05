@@ -15,6 +15,9 @@
         <option value="$PROJECT_DIR$/springboot-security/authorization/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-security/resource/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-security/config/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/dubbo-server/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/dubbo-client/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

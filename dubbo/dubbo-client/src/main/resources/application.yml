@@ -1,0 +1,9 @@
+server:
+  port: 9991
+spring:
+  dubbo:
+    application:
+      name: dubbo-client
+    registry:
+      address: zookeeper://localhost:2181
+    scan: cn.leon.controller

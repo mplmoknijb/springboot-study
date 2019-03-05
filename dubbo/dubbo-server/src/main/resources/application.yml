@@ -1,0 +1,14 @@
+
+server:
+  port: 9990
+
+spring:
+  dubbo:
+    application:
+      name: dubbo-server
+    registry:
+      address: zookeeper://localhost:2181
+    protocol:
+      name: dubbo
+      port: 20880
+    scan: cn.leon

@@ -9,6 +9,8 @@
         <module name="authorization" />
         <module name="client" />
         <module name="config" />
+        <module name="dubbo-client" />
+        <module name="dubbo-server" />
         <module name="rabbitmq-hello" />
         <module name="rabbitmq-queue" />
         <module name="rabbitmq-release" />
@@ -32,6 +34,9 @@
       <module name="authorization" target="1.8" />
       <module name="client" target="1.8" />
       <module name="config" target="1.8" />
+      <module name="dubbo" target="1.8" />
+      <module name="dubbo-client" target="1.8" />
+      <module name="dubbo-server" target="1.8" />
       <module name="mybatis-generator" target="1.8" />
       <module name="rabbitmq" target="1.8" />
       <module name="rabbitmq-hello" target="1.8" />
