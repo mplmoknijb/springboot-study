@@ -6,28 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="authorization" />
-        <module name="client" />
-        <module name="config" />
-        <module name="dubbo-client" />
-        <module name="dubbo-server" />
-        <module name="rabbitmq-hello" />
-        <module name="rabbitmq-queue" />
-        <module name="rabbitmq-release" />
-        <module name="rabbitmq-routing" />
-        <module name="rabbitmq-topic" />
-        <module name="resource" />
         <module name="sprinboot-async" />
+        <module name="client" />
+        <module name="authorization" />
         <module name="springboot-aop" />
-        <module name="springboot-aop-new" />
         <module name="springboot-elk" />
+        <module name="dubbo-client" />
         <module name="springboot-freemarker" />
-        <module name="springboot-globalexception" />
-        <module name="springboot-logs-Logback" />
-        <module name="springboot-rabbitmq" />
-        <module name="springboot-redis" />
         <module name="springboot-restful" />
+        <module name="springboot-logs-Logback" />
+        <module name="springboot-redis" />
+        <module name="rabbitmq-queue" />
+        <module name="rabbitmq-routing" />
+        <module name="springboot-aop-new" />
         <module name="springboot-schedule" />
+        <module name="dubbo-server" />
+        <module name="rabbitmq-release" />
+        <module name="rabbitmq-hello" />
+        <module name="config" />
+        <module name="rabbitmq-topic" />
+        <module name="springboot-rabbitmq" />
+        <module name="springboot-globalexception" />
+        <module name="resource" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
