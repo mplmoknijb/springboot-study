@@ -1,0 +1,33 @@
+server:
+  port: 9900
+spring:
+  kafka:
+    bootstrap-servers: 172.30.34.215:9092 #多个按逗号分隔
+    retries: 0 #  重试
+    batch-size: 16384 # 每次批量发送的数据
+    # producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，
+    # producer会阻塞或者抛出异常，以“block.on.buffer.full”来表明。
+    # 这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。
+    # 一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
+    buffer-memory: 33554432
+    #key序列化方式
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    properties:
+      linger.ms: 1
+    #消费者的配置
+    consumer:
+      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
+      auto-offset-reset: latest
+      #是否开启自动提交
+      enable-auto-commit: false
+      #自动提交的时间间隔
+      auto-commit-interval: 100ms
+      #key的解码方式
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      #value的解码方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        session.timeout.ms: 15000
+      group-id: test-consumer-group
+      #在/usr/local/etc/kafka/consumer.properties中有配置
