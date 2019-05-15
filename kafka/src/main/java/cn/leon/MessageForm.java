@@ -1,5 +1,6 @@
 package cn.leon;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 /**
@@ -8,6 +9,6 @@ import lombok.Data;
  **/
 @Data
 public class MessageForm {
-    private String content;
+    private JSONObject content;
     private String topic;
 }

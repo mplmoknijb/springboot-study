@@ -16,16 +16,16 @@ import java.util.Optional;
 public class Consumer {
 
 
-    @KafkaListener(topics = {"test-consumer-group"})
-    public void listen(ConsumerRecord<?, ?> record){
+    @KafkaListener(topics = {"example"})
+    public void listen(ConsumerRecord<?, ?> record) {
 
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
 
         if (kafkaMessage.isPresent()) {
 
             Object message = kafkaMessage.get();
-            System.out.println("---->这是一个消费"+record);
-            System.out.println("---->"+message);
+            System.out.println("---->这是一个消费" + record);
+            System.out.println("---->" + message);
 
         }
 

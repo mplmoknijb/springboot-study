@@ -26,7 +26,7 @@ public class ProducerService {
 
     public void sendMessage(MessageForm form) {
         log.info("kafka sendMessage start");
-        ListenableFuture<SendResult<Integer, String>> future = template.send(form.getTopic(), form.getContent());
+        ListenableFuture<SendResult<Integer, String>> future = template.send(form.getTopic(), form.getContent().toJSONString());
         future.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
 
             @Override
