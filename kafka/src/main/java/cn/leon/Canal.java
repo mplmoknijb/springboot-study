@@ -16,10 +16,11 @@ import java.util.List;
  * @date 2019-5-15 0015
  **/
 public class Canal {
-    @Autowired
-    private static ProducerService service;
 
-    public static void main(String[] args) {
+    @Autowired
+    private ProducerService service;
+
+    public void listener() {
         // 创建链接
         CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("172.30.34.215",
                 11111), "example", "", "");
@@ -58,7 +59,7 @@ public class Canal {
     }
 
 
-    private static void printEntry(List<CanalEntry.Entry> entrys) {
+    private void printEntry(List<CanalEntry.Entry> entrys) {
         for (CanalEntry.Entry entry : entrys) {
             if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN || entry.getEntryType() == EntryType.TRANSACTIONEND) {
                 continue;
@@ -92,17 +93,15 @@ public class Canal {
         }
     }
 
-    private static void printColumn(List<Column> columns) {
+    private void printColumn(List<Column> columns) {
         MessageForm form = new MessageForm();
         JSONObject jsonObject = new JSONObject();
         for (Column column : columns) {
-            jsonObject.put(column.getName(), column.getValue());
+//            jsonObject.put(column.getName(), column.getValue());
             System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
         }
         form.setTopic("example");
-        form.setContent(jsonObject);
+//        form.setContent(jsonObject);
         service.sendMessage(form);
     }
-
-
 }

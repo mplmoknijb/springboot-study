@@ -1,33 +1,72 @@
 server:
   port: 9900
+# =====================  原生用法  ========================
+#spring:
+#  kafka:
+#    bootstrap-servers: 172.30.34.215:9092 #多个按逗号分隔
+#    retries: 0 #  重试
+#    batch-size: 16384 # 每次批量发送的数据
+#    # producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，
+#    # producer会阻塞或者抛出异常，以“block.on.buffer.full”来表明。
+#    # 这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。
+#    # 一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
+#    buffer-memory: 33554432
+#    #key序列化方式
+#    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    properties:
+#      linger.ms: 1
+#    #消费者的配置
+#    consumer:
+#      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
+#      auto-offset-reset: latest
+#      #是否开启自动提交
+#      enable-auto-commit: false
+#      #自动提交的时间间隔
+#      auto-commit-interval: 100ms
+#      #key的解码方式
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      #value的解码方式
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      properties:
+#        session.timeout.ms: 15000
+#      group-id: test-consumer-group #在/usr/local/etc/kafka/consumer.properties中有配置
+# =====================  cloud-stream 用法  ========================
 spring:
-  kafka:
-    bootstrap-servers: 172.30.34.215:9092 #多个按逗号分隔
-    retries: 0 #  重试
-    batch-size: 16384 # 每次批量发送的数据
-    # producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，
-    # producer会阻塞或者抛出异常，以“block.on.buffer.full”来表明。
-    # 这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。
-    # 一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
-    buffer-memory: 33554432
-    #key序列化方式
-    key-serializer: org.apache.kafka.common.serialization.StringSerializer
-    value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    properties:
-      linger.ms: 1
-    #消费者的配置
-    consumer:
-      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
-      auto-offset-reset: latest
-      #是否开启自动提交
-      enable-auto-commit: false
-      #自动提交的时间间隔
-      auto-commit-interval: 100ms
-      #key的解码方式
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      #value的解码方式
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        session.timeout.ms: 15000
-      group-id: test-consumer-group
-      #在/usr/local/etc/kafka/consumer.properties中有配置
+  cloud:
+    stream:
+      bindings:
+        ali_product_input: #消费者绑定的消息通道
+          destination: ali.product.exchange  #消费者绑定的交换器
+          group: ali.product.group                  #和此交换器绑定的队列，消息持久化必须有队列才行
+        default-binder: kafka #默认的binder是kafka
+      kafka:
+        bootstrap-servers: 172.30.34.215:9092 #kafka服务地址
+        consumer:
+          group-id:
+        producer:
+          key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+          value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+          client-id: producer1
+
+#canal.conf:
+#  canalServerHost: 172.30.34.215:11111          # 对应单机模式下的canal server的ip:port
+#  zookeeperHosts: 172.30.34.215:2181               # 对应集群模式下的zk地址, 如果配置了canalServerHost, 则以canalServerHost为准
+#  mqServers: 172.30.34.215:6667 #or rocketmq       # kafka或rocketMQ地址, 与canalServerHost不能并存
+#  flatMessage: true                         # 扁平message开关, 是否以json字符串形式投递数据, 仅在kafka/rocketMQ模式下有效
+#  batchSize: 50                             # 每次获取数据的批大小, 单位为K
+#  syncBatchSize: 1000                       # 每次同步的批数量
+#  retries: 0                                # 重试次数, -1为无限重试
+#  timeout:                                  # 同步超时时间, 单位毫秒
+#  mode: tcp # kafka rocketMQ                # canal client的模式: tcp kafka rocketMQ
+#  srcDataSources:                           # 源数据库
+#    defaultDS:                              # 自定义名称
+#      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true   # jdbc url
+#      username: root                                            # jdbc 账号
+#      password: root                                          # jdbc 密码
+#  canalAdapters:                            # 适配器列表
+#    - instance: example                       # canal 实例名或者 MQ topic 名
+#      groups:                                 # 分组列表
+#        - groupId: g1                           # 分组id, 如果是MQ模式将用到该值
+#          outerAdapters:                        # 分组内适配器列表
+#            - name: logger                        # 日志打印适配器

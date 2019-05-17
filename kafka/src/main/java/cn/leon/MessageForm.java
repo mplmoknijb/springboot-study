@@ -9,6 +9,6 @@ import lombok.Data;
  **/
 @Data
 public class MessageForm {
-    private JSONObject content;
+    private String content;
     private String topic;
 }
