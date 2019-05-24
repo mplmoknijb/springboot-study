@@ -19,7 +19,7 @@ public class KafkaApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         for (int i = 0; i < 100; i++) {
             MessageForm form = new MessageForm();
-            form.setTopic("test");
+            form.setTopic("show");
             form.setContent("----------》test");
             service.sendMessage(form);
         }
