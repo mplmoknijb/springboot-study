@@ -3,9 +3,9 @@ server:
 spring:
   data:
     mongodb:
-      # 如果有密码 uri: mongodb://name:pass@localhost:27017/test
-      uri: mongodb://localhost:27017/test  # 多个用逗号分隔
-    # 以下均为默认配置
+      # ????? uri: mongodb://name:pass@localhost:27017/test
+      uri: mongodb://dev.mongodb.i.sixi.com:27017/cmd     # ???????
+    # ????????
     min-connection-per-host: 0
     max-connection-per-host: 100
     threads-allowed-to-block-for-connection-multiplier: 5
