@@ -64,7 +64,7 @@ public class MongoTestDao {
                 200,
                 TimeUnit.MICROSECONDS,
                 new LinkedBlockingDeque<Runnable>());
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 50000; i++) {
             executor.execute(runnable);
         }
         executor.shutdown();

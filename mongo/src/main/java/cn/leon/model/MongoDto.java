@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "cmd")
+//@Document(collection = "cmd")
 public class MongoDto {
     @Id
     private String id;

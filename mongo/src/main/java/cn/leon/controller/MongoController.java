@@ -36,6 +36,13 @@ public class MongoController {
         return mgtest;
     }
 
+    @PostMapping(value = "/get/one")
+    public MongoDto findOneByField(@RequestBody MongoDto mongoDto) {
+        MongoDto mgtest = mongoTestDao.findOneByField(mongoDto);
+        System.out.println("mgtest is " + mgtest);
+        return mgtest;
+    }
+
     @GetMapping(value = "/test3")
     public void updateTest() {
         MongoDto mgtest = new MongoDto();
