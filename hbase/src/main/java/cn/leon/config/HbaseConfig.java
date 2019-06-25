@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -18,8 +19,7 @@ import org.springframework.context.annotation.Configuration;
 public class HbaseConfig {
     @Autowired
     private HbaseProperties properties;
-
-
+    @Bean
     public org.apache.hadoop.conf.Configuration configuration() {
         org.apache.hadoop.conf.Configuration configuration = HBaseConfiguration.create();
         Map<String, String> config = properties.getConfig();

@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.Cell;
 import org.apache.hadoop.hbase.CompareOperator;
-import org.apache.hadoop.hbase.TableExistsException;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.ColumnFamilyDescriptor;
@@ -34,6 +33,7 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 import cn.leon.config.HbaseConfig;
+import cn.leon.domain.form.HtableOpsForm;
 
 /**
  * @author mujian
@@ -58,40 +58,59 @@ public class HBaseClient {
             connection = ConnectionFactory.createConnection(hbaseConfig.configuration());
             admin = connection.getAdmin();
         } catch (IOException e) {
-//            log.error("HBase create connection failed: {}", e);
+            //            log.error("HBase create connection failed: {}", e);
         }
     }
 
-    public void createTable(String tableName, String[] columnFamilies) throws IOException {
-        TableName name = TableName.valueOf(tableName);
-
-        boolean isExists = this.tableExists(tableName);
-        if (isExists) {
-            throw new TableExistsException(tableName + "is exists!");
+    /**
+     * 新建表
+     *
+     */
+    public void createTable(HtableOpsForm form) throws IOException {
+        TableName name = TableName.valueOf(form.getTableName());
+        boolean isExists = this.tableExists(form.getTableName());
+        if (!isExists) {
+            TableDescriptorBuilder descriptorBuilder = TableDescriptorBuilder.newBuilder(name);
+            List<ColumnFamilyDescriptor> columnFamilyList = new ArrayList<>();
+            for (String columnFamily : form.getColumnFamilies()) {
+                ColumnFamilyDescriptor columnFamilyDescriptor = ColumnFamilyDescriptorBuilder.newBuilder(columnFamily.getBytes()).build();
+                columnFamilyList.add(columnFamilyDescriptor);
+            }
+            descriptorBuilder.setColumnFamilies(columnFamilyList);
+            TableDescriptor tableDescriptor = descriptorBuilder.build();
+            admin.createTable(tableDescriptor);
         }
-
-        TableDescriptorBuilder descriptorBuilder = TableDescriptorBuilder.newBuilder(name);
-        List<ColumnFamilyDescriptor> columnFamilyList = new ArrayList<>();
-        for (String columnFamily : columnFamilies) {
-            ColumnFamilyDescriptor columnFamilyDescriptor = ColumnFamilyDescriptorBuilder.newBuilder(columnFamily.getBytes()).build();
-            columnFamilyList.add(columnFamilyDescriptor);
-        }
-        descriptorBuilder.setColumnFamilies(columnFamilyList);
-        TableDescriptor tableDescriptor = descriptorBuilder.build();
-        admin.createTable(tableDescriptor);
     }
 
+    /**
+     * 插入单行，单列簇单列
+     *
+     */
     public void insertOrUpdate(String tableName, String rowKey, String columnFamily, String column, String value) throws IOException {
         this.insertOrUpdate(tableName, rowKey, columnFamily, new String[]{column}, new String[]{value});
     }
 
+    /**
+     * 插入单行，单列簇多列
+     *
+     */
     public void insertOrUpdate(String tableName, String rowKey, String columnFamily, String[] columns, String[] values) throws IOException {
         Table table = connection.getTable(TableName.valueOf(tableName));
         Put put = new Put(Bytes.toBytes(rowKey));
         for (int i = 0; i < columns.length; i++) {
             put.addColumn(Bytes.toBytes(columnFamily), Bytes.toBytes(columns[i]), Bytes.toBytes(values[i]));
-            table.put(put);
+            put.setTimestamp(System.currentTimeMillis());
         }
+        table.put(put);
+    }
+
+    /**
+     * 插入多行
+     *
+     */
+    public void insertBatch(List<Put> puts, String tableName) throws IOException {
+        Table table = connection.getTable(TableName.valueOf(tableName));
+        table.put(puts);
     }
 
     public void deleteRow(String tableName, String rowKey) throws IOException {
@@ -147,11 +166,11 @@ public class HBaseClient {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 table.close();
                 connection.close();
-            }catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -207,8 +226,9 @@ public class HBaseClient {
 
     /**
      * 判断表是否已经存在，这里使用间接的方式来实现
-     *
+     * <p>
      * admin.tableExists() 会报NoSuchColumnFamilyException， 有人说是hbase-client版本问题
+     *
      * @param tableName
      * @return
      * @throws IOException

@@ -3,19 +3,19 @@ spring:
   application.name: leon
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    ip: localhost
+    ip: 192.168.2.203
     port: 3306
-    name: spring
+    name: ali_product
     username: root
-    password: 123456
+    password: root
     url: jdbc:mysql://${spring.datasource.ip}:${spring.datasource.port}/${spring.datasource.name}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
 
 # 生成工具配置
 cn.leon:
-  moduleName: self-login
-  tables: r_role_user,sys_menu,sys_user,sys_role,oauth_client_details  #逗号分隔
+  moduleName: D://workspace//sixi-micro-service-ali//ali-product-service
+  tables: ali_category #逗号分隔
   java:
-    rootPackage: cn.leon
+    rootPackage: com.sixi.ali.productservice
     mybatis:
       domain: entity
       mapper: dao

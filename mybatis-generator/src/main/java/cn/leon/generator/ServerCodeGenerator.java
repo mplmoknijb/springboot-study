@@ -30,14 +30,14 @@ public class ServerCodeGenerator extends AbstractGenerator {
     private Configuration freeMarkerConfiguration;
 
     private static List<String> ENV_JAVA = Arrays.asList(
-            "bo.java.ftl",
-            "vo.java.ftl",
-            "entity.java.ftl",
-            "dao.java.ftl",
-            "service.java.ftl",
-            "Impl.java.ftl",
-            "controller.java.ftl",
-            "mapper.xml.ftl"
+//            "bo.java.ftl",
+//            "vo.java.ftl",
+//            "entity.java.ftl",
+//            "dao.java.ftl",
+            "service.java.ftl"
+//            "Impl.java.ftl",
+//            "controller.java.ftl",
+//            "mapper.xml.ftl"
     );
 
     protected void generateStubs(String... tableNames) throws Exception {

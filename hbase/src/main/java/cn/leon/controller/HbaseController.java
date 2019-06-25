@@ -22,4 +22,14 @@ public class HbaseController {
     public void write() throws IOException {
         hbaseTemplate.importData();
     }
+
+    @GetMapping("/writing/all")
+    public void writeAll() throws IOException {
+        hbaseTemplate.batchSyncData();
+    }
+
+    @GetMapping("/get/data")
+    public String getData(){
+        return hbaseTemplate.getDataByRowkey();
+    }
 }

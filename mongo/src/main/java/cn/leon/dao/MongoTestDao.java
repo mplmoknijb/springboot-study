@@ -38,12 +38,11 @@ public class MongoTestDao {
         long start = System.currentTimeMillis();
         Runnable runnable = new Runnable() {
             String tName = Thread.currentThread().getName();
-
             @Override
             public void run() {
                 log.info("current=========={}-{}===============", tName, Thread.currentThread().getId());
                 List<MongoDto> list = Collections.synchronizedList(new ArrayList<>());
-                for (int i = 0; i < 2000; i++) {
+                for (int i = 0; i < 3000; i++) {
                     int n = (int) (Math.random() * 100000);
                     MongoDto mongoDto = MongoDto.builder()
                             .age(n)
