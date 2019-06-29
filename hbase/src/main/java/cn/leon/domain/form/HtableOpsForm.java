@@ -17,4 +17,7 @@ import lombok.NoArgsConstructor;
 public class HtableOpsForm {
     private String tableName;
     private String[] columnFamilies;
+    private String[] columns;
+    private String rowKey;
+    private String value;
 }

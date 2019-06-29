@@ -64,7 +64,6 @@ public class HBaseClient {
 
     /**
      * 新建表
-     *
      */
     public void createTable(HtableOpsForm form) throws IOException {
         TableName name = TableName.valueOf(form.getTableName());
@@ -84,7 +83,6 @@ public class HBaseClient {
 
     /**
      * 插入单行，单列簇单列
-     *
      */
     public void insertOrUpdate(String tableName, String rowKey, String columnFamily, String column, String value) throws IOException {
         this.insertOrUpdate(tableName, rowKey, columnFamily, new String[]{column}, new String[]{value});
@@ -92,7 +90,6 @@ public class HBaseClient {
 
     /**
      * 插入单行，单列簇多列
-     *
      */
     public void insertOrUpdate(String tableName, String rowKey, String columnFamily, String[] columns, String[] values) throws IOException {
         Table table = connection.getTable(TableName.valueOf(tableName));
@@ -106,7 +103,6 @@ public class HBaseClient {
 
     /**
      * 插入多行
-     *
      */
     public void insertBatch(List<Put> puts, String tableName) throws IOException {
         Table table = connection.getTable(TableName.valueOf(tableName));
@@ -138,7 +134,6 @@ public class HBaseClient {
         if (!isExists) {
             return;
         }
-
         TableName name = TableName.valueOf(tableName);
         admin.disableTable(name);
         admin.deleteTable(name);
@@ -146,13 +141,11 @@ public class HBaseClient {
 
     public String getValue(String tableName, String rowkey, String family, String column) {
         Table table = null;
-
         String value = "";
         if (StringUtils.isBlank(tableName) || StringUtils.isBlank(family)
             || StringUtils.isBlank(rowkey) || StringUtils.isBlank(column)) {
             return null;
         }
-
         try {
             table = connection.getTable(TableName.valueOf(tableName));
             Get g = new Get(rowkey.getBytes());

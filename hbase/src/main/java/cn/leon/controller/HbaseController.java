@@ -3,9 +3,12 @@ package cn.leon.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.leon.domain.form.HtableOpsForm;
 import cn.leon.service.HbaseTemplate;
 
 /**
@@ -18,18 +21,23 @@ public class HbaseController {
     @Autowired
     private HbaseTemplate hbaseTemplate;
 
-    @GetMapping("/writing")
-    public void write() throws IOException {
-        hbaseTemplate.importData();
+    @PostMapping("/writing")
+    public void write(@RequestBody HtableOpsForm form) throws IOException {
+        hbaseTemplate.insertOne(form);
     }
 
-    @GetMapping("/writing/all")
-    public void writeAll() throws IOException {
-        hbaseTemplate.batchSyncData();
+    @PostMapping("/writing/batch")
+    public void writeAll(@RequestBody HtableOpsForm form) throws IOException {
+        hbaseTemplate.batchSyncData(form);
     }
 
-    @GetMapping("/get/data")
-    public String getData(){
-        return hbaseTemplate.getDataByRowkey();
+    @PostMapping("/value")
+    public String getValue(@RequestBody HtableOpsForm form) {
+        return hbaseTemplate.getValue(form);
+    }
+
+    @PostMapping("/one/row")
+    public String getOneRow(@RequestBody HtableOpsForm form) throws IOException {
+        return hbaseTemplate.getOneRow(form);
     }
 }
