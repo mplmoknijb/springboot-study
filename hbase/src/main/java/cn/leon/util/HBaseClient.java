@@ -34,6 +34,7 @@ import org.springframework.stereotype.Component;
 
 import cn.leon.config.HbaseConfig;
 import cn.leon.domain.form.HtableOpsForm;
+import com.google.common.collect.Lists;
 
 /**
  * @author mujian
@@ -139,6 +140,15 @@ public class HBaseClient {
         admin.deleteTable(name);
     }
 
+    /**
+     * 获取列值
+     *
+     * @param tableName
+     * @param rowkey
+     * @param family
+     * @param column
+     * @return
+     */
     public String getValue(String tableName, String rowkey, String family, String column) {
         Table table = null;
         String value = "";
@@ -170,6 +180,14 @@ public class HBaseClient {
         return value;
     }
 
+    /**
+     * 获取行数据
+     *
+     * @param tableName
+     * @param rowKey
+     * @return
+     * @throws IOException
+     */
     public String selectOneRow(String tableName, String rowKey) throws IOException {
         Table table = connection.getTable(TableName.valueOf(tableName));
         Get get = new Get(rowKey.getBytes());
@@ -180,18 +198,24 @@ public class HBaseClient {
             String columnFamily = Bytes.toString(cell.getFamilyArray());
             String column = Bytes.toString(cell.getQualifierArray());
             String value = Bytes.toString(cell.getValueArray());
-
             // 可以通过反射封装成对象(列名和Java属性保持一致)
             System.out.println(row);
             System.out.println(columnFamily);
             System.out.println(column);
             System.out.println(value);
         }
-
         return null;
     }
 
-    public String scanTable(String tableName, String rowKeyFilter) throws IOException {
+    /**
+     * 批量查询
+     *
+     * @param tableName
+     * @param rowKeyFilter
+     * @return
+     * @throws IOException
+     */
+    public List<String> scanTable(String tableName, String rowKeyFilter) throws IOException {
         Table table = connection.getTable(TableName.valueOf(tableName));
         Scan scan = new Scan();
         if (!StringUtils.isEmpty(rowKeyFilter)) {
@@ -199,21 +223,17 @@ public class HBaseClient {
             scan.setFilter(rowFilter);
         }
         ResultScanner scanner = table.getScanner(scan);
-
         try {
-            for (Result result : scanner) {
-                System.out.println(Bytes.toString(result.getRow()));
-                for (Cell cell : result.rawCells()) {
-                    System.out.println(cell);
-                }
-            }
+            List<String> list = Lists.newArrayList();
+            scanner.forEach(result -> {
+                list.add(Bytes.toString(result.getRow()));
+            });
+            return list;
         } finally {
             if (scanner != null) {
                 scanner.close();
             }
         }
-
-        return null;
     }
 
 

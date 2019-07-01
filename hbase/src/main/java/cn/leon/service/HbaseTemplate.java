@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.leon.domain.form.HtableOpsForm;
+import cn.leon.domain.vo.ResultBean;
 import cn.leon.kits.ConcurrentKits;
 import cn.leon.util.HBaseClient;
 import com.google.common.collect.Lists;
+import lombok.SneakyThrows;
 
 /**
  * @author mujian
@@ -25,7 +27,7 @@ import com.google.common.collect.Lists;
  * @date 2019/6/4 18:13
  */
 @Service
-public class HbaseTemplate {
+public class HbaseTemplate implements HbaseService {
 
     @Autowired
     private HBaseClient hBaseClient;
@@ -35,7 +37,9 @@ public class HbaseTemplate {
 
     private AtomicInteger atomicInteger = new AtomicInteger(1);
 
-    public void insertOne(HtableOpsForm form) throws IOException {
+    @Override
+    @SneakyThrows(IOException.class)
+    public void insertColumn(HtableOpsForm form) {
         // 新建表
         hBaseClient.createTable(form);
         for (String family : form.getColumnFamilies()) {
@@ -47,10 +51,16 @@ public class HbaseTemplate {
                                        form.getValue()
             );
         }
+    }
+
+    @Override
+    public void insertColumList(HtableOpsForm form) {
 
     }
 
-    public void batchSyncData(HtableOpsForm form) throws IOException {
+    @Override
+    @SneakyThrows(IOException.class)
+    public void insertRowList(HtableOpsForm form) {
         // 新建表
         hBaseClient.createTable(form);
         ThreadPoolExecutor executor = concurrentKits.getThreadPool();
@@ -77,11 +87,19 @@ public class HbaseTemplate {
         executor.shutdown();
     }
 
-    public String getOneRow(HtableOpsForm form) throws IOException {
-        return hBaseClient.selectOneRow(form.getTableName(), form.getRowKey());
-    }
-
+    @Override
     public String getValue(HtableOpsForm form) {
         return hBaseClient.getValue(form.getTableName(), form.getRowKey(), form.getColumnFamilies()[0], form.getColumns()[0]);
+    }
+
+    @Override
+    public String getRow(HtableOpsForm form) {
+        return hBaseClient.getValue(form.getTableName(), form.getRowKey(), form.getColumnFamilies()[0], form.getColumns()[0]);
+    }
+
+    @Override
+    @SneakyThrows(IOException.class)
+    public List<String> getRowList(HtableOpsForm form) {
+        return hBaseClient.scanTable(form.getTableName(), form.getValue());
     }
 }
