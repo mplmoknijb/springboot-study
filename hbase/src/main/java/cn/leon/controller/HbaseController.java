@@ -42,7 +42,7 @@ public class HbaseController {
     }
 
     @PostMapping("/reading/row")
-    public String getRow(@RequestBody HtableOpsForm form) {
+    public List<String> getRow(@RequestBody HtableOpsForm form) {
         return hbaseTemplate.getRow(form);
     }
 

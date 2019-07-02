@@ -35,6 +35,7 @@ import org.springframework.stereotype.Component;
 import cn.leon.config.HbaseConfig;
 import cn.leon.domain.form.HtableOpsForm;
 import com.google.common.collect.Lists;
+import lombok.SneakyThrows;
 
 /**
  * @author mujian
@@ -63,6 +64,7 @@ public class HBaseClient {
         }
     }
 
+
     /**
      * 新建表
      */
@@ -85,14 +87,14 @@ public class HBaseClient {
     /**
      * 插入单行，单列簇单列
      */
-    public void insertOrUpdate(String tableName, String rowKey, String columnFamily, String column, String value) throws IOException {
-        this.insertOrUpdate(tableName, rowKey, columnFamily, new String[]{column}, new String[]{value});
+    public void insertColumn(String tableName, String rowKey, String columnFamily, String column, String value) throws IOException {
+        this.insertColumn(tableName, rowKey, columnFamily, new String[]{column}, new String[]{value});
     }
 
     /**
      * 插入单行，单列簇多列
      */
-    public void insertOrUpdate(String tableName, String rowKey, String columnFamily, String[] columns, String[] values) throws IOException {
+    public void insertColumn(String tableName, String rowKey, String columnFamily, String[] columns, String[] values) throws IOException {
         Table table = connection.getTable(TableName.valueOf(tableName));
         Put put = new Put(Bytes.toBytes(rowKey));
         for (int i = 0; i < columns.length; i++) {
@@ -105,7 +107,8 @@ public class HBaseClient {
     /**
      * 插入多行
      */
-    public void insertBatch(List<Put> puts, String tableName) throws IOException {
+    @SneakyThrows(IOException.class)
+    public void insertBatch(List<Put> puts, String tableName) {
         Table table = connection.getTable(TableName.valueOf(tableName));
         table.put(puts);
     }
@@ -188,12 +191,17 @@ public class HBaseClient {
      * @return
      * @throws IOException
      */
-    public String selectOneRow(String tableName, String rowKey) throws IOException {
+    public List<String> selectOneRow(String tableName, String rowKey) throws IOException {
+        List<String> list = Lists.newArrayList();
         Table table = connection.getTable(TableName.valueOf(tableName));
         Get get = new Get(rowKey.getBytes());
+        get.addFamily(Bytes.toBytes("cf"));
         Result result = table.get(get);
         NavigableMap<byte[], NavigableMap<byte[], NavigableMap<Long, byte[]>>> map = result.getMap();
         for (Cell cell : result.rawCells()) {
+            String value = Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength());
+            list.add(value);
+            /*
             String row = Bytes.toString(cell.getRowArray());
             String columnFamily = Bytes.toString(cell.getFamilyArray());
             String column = Bytes.toString(cell.getQualifierArray());
@@ -202,9 +210,9 @@ public class HBaseClient {
             System.out.println(row);
             System.out.println(columnFamily);
             System.out.println(column);
-            System.out.println(value);
+            System.out.println(value);*/
         }
-        return null;
+        return list;
     }
 
     /**
@@ -227,8 +235,21 @@ public class HBaseClient {
             List<String> list = Lists.newArrayList();
             scanner.forEach(result -> {
                 list.add(Bytes.toString(result.getRow()));
+                for (Cell cell : result.rawCells()) {
+                    System.out.println(Bytes.toString(cell.getValueArray()));
+                }
             });
             return list;
+            //            for(Result result : scanner){
+            //                for (Cell cell : result.rawCells()) {
+            //                    StringBuffer stringBuffer = new StringBuffer().append(Bytes.toString(cell.getRow())).append("\t")
+            //                                                                  .append(Bytes.toString(cell.getFamily())).append("\t")
+            //                                                                  .append(Bytes.toString(cell.getQualifier())).append("\t")
+            //                                                                  .append(Bytes.toString(cell.getValue())).append("\n");
+            //                    String str = stringBuffer.toString();
+            //                    record += str;
+            //                }
+            //            }
         } finally {
             if (scanner != null) {
                 scanner.close();

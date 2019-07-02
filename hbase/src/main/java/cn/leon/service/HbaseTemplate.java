@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.leon.domain.form.HtableOpsForm;
-import cn.leon.domain.vo.ResultBean;
 import cn.leon.kits.ConcurrentKits;
 import cn.leon.util.HBaseClient;
 import com.google.common.collect.Lists;
@@ -42,15 +41,13 @@ public class HbaseTemplate implements HbaseService {
     public void insertColumn(HtableOpsForm form) {
         // 新建表
         hBaseClient.createTable(form);
-        for (String family : form.getColumnFamilies()) {
-            // 新增数据
-            hBaseClient.insertOrUpdate(form.getTableName(),
-                                       form.getRowKey(),
-                                       family,
-                                       form.getColumns()[0],
-                                       form.getValue()
-            );
-        }
+        // 新增数据
+        hBaseClient.insertColumn(form.getTableName(),
+                                 form.getRowKey(),
+                                 "cf",
+                                 Long.toString(Long.MAX_VALUE - System.currentTimeMillis()),
+                                 form.getValue()
+        );
     }
 
     @Override
@@ -71,14 +68,12 @@ public class HbaseTemplate implements HbaseService {
                 for (int i = 0; i < 1000; i++) {
                     int key = atomicInteger.getAndIncrement();
                     Put put = new Put(Bytes.toBytes(key));
-                    put.addColumn(Bytes.toBytes(form.getColumnFamilies()[0]), Bytes.toBytes(form.getColumns()[0]), Bytes.toBytes(i));
+                    for (int j = 0; j < form.getColumns().length; j++) {
+                        put.addColumn(Bytes.toBytes(form.getColumnFamilies()[0]), Bytes.toBytes(form.getColumns()[j]), Bytes.toBytes(i + "test"));
+                    }
                     list.add(put);
                 }
-                try {
-                    hBaseClient.insertBatch(list, form.getTableName());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                hBaseClient.insertBatch(list, form.getTableName());
             }
         };
         for (int k = 0; k < 5000; k++) {
@@ -93,8 +88,9 @@ public class HbaseTemplate implements HbaseService {
     }
 
     @Override
-    public String getRow(HtableOpsForm form) {
-        return hBaseClient.getValue(form.getTableName(), form.getRowKey(), form.getColumnFamilies()[0], form.getColumns()[0]);
+    @SneakyThrows(IOException.class)
+    public List<String> getRow(HtableOpsForm form) {
+        return hBaseClient.selectOneRow(form.getTableName(), form.getRowKey());
     }
 
     @Override

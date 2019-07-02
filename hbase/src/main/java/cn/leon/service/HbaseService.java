@@ -11,6 +11,7 @@ import cn.leon.domain.form.HtableOpsForm;
  * @date 2019/6/13 10:00
  */
 public interface HbaseService {
+
     void insertColumn(HtableOpsForm form) throws IOException;
 
     void insertColumList(HtableOpsForm form);
@@ -19,7 +20,7 @@ public interface HbaseService {
 
     String getValue(HtableOpsForm form);
 
-    String getRow(HtableOpsForm form);
+    List<String> getRow(HtableOpsForm form);
 
     List<String> getRowList(HtableOpsForm form);
 }
