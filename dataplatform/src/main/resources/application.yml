@@ -1,12 +1,45 @@
+hbase:
+  config:
+    hbase.zookeeper.quorum: 192.168.2.171,192.168.2.172,192.168.2.173
+    hbase.zookeeper.port: 2181
+    hbase.zookeeper.znode: /hbase
+    hbase.client.keyvalue.maxsize: 1572864000
 server:
   port: 8001
 spring:
+  rabbitmq:
+    host: dev.rabbitmq.i.sixi.com
+    port: 5672
+    username: root
+    password: root
+  cloud:
+    stream:
+      bindings:
+        query_task_output:
+          destination: dataquery.exchange
+          content-type: application/json
+          group: task.group
+        query_task_input:
+          destination: dataquery.exchange
+          content-type: application/json
+          group: task.group
+      rabbit:
+        bindings:
+          query_task_input:
+            consumer:
+              bindingRoutingKey: data.query.task.key
+              acknowledge-mode: auto
+              autoBindDlq: true
+              republishToDlq: true
+          query_task_output:
+            producer:
+              routing-key-expression: '''data.query.task.key'''
   data:
     mongodb:
-    #            host: 192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017
-    # ∂‡Ω⁄µ„     spring.data.mongodb.uri=mongodb://user:pwd@ip1:port1,ip2:port2/database
-    # ”–’Àªß√‹¬Î uri: mongodb://name:pass@localhost:27017/test
-    #      uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/test
+      #            host: 192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017
+      # Â§öËäÇÁÇπ     spring.data.mongodb.uri=mongodb://user:pwd@ip1:port1,ip2:port2/database
+      # ÊúâË¥¶Êà∑ÂØÜÁ†Å uri: mongodb://name:pass@localhost:27017/test
+      #      uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/test
       uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/dataplatform
     min-connection-per-host: 0
     max-connection-per-host: 100
@@ -26,9 +59,3 @@ spring:
     min-heartbeat-frequency: 500
     heartbeat-frequency: 10000
     local-threshold: 15
-hbase:
-  config:
-    hbase.zookeeper.quorum: 192.168.2.171,192.168.2.172,192.168.2.173
-    hbase.zookeeper.port: 2181
-    hbase.zookeeper.znode: /hbase
-    hbase.client.keyvalue.maxsize: 1572864000

@@ -21,6 +21,8 @@ import lombok.NoArgsConstructor;
 public class MongoDto {
     @Id
     private String id;
+    @Field("bizKey")
+    private String bizkey;
     @Field("userId")
     private String userId;
     @Field("opsDate")

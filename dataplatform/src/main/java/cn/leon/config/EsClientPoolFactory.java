@@ -26,7 +26,6 @@ public class EsClientPoolFactory implements PooledObjectFactory<RestHighLevelCli
                     new HttpHost("192.168.2.120", 9200, "http"),
                     new HttpHost("192.168.2.121", 9200, "http"),
                     new HttpHost("192.168.2.122", 9200, "http")));
-
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchVo {
+    private String id;
     private String bizKey;
     private String detail;
     /*
