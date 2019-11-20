@@ -44,8 +44,8 @@ import lombok.SneakyThrows;
  * @Desc
  * @date 2019/7/5 9:20
  */
-@DependsOn("hbaseConfig")
-@Component
+//@DependsOn("hbaseConfig")
+//@Component
 public class Hbasekit {
     @Autowired
     private HbaseConfig hbaseConfig;

@@ -1,6 +1,6 @@
 package cn.leon.annotation;
 
-import cn.leon.service.DBClientDetailsService;
+import cn.leon.base.DBClientDetailsService;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;

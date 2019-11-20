@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.leon.domain.form.SearchForm;
 import cn.leon.domain.form.StorageForm;
+import cn.leon.domain.form.StorageListForm;
 import cn.leon.domain.vo.SearchVo;
 
 /**
@@ -13,7 +14,11 @@ import cn.leon.domain.vo.SearchVo;
  */
 public interface DataOps {
 
-    void saveData(StorageForm form);
+    void saveData(StorageListForm form);
+
+    int saveData(StorageForm form);
 
     List<SearchVo> getData(SearchForm form);
+
+    SearchVo getDeatilById(SearchForm form);
 }

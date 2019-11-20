@@ -3,6 +3,7 @@ package cn.leon.util;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.NavigableMap;
 
 import javax.annotation.PostConstruct;
@@ -47,59 +48,40 @@ import lombok.SneakyThrows;
 public class HBaseClient {
     @Resource
     private HbaseConfig hbaseConfig;
-
     private static Connection connection = null;
     private static Admin admin = null;
 
     @PostConstruct
-    private void init() throws IOException {
+    @SneakyThrows(IOException.class)
+    private void init() {
         if (connection != null) {
             return;
         }
-        try {
-            connection = ConnectionFactory.createConnection(hbaseConfig.configuration());
-            admin = connection.getAdmin();
-        } catch (IOException e) {
-            //            log.error("HBase create connection failed: {}", e);
-        }
+        connection = ConnectionFactory.createConnection(hbaseConfig.configuration());
+        admin = connection.getAdmin();
     }
 
-
-    /**
-     * 新建表
-     */
-    public void createTable(HtableOpsForm form) throws IOException {
+    @SneakyThrows(IOException.class)
+    public void createTable(HtableOpsForm form) {
         TableName name = TableName.valueOf(form.getTableName());
         boolean isExists = this.tableExists(form.getTableName());
         if (!isExists) {
             TableDescriptorBuilder descriptorBuilder = TableDescriptorBuilder.newBuilder(name);
             List<ColumnFamilyDescriptor> columnFamilyList = new ArrayList<>();
-            for (String columnFamily : form.getColumnFamilies()) {
-                ColumnFamilyDescriptor columnFamilyDescriptor = ColumnFamilyDescriptorBuilder.newBuilder(columnFamily.getBytes()).build();
-                columnFamilyList.add(columnFamilyDescriptor);
-            }
+            ColumnFamilyDescriptor columnFamilyDescriptor = ColumnFamilyDescriptorBuilder.newBuilder(form.getColumnFamilies().getBytes()).build();
+            columnFamilyList.add(columnFamilyDescriptor);
             descriptorBuilder.setColumnFamilies(columnFamilyList);
             TableDescriptor tableDescriptor = descriptorBuilder.build();
             admin.createTable(tableDescriptor);
         }
     }
 
-    /**
-     * 插入单行，单列簇单列
-     */
-    public void insertColumn(String tableName, String rowKey, String columnFamily, String column, String value) throws IOException {
-        this.insertColumn(tableName, rowKey, columnFamily, new String[]{column}, new String[]{value});
-    }
-
-    /**
-     * 插入单行，单列簇多列
-     */
-    public void insertColumn(String tableName, String rowKey, String columnFamily, String[] columns, String[] values) throws IOException {
+    @SneakyThrows(IOException.class)
+    public void insertColumn(String tableName, String rowKey, String columnFamily, Map<String, String> map){
         Table table = connection.getTable(TableName.valueOf(tableName));
         Put put = new Put(Bytes.toBytes(rowKey));
-        for (int i = 0; i < columns.length; i++) {
-            put.addColumn(Bytes.toBytes(columnFamily), Bytes.toBytes(columns[i]), Bytes.toBytes(values[i]));
-            put.setTimestamp(System.currentTimeMillis());
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            put.addColumn(Bytes.toBytes(columnFamily), Bytes.toBytes(entry.getKey()), Bytes.toBytes(entry.getValue()));
         }
         table.put(put);
     }
@@ -175,7 +157,6 @@ public class HBaseClient {
         } finally {
             try {
                 table.close();
-                connection.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -201,16 +182,6 @@ public class HBaseClient {
         for (Cell cell : result.rawCells()) {
             String value = Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength());
             list.add(value);
-            /*
-            String row = Bytes.toString(cell.getRowArray());
-            String columnFamily = Bytes.toString(cell.getFamilyArray());
-            String column = Bytes.toString(cell.getQualifierArray());
-            String value = Bytes.toString(cell.getValueArray());
-            // 可以通过反射封装成对象(列名和Java属性保持一致)
-            System.out.println(row);
-            System.out.println(columnFamily);
-            System.out.println(column);
-            System.out.println(value);*/
         }
         return list;
     }

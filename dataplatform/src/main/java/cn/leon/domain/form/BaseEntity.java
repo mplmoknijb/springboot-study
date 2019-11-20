@@ -20,7 +20,7 @@ public class BaseEntity {
 
     private String bizKey;
 
-    private Map<String, String> condition;
+    private Map<String, Object> condition;
 
-    private String detail;
+    private Map<String, String> detail;
 }

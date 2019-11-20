@@ -15,7 +15,7 @@ import org.springframework.context.annotation.DependsOn;
  * @Desc
  * @date 2019/6/4 18:06
  */
-@Configuration
+//@Configuration
 @EnableConfigurationProperties(HbaseProperties.class)
 public class HbaseConfig {
 

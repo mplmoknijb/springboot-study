@@ -35,7 +35,7 @@ public class LogHandler {
      */
 
     // 匹配cn.timebusker.service包及子包下的任何方法执行
-    @Pointcut("execution(* cn.leon.service.*.*(..))")
+    @Pointcut("execution(* cn.leon.base.*.*(..))")
     public void log1() {
 
     }
@@ -64,19 +64,19 @@ public class LogHandler {
     }
 
     // 匹配任何返回值类型的cn.timebusker包及任何子包下的以add开头的参数为Strign类型的方法执行
-    @Pointcut("execution(* cn.leon.service..add*(String))")
+    @Pointcut("execution(* cn.leon.base..add*(String))")
     public void log6() {
 
     }
 
     // 匹配 OR、AND
-    @Pointcut("execution(* cn.leon.service.*.add*(int))")
+    @Pointcut("execution(* cn.leon.base.*.add*(int))")
     public void log7() {
 
     }
 
     // 匹配 OR、AND、
-    @Pointcut(value = "execution(* cn.leon.service.*.add*(int)) OR execution(* cn.leon..add*(String))")
+    @Pointcut(value = "execution(* cn.leon.base.*.add*(int)) OR execution(* cn.leon..add*(String))")
     public void log8() {
     }
 
@@ -87,11 +87,11 @@ public class LogHandler {
      * 2、匹配指定类型内的方法执行；
      */
     // 匹配指定类型内的方法执行--只能匹配类型
-    @Pointcut("within(cn.leon.service.order.Impl.OrderInfoServiceImpl))")
+    @Pointcut("within(cn.leon.base.order.Impl.OrderInfoServiceImpl))")
     public void logw1() {
     }
 
-    @Pointcut("within(cn.leon.service.order.Impl.*))")
+    @Pointcut("within(cn.leon.base.order.Impl.*))")
     public void logw2() {
     }
 
@@ -101,7 +101,7 @@ public class LogHandler {
      * 2、注意是AOP代理对象的类型匹配，这样就可能包括引入接口方法也可以匹配；注意this中使用的表达式必须是类型全限定名，不支持通配符
      */
     // 匹配指定类型内的方法执行(包下所有的类)
-    @Pointcut(value = "this(cn.leon.service.order.OrderInfoService)")
+    @Pointcut(value = "this(cn.leon.base.order.OrderInfoService)")
     public void logt1() {
     }
 
@@ -111,7 +111,7 @@ public class LogHandler {
      * 2、注意是目标对象的类型匹配，这样就不包括引入接口也类型匹配；注意target中使用的表达式必须是类型全限定名，不支持通配符
      */
     // 匹配指定类型内的方法执行(包下所有的类)
-    @Pointcut("target(cn.leon.service.order.OrderInfoService)")
+    @Pointcut("target(cn.leon.base.order.OrderInfoService)")
     public void logt2() {
 
     }

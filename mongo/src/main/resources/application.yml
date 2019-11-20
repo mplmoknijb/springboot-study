@@ -3,11 +3,11 @@ server:
 spring:
   data:
     mongodb:
-#            host: 192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017
+      #            host: 192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017
       # 多节点     spring.data.mongodb.uri=mongodb://user:pwd@ip1:port1,ip2:port2/database
       # 有账户密码 uri: mongodb://name:pass@localhost:27017/test
-      uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/test
-#      uri: mongodb://192.168.2.171:27017/demo
+      uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/dataplatform
+    #    uri: mongodb:// dev.mongodb.i.sixi.com:27017/demo
     min-connection-per-host: 0
     max-connection-per-host: 100
     threads-allowed-to-block-for-connection-multiplier: 5

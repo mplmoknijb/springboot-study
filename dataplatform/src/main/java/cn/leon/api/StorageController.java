@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.leon.core.DataOps;
 import cn.leon.domain.form.SearchForm;
 import cn.leon.domain.form.StorageForm;
+import cn.leon.domain.vo.ResultBean;
 import cn.leon.domain.vo.SearchVo;
 
 /**
@@ -19,7 +20,7 @@ import cn.leon.domain.vo.SearchVo;
  * @date 2019/7/4 10:29
  */
 @RestController
-    @RequestMapping("/platform")
+@RequestMapping("/platform")
 public class StorageController {
 
     @Autowired
@@ -31,7 +32,29 @@ public class StorageController {
     }
 
     @PostMapping("/search")
-    public List<SearchVo> getData(@RequestBody SearchForm form) {
-        return dataOps.getData(form);
+    public ResultBean<List<SearchVo>> getData(@RequestBody SearchForm form) {
+        ResultBean<List<SearchVo>> resultBean = new ResultBean();
+        resultBean.setMessage("查询成功");
+        resultBean.setCode(200);
+        resultBean.setData(dataOps.getData(form));
+        return resultBean;
+    }
+
+    @PostMapping("/search/ranking")
+    public ResultBean<List<SearchVo>> checkTarget(@RequestBody SearchForm form) {
+        ResultBean<List<SearchVo>> resultBean = new ResultBean();
+        resultBean.setMessage("查询成功");
+        resultBean.setCode(200);
+        resultBean.setData(dataOps.getData(form));
+        return resultBean;
+    }
+
+    @PostMapping("/search/detail")
+    public ResultBean<SearchVo> searchDetail(@RequestBody SearchForm form) {
+        ResultBean<SearchVo> resultBean = new ResultBean();
+        resultBean.setMessage("查询成功");
+        resultBean.setCode(200);
+        resultBean.setData(dataOps.getDeatilById(form));
+        return resultBean;
     }
 }

@@ -1,12 +1,16 @@
-hbase:
-  config:
-    hbase.zookeeper.quorum: 192.168.2.171,192.168.2.172,192.168.2.173
-    hbase.zookeeper.port: 2181
-    hbase.zookeeper.znode: /hbase
-    hbase.client.keyvalue.maxsize: 1572864000
+#hbase:
+#  config:
+#    hbase.zookeeper.quorum: 192.168.2.171,192.168.2.172,192.168.2.173
+#    hbase.zookeeper.port: 2181
+#    hbase.zookeeper.znode: /hbase
+#    hbase.client.keyvalue.maxsize: 1572864000
 server:
   port: 8001
 spring:
+  redis:
+    host: test.redis.i.sixi.com
+    port: 6379
+    database: 10
   rabbitmq:
     host: dev.rabbitmq.i.sixi.com
     port: 5672
@@ -14,36 +18,41 @@ spring:
     password: root
   cloud:
     stream:
+      default:
+        consumer:
+          concurrency: 200
       bindings:
-        query_task_output:
-          destination: dataquery.exchange
-          content-type: application/json
-          group: task.group
+#        query_task_output:
+#          destination: dataquery.exchange
+#          content-type: application/json
+#          group: task.group
         query_task_input:
-          destination: dataquery.exchange
+          destination: client.topic.exchange.ranking
           content-type: application/json
-          group: task.group
+          group: result.group
       rabbit:
         bindings:
           query_task_input:
             consumer:
-              bindingRoutingKey: data.query.task.key
+              bindingRoutingKey: ranking.result.transpond
               acknowledge-mode: auto
               autoBindDlq: true
               republishToDlq: true
-          query_task_output:
-            producer:
-              routing-key-expression: '''data.query.task.key'''
+#          query_task_output:
+#            producer:
+#              routing-key-expression: '''data.query.task.key'''
   data:
     mongodb:
       #            host: 192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017
       # 多节点     spring.data.mongodb.uri=mongodb://user:pwd@ip1:port1,ip2:port2/database
       # 有账户密码 uri: mongodb://name:pass@localhost:27017/test
-      #      uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/test
-      uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/dataplatform
+      #  测试
+      #      uri: mongodb://192.168.2.171:27017,192.168.2.172:27017,192.168.2.173:27017/dataplatform
+      # 阿里云测试
+      uri: mongodb://mongodb.c.sixi.com:3717/dataplatform
     min-connection-per-host: 0
-    max-connection-per-host: 100
-    threads-allowed-to-block-for-connection-multiplier: 5
+    max-connection-per-host: 700
+    threads-allowed-to-block-for-connection-multiplier: 700
     server-selection-timeout: 30000
     max-wait-time: 120000
     max-connection-idle-time: 0
@@ -58,4 +67,4 @@ spring:
     heartbeat-connect-timeout: 20000
     min-heartbeat-frequency: 500
     heartbeat-frequency: 10000
-    local-threshold: 15
+    local-threshold: 700

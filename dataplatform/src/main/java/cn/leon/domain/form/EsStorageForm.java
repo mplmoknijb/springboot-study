@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EsStorageForm {
-    private Map<String, String> condition;
+    private Map<String, ? extends Object> condition;
     private String bizKey;
     private String bizName;
 }

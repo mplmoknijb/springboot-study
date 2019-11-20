@@ -1,5 +1,8 @@
 package cn.leon.domain.form;
 
+import java.util.Map;
+
+import com.sun.tools.javac.code.Type;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,4 +21,5 @@ public class IndexForm {
     private String indices;
     private Integer shard;
     private Integer replicas;
+    private Map<String, Object> mapping;
 }

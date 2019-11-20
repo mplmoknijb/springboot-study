@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StorageForm{
-    private BaseEntity baseEntity;
+public class StorageListForm {
+    private List<BaseEntity> baseEntityList;
     /*
         业务名称
      */

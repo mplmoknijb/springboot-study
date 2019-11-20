@@ -23,9 +23,7 @@ public class EsClientPoolFactory implements PooledObjectFactory<RestHighLevelCli
 			/*client = new PreBuiltTransportClient(settings)
                     .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"),9300));*/
             client = new RestHighLevelClient(RestClient.builder(
-                    new HttpHost("192.168.2.120", 9200, "http"),
-                    new HttpHost("192.168.2.121", 9200, "http"),
-                    new HttpHost("192.168.2.122", 9200, "http")));
+                    new HttpHost("172.16.200.38", 9200, "http")));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -2,6 +2,8 @@ package cn.leon.domain.vo;
 
 import java.util.Date;
 
+import org.joda.time.DateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,19 +19,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchVo {
-    private String id;
-    private String bizKey;
-    private String detail;
-    /*
-        业务名称
-     */
-    private String bizName;
-    /*
-    操作人Id
-     */
-    private String userId;
-    /*
-    操作时间
-     */
-    private Date opsTime;
+    private String dateTime;
+    private String keywords;
+    private Integer standardState;
+    private Integer standardScore;
+    private Integer type;
+    private String storageId;
+    private Integer pageNum;
+    private Integer pageIndex;
+    private Integer num;
 }

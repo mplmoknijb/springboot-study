@@ -1,6 +1,7 @@
 package cn.leon.domain.form;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -19,9 +20,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SearchForm {
 
+    private List<String> idList;
+    /*
+    业务主键
+     */
     private String bizKey;
-
-    private Map<String, String> condition;
+    /*
+    条件
+     */
+    private Map<String, Object> condition;
     /*
         业务名称
      */
@@ -33,5 +40,10 @@ public class SearchForm {
     /*
     操作时间
      */
-    private Date opsTime;
+    private Date startDt;
+    private Date endDt;
+    @Builder.Default
+    private Integer page = 0;
+    @Builder.Default
+    private Integer num = 100;
 }

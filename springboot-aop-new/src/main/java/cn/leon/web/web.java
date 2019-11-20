@@ -1,8 +1,8 @@
 package cn.leon.web;
 
-import cn.leon.service.CommonService;
-import cn.leon.service.order.OrderInfoService;
-import cn.leon.service.user.UserInfoService;
+import cn.leon.base.CommonService;
+import cn.leon.base.order.OrderInfoService;
+import cn.leon.base.user.UserInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -15,7 +15,7 @@ import java.util.Map;
  * @author mujian
  * @date 2019-5-9 0009
  **/
-@Component
+//@Component
 public class BinlogClient implements CommandLineRunner {
 
     @Override

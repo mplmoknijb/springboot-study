@@ -1,15 +1,16 @@
 package cn.leon.kits;
 
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
 
 import org.apache.hbase.thirdparty.com.google.common.collect.Lists;
 import org.elasticsearch.action.ActionListener;
-import org.elasticsearch.action.DocWriteResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BackoffPolicy;
 import org.elasticsearch.action.bulk.BulkProcessor;
@@ -19,9 +20,7 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.search.ShardSearchFailure;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
-import org.elasticsearch.action.support.replication.ReplicationResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
@@ -31,13 +30,18 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
 import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.rest.RestStatus;
 import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
-import org.springframework.stereotype.Component;
+import org.elasticsearch.search.sort.FieldSortBuilder;
+import org.elasticsearch.search.sort.SortOrder;
+import org.joda.time.format.DateTimeFormat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 import cn.leon.constant.ConfigConstant;
 import cn.leon.domain.form.EsStorageForm;
@@ -45,6 +49,7 @@ import cn.leon.domain.form.IndexForm;
 import cn.leon.domain.form.SearchForm;
 import cn.leon.domain.vo.SearchVo;
 import cn.leon.util.ElasticSearchPoolUtil;
+import cn.leon.util.ParseUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,29 +58,55 @@ import lombok.extern.slf4j.Slf4j;
  * @Desc
  * @date 2019/7/5 9:20
  */
-@Component
+@Configuration
+@DependsOn("redisDistributedKit")
 @Slf4j
 public class Elastickit {
+
+    @Autowired
+    private ParseUtil parseUtil;
 
     @SneakyThrows(Exception.class)
     public boolean createIndex(IndexForm form) {
         RestHighLevelClient client = null;
+        //            // 设置别名
+        //            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //            String dt = sdf.format(new Date());
         try {
             client = ElasticSearchPoolUtil.getClient();
-            //            // 设置别名
-            //            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            //            String dt = sdf.format(new Date());
-            CreateIndexRequest indexRequest = new CreateIndexRequest(form.getIndices());
-            indexRequest.settings(Settings.builder().put("index.number_of_shards", form.getShard())
-                                          .put("index.number_of_replicas", form.getReplicas()) // 副本数
-                                          .put("analysis.analyzer.default.tokenizer", "standard"));
-            CreateIndexResponse response = client.indices().create(indexRequest, RequestOptions.DEFAULT);
-            return response.isAcknowledged() && response.isShardsAcknowledged();
+            GetIndexRequest request = new GetIndexRequest(form.getIndices());
+            boolean exist = client.indices().exists(request, RequestOptions.DEFAULT);
+            if (exist) {
+                return false;
+            }
         } finally {
             ElasticSearchPoolUtil.returnClient(client);
         }
-    }
+        CreateIndexRequest indexRequest = new CreateIndexRequest(form.getIndices());
+        XContentBuilder builder = XContentFactory.jsonBuilder();
+        builder.startObject();
+        {
+            builder.startObject("properties");
+            {
+                for (Map.Entry<String, Object> entry : form.getMapping().entrySet()) {
+                    builder.startObject(entry.getKey());
+                    {
+                        builder.field("type", parseUtil.parseType(entry.getValue().getClass().getTypeName()));
+                    }
+                    builder.endObject();
+                }
+                builder.endObject();
+            }
+        }
+        builder.endObject();
+        indexRequest.settings(Settings.builder().put("index.number_of_shards", form.getShard())
+                                      .put("index.number_of_replicas", form.getReplicas())
+                                      .put("analysis.analyzer.default.tokenizer","standard"))
+                    .mapping(builder);
+        CreateIndexResponse response = client.indices().create(indexRequest, RequestOptions.DEFAULT);
+        return response.isAcknowledged() && response.isShardsAcknowledged();
 
+    }
 
     @SneakyThrows({Exception.class})
     public boolean dropIndex(IndexForm form) {
@@ -104,44 +135,23 @@ public class Elastickit {
     }
 
     @SneakyThrows(Exception.class)
-    public void insertDocument(EsStorageForm form) {
+    public int insertDocument(EsStorageForm esStorageForm) {
         RestHighLevelClient client = null;
         try {
             client = ElasticSearchPoolUtil.getClient();
-            IndexRequest request = new IndexRequest(form.getBizName(), ConfigConstant.TYPE)
-                    .source(form.getCondition());
+            IndexRequest request = new IndexRequest(esStorageForm.getBizName())
+                    .source(esStorageForm.getCondition());
             IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
-            if (indexResponse != null) {
-                String index = indexResponse.getIndex();
-                String type = indexResponse.getType();
-                String id = indexResponse.getId();
-                long version = indexResponse.getVersion();
-                if (indexResponse.getResult() == DocWriteResponse.Result.CREATED) {
-                    System.out.println("新增文档成功!");
-                } else if (indexResponse.getResult() == DocWriteResponse.Result.UPDATED) {
-                    System.out.println("修改文档成功!");
-                }
-                // 分片处理信息
-                ReplicationResponse.ShardInfo shardInfo = indexResponse.getShardInfo();
-                if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
-                }
-                // 如果有分片副本失败，可以获得失败原因信息
-                if (shardInfo.getFailed() > 0) {
-                    for (ReplicationResponse.ShardInfo.Failure failure : shardInfo.getFailures()) {
-                        String reason = failure.reason();
-                        System.out.println("副本失败原因：" + reason);
-                    }
-                }
-            }
+            log.info("=================写入ElasticSearch:{}=====================", indexResponse.status().getStatus());
+            return indexResponse.status().getStatus();
         } finally {
             ElasticSearchPoolUtil.returnClient(client);
         }
     }
 
     @SneakyThrows(Exception.class)
-    public List<String> insertDocuments(List<EsStorageForm> list) {
+    public void insertDocuments(List<EsStorageForm> list) {
         RestHighLevelClient client = ElasticSearchPoolUtil.getClient();
-        List<String> ids = Lists.newArrayList();
         BulkProcessor.Listener listener = new BulkProcessor.Listener() {
             @Override
             public void beforeBulk(long l, BulkRequest bulkRequest) {
@@ -151,10 +161,6 @@ public class Elastickit {
             @Override
             public void afterBulk(long l, BulkRequest bulkRequest, BulkResponse bulkResponse) {
                 log.info("============尝试操作{}条数据成功============", bulkRequest.numberOfActions());
-                ids.addAll(Arrays.asList(bulkResponse.getItems()).stream()
-                                 .map(bulkItemResponse -> {
-                                     return bulkItemResponse.getId();
-                                 }).collect(Collectors.toList()));
             }
 
             @Override
@@ -167,9 +173,9 @@ public class Elastickit {
                         client.bulkAsync(request, RequestOptions.DEFAULT, bulkListener);
         BulkProcessor bulkProcessor = BulkProcessor.builder(bulkConsumer, listener)
                                                    // 1w次请求执行一次bulk
-                                                   .setBulkActions(1000)
+                                                   .setBulkActions(10000)
                                                    // 1gb的数据刷新一次bulk
-                                                   .setBulkSize(new ByteSizeValue(10, ByteSizeUnit.MB))
+                                                   .setBulkSize(new ByteSizeValue(1, ByteSizeUnit.GB))
                                                    // 固定5s必须刷新一次
                                                    .setFlushInterval(TimeValue.timeValueSeconds(5))
                                                    // 并发请求数量, 0不并发, 1并发允许执行
@@ -177,149 +183,85 @@ public class Elastickit {
                                                    // 设置退避, 100ms后执行, 最大请求3次
                                                    .setBackoffPolicy(BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(100), 3))
                                                    .build();
-        //        BulkRequest request = new BulkRequest();
         list.forEach(esStorageForm -> {
-            bulkProcessor.add(new IndexRequest(esStorageForm.getBizName(),
-                                               ConfigConstant.TYPE).source(esStorageForm.getCondition()));
-            //            request.add(new IndexRequest(esStorageForm.getBizName(), ConfigConstant.TYPE).source(esStorageForm.getCondition()));
+            bulkProcessor.add(new IndexRequest(esStorageForm.getBizName()).source(esStorageForm.getCondition()));
         });
-        //        request.timeout(TimeValue.timeValueMinutes(2));
-        //        request.setRefreshPolicy(WriteRequest.RefreshPolicy.WAIT_UNTIL);
-        //        request.waitForActiveShards(2);
-        //        BulkResponse bulkResponse = client.bulkAsync(request, RequestOptions.DEFAULT,listener);
         bulkProcessor.flush();
-        //        bulkProcessor.add(new DeleteRequest("testblog", "test", "2"));
         // 关闭
         bulkProcessor.awaitClose(30L, TimeUnit.SECONDS);
-        return ids;
+        ElasticSearchPoolUtil.returnClient(client);
     }
 
     @SneakyThrows(Exception.class)
     public List<SearchVo> searchDocument(SearchForm form) {
         RestHighLevelClient client = ElasticSearchPoolUtil.getClient();
-        Map<String, String> map = form.getCondition();
+        //        final Scroll scroll = new Scroll(TimeValue.timeValueMinutes(1L));
+        Map<String, Object> map = form.getCondition();
+        List<String> reponseList = Lists.newArrayList();
         BoolQueryBuilder qb = QueryBuilders.boolQuery();
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            qb.must(QueryBuilders.termQuery(entry.getKey(), entry.getValue()));
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            qb.should(QueryBuilders.termQuery(entry.getKey(), entry.getValue()));
         }
+//        if (form.getStartDt() == null || form.getEndDt() == null) {
+//            return Collections.emptyList();
+//        }
+//        qb.must(QueryBuilders.rangeQuery("dateTime").from(ParseUtil.datePattern().format(form.getStartDt()))
+//                             .to(ParseUtil.datePattern().format(form.getEndDt())));
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder()
-                .query(qb).from(0).size(10)
-                .timeout(new TimeValue(60, TimeUnit.SECONDS));
-        //是否返回_source字段
-        //sourceBuilder.fetchSource(false);
-        //设置返回哪些字段
-            /*String[] includeFields = new String[] {"title", "user", "innerObject.*"};
-            String[] excludeFields = new String[] {"_type"};
-            sourceBuilder.fetchSource(includeFields, excludeFields);*/
-        //指定排序
-        //sourceBuilder.sort(new ScoreSortBuilder().order(SortOrder.DESC));
-        //sourceBuilder.sort(new FieldSortBuilder("_uid").order(SortOrder.ASC));
-        // 设置返回 profile
-        //sourceBuilder.profile(true);
-        // 可选的设置
-        //searchRequest.routing("routing");
-        // 高亮设置
-            /*
-            HighlightBuilder highlightBuilder = new HighlightBuilder();
-            HighlightBuilder.Field highlightTitle =
-                    new HighlightBuilder.Field("title");
-            highlightTitle.highlighterType("unified");
-            highlightBuilder.field(highlightTitle);
-            HighlightBuilder.Field highlightUser = new HighlightBuilder.Field("user");
-            highlightBuilder.field(highlightUser);
-            sourceBuilder.highlighter(highlightBuilder);*/
-        //加入聚合
-            /*TermsAggregationBuilder aggregation = AggregationBuilders.terms("by_company")
-                    .field("company.keyword");
-            aggregation.subAggregation(AggregationBuilders.avg("average_age")
-                    .field("age"));
-            sourceBuilder.aggregation(aggregation);*/
-        //做查询建议
-            /*SuggestionBuilder termSuggestionBuilder =
-                    SuggestBuilders.termSuggestion("user").text("kmichy");
-                SuggestBuilder suggestBuilder = new SuggestBuilder();
-                suggestBuilder.addSuggestion("suggest_user", termSuggestionBuilder);
-            sourceBuilder.suggest(suggestBuilder);*/
-        //3、发送请求
+                .query(qb)
+                .from(form.getPage())
+                .size(form.getNum())
+                .timeout(new TimeValue(60, TimeUnit.SECONDS))
+//                .sort(new FieldSortBuilder("dateTime").order(SortOrder.DESC))
+                ;
+        //        ActionListener<SearchResponse> listener = new ActionListener<SearchResponse>() {
+        //            @Override
+        //            public void onResponse(SearchResponse searchResponse) {
+        //                //结果获取
+        //                SearchHit[] hits = searchResponse.getHits().getHits();
+        //                for (SearchHit hit : hits) {
+        //                    Map<String, Object> sourceAsMap = hit.getSourceAsMap();
+        //                    reponseList.add(sourceAsMap.get("id").toString());
+        //                }
+        //            }
+        //
+        //            @Override
+        //            public void onFailure(Exception e) {
+        //                //失败处理
+        //                log.error("=================搜索失败:{}=================", e.getMessage());
+        //            }
+        //        };
         SearchResponse searchResponse = client.search(new SearchRequest()
                                                               .indices(form.getBizName())
-                                                              .types(ConfigConstant.TYPE).source(sourceBuilder), RequestOptions.DEFAULT);
-        //4、处理响应
-        //搜索结果状态信息
-        RestStatus status = searchResponse.status();
-        TimeValue took = searchResponse.getTook();
-        Boolean terminatedEarly = searchResponse.isTerminatedEarly();
-        boolean timedOut = searchResponse.isTimedOut();
-        //分片搜索情况
-        int totalShards = searchResponse.getTotalShards();
-        int successfulShards = searchResponse.getSuccessfulShards();
-        int failedShards = searchResponse.getFailedShards();
-        for (ShardSearchFailure failure : searchResponse.getShardFailures()) {
-            // failures should be handled here
+                                                              .source(sourceBuilder), RequestOptions.DEFAULT);
+        //        String scrollId = searchResponse.getScrollId();
+        SearchHit[] hits = searchResponse.getHits().getHits();
+        //        while (hits != null && hits.length > 0) {
+        //            SearchScrollRequest scrollRequest = new SearchScrollRequest(scrollId);
+        //            scrollRequest.scroll(scroll);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        List<SearchVo> resultList = Lists.newArrayList();
+        for (SearchHit hit : hits) {
+            Map<String, Object> sourceAsMap = hit.getSourceAsMap();
+            SearchVo searchVo = SearchVo.builder()
+                                        .storageId(sourceAsMap.get(ConfigConstant.STORAGEID).toString())
+                                        .dateTime(sourceAsMap.get("dateTime").toString().substring(0,10))
+                                        .keywords(sourceAsMap.get("keywords").toString())
+                                        .standardScore((Integer) sourceAsMap.get("standardScore"))
+                                        .standardState((Integer) sourceAsMap.get("standardState"))
+                                        .type((Integer) sourceAsMap.get("type"))
+                                        .num((Integer) sourceAsMap.get("num"))
+                                        .pageIndex((Integer) sourceAsMap.get("pageIndex"))
+                                        .pageNum((Integer) sourceAsMap.get("pageNum"))
+                                        .build();
+            resultList.add(searchVo);
         }
-        List<SearchVo> reponseList = Lists.newArrayList();
-        //处理搜索命中文档结果
-        SearchHits hits = searchResponse.getHits();
-        long totalHits = hits.getTotalHits();
-        float maxScore = hits.getMaxScore();
-        SearchHit[] searchHits = hits.getHits();
-        for (SearchHit hit : searchHits) {
-            // do something with the SearchHit
-            String index = hit.getIndex();
-            String type = hit.getType();
-            String id = hit.getId();
-            float score = hit.getScore();
-            reponseList.add(SearchVo.builder().id(id).build());
-            //取_source字段值
-            String sourceAsString = hit.getSourceAsString(); //取成json串
-            Map<String, Object> sourceAsMap = hit.getSourceAsMap(); // 取成map对象
-            //从map中取字段值
-                /*
-                String documentTitle = (String) sourceAsMap.get("title");
-                List<Object> users = (List<Object>) sourceAsMap.get("user");
-                Map<String, Object> innerObject = (Map<String, Object>) sourceAsMap.get("innerObject");
-                */
-            log.info("index:" + index + "  type:" + type + "  id:" + id);
-            log.info(sourceAsString);
-            //取高亮结果
-                /*Map<String, HighlightField> highlightFields = hit.getHighlightFields();
-                HighlightField highlight = highlightFields.get("title");
-                Text[] fragments = highlight.fragments();
-                String fragmentString = fragments[0].string();*/
-        }
-        searchResponse.getProfileResults();
-        // 获取聚合结果
-            /*
-            Aggregations aggregations = searchResponse.getAggregations();
-            Terms byCompanyAggregation = aggregations.get("by_company");
-            Bucket elasticBucket = byCompanyAggregation.getBucketByKey("Elastic");
-            Avg averageAge = elasticBucket.getAggregations().get("average_age");
-            double avg = averageAge.getValue();
-            */
-        // 获取建议结果
-            /*Suggest suggest = searchResponse.getSuggest();
-            TermSuggestion termSuggestion = suggest.getSuggestion("suggest_user");
-            for (TermSuggestion.Entry entry : termSuggestion.getEntries()) {
-                for (TermSuggestion.Entry.Option option : entry) {
-                    String suggestText = option.getText().string();
-                }
-            }
-            */
-        //异步方式发送获查询请求
-            /*
-            ActionListener<SearchResponse> listener = new ActionListener<SearchResponse>() {
-                @Override
-                public void onResponse(SearchResponse getResponse) {
-                    //结果获取
-                }
-                @Override
-                public void onFailure(Exception e) {
-                    //失败处理
-                }
-            };
-            client.searchAsync(searchRequest, listener);
-            */
+        //            searchResponse = client.scroll(scrollRequest, RequestOptions.DEFAULT);
+        //            scrollId = searchResponse.getScrollId();
+        //            hits = searchResponse.getHits().getHits();
+        //        }
         ElasticSearchPoolUtil.returnClient(client);
-        return reponseList;
+        return resultList;
     }
+
 }

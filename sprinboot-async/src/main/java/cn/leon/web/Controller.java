@@ -1,6 +1,6 @@
 package cn.leon.web;
 
-import cn.leon.service.ArithmeticService;
+import cn.leon.base.ArithmeticService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

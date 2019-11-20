@@ -11,8 +11,8 @@ import java.util.concurrent.TimeoutException;
 public class EmitLogTopic {
     private static final String EXCHANGE_NAME = "topic_logs";
     private static final String[] LOG_LEVEL_ARR = {"dao.debug", "dao.info", "dao.error",
-            "service.debug", "service.info", "service.error",
-            "controller.debug", "controller.info", "controller.error"};
+            "base.debug", "base.info", "base.error",
+            "api.debug", "api.info", "api.error"};
 
     public static void main(String[] args) throws IOException, TimeoutException {
         // 创建连接

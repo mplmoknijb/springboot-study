@@ -2,67 +2,77 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="elastic" />
         <module name="sprinboot-async" />
-        <module name="client" />
-        <module name="authorization" />
-        <module name="springboot-aop" />
-        <module name="springboot-elk" />
-        <module name="dubbo-client" />
-        <module name="springboot-freemarker" />
-        <module name="springboot-restful" />
-        <module name="springboot-logs-Logback" />
-        <module name="springboot-redis" />
-        <module name="rabbitmq-queue" />
         <module name="rabbitmq-routing" />
+        <module name="springboot-restful" />
+        <module name="authorization" />
         <module name="springboot-aop-new" />
-        <module name="springboot-schedule" />
-        <module name="dubbo-server" />
-        <module name="rabbitmq-release" />
-        <module name="rabbitmq-hello" />
-        <module name="config" />
+        <module name="springboot-aop" />
+        <module name="client" />
         <module name="rabbitmq-topic" />
-        <module name="springboot-rabbitmq" />
-        <module name="springboot-globalexception" />
+        <module name="springboot-freemarker" />
         <module name="resource" />
+        <module name="springboot-logs-Logback" />
+        <module name="springboot-schedule" />
+        <module name="dubbo-provider" />
+        <module name="rabbitmq-queue" />
+        <module name="dubbo-consumer" />
+        <module name="dataplatform" />
+        <module name="mongo" />
+        <module name="rabbitmq-release" />
+        <module name="springboot-redis" />
+        <module name="config" />
+        <module name="hbase" />
+        <module name="kafka" />
+        <module name="rabbitmq-hello" />
+        <module name="springboot-rabbitmq" />
+        <module name="common" />
+        <module name="springboot-globalexception" />
+        <module name="springboot-elk" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="authorization" target="1.8" />
-      <module name="client" target="1.8" />
-      <module name="config" target="1.8" />
-      <module name="dubbo" target="1.8" />
-      <module name="dubbo-client" target="1.8" />
       <module name="dubbo-server" target="1.8" />
-      <module name="mybatis-generator" target="1.8" />
-      <module name="rabbitmq" target="1.8" />
-      <module name="rabbitmq-hello" target="1.8" />
-      <module name="rabbitmq-queue" target="1.8" />
-      <module name="rabbitmq-release" target="1.8" />
-      <module name="rabbitmq-routing" target="1.8" />
-      <module name="rabbitmq-topic" target="1.8" />
-      <module name="resource" target="1.8" />
-      <module name="sprinboot-async" target="1.8" />
-      <module name="springboot-aop" target="1.8" />
-      <module name="springboot-aop-new" target="1.8" />
-      <module name="springboot-ehcache" target="1.8" />
-      <module name="springboot-elk" target="1.8" />
-      <module name="springboot-freemarker" target="1.8" />
-      <module name="springboot-globalexception" target="1.8" />
-      <module name="springboot-logs" target="1.8" />
-      <module name="springboot-logs-Logback" target="1.8" />
-      <module name="springboot-mybatis" target="1.8" />
-      <module name="springboot-quickstart" target="1.8" />
-      <module name="springboot-rabbitmq" target="1.8" />
-      <module name="springboot-redis" target="1.8" />
-      <module name="springboot-redis-cache" target="1.8" />
-      <module name="springboot-restful" target="1.8" />
-      <module name="springboot-schedule" target="1.8" />
-      <module name="springboot-security" target="1.8" />
-      <module name="springboot-study" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="authorization" options="-parameters" />
+      <module name="client" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="config" options="-parameters" />
+      <module name="dataplatform" options="-parameters" />
+      <module name="dubbo" options="" />
+      <module name="dubbo-consumer" options="-parameters" />
+      <module name="dubbo-provider" options="-parameters" />
+      <module name="dubbo-server" options="-parameters" />
+      <module name="elastic" options="-parameters" />
+      <module name="hbase" options="-parameters" />
+      <module name="kafka" options="-parameters" />
+      <module name="mongo" options="-parameters" />
+      <module name="rabbitmq-hello" options="-parameters" />
+      <module name="rabbitmq-queue" options="-parameters" />
+      <module name="rabbitmq-release" options="-parameters" />
+      <module name="rabbitmq-routing" options="-parameters" />
+      <module name="rabbitmq-topic" options="-parameters" />
+      <module name="resource" options="-parameters" />
+      <module name="sprinboot-async" options="-parameters" />
+      <module name="springboot-aop" options="-parameters" />
+      <module name="springboot-aop-new" options="-parameters" />
+      <module name="springboot-elk" options="-parameters" />
+      <module name="springboot-freemarker" options="-parameters" />
+      <module name="springboot-globalexception" options="-parameters" />
+      <module name="springboot-logs-Logback" options="-parameters" />
+      <module name="springboot-rabbitmq" options="-parameters" />
+      <module name="springboot-redis" options="-parameters" />
+      <module name="springboot-restful" options="-parameters" />
+      <module name="springboot-schedule" options="-parameters" />
+    </option>
   </component>
 </project>

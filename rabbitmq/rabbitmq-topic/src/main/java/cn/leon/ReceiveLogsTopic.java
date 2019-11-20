@@ -8,7 +8,7 @@ import java.util.concurrent.TimeoutException;
 
 public class ReceiveLogsTopic {
     private static final String EXCHANGE_NAME = "topic_logs";
-    private static final String[] LOG_LEVEL_ARR = {"#", "dao.error", "*.error", "dao.*", "service.#", "*.controller.#"};
+    private static final String[] LOG_LEVEL_ARR = {"#", "dao.error", "*.error", "dao.*", "base.#", "*.api.#"};
 
     public static void main(String[] args) throws IOException, TimeoutException {
         // 创建连接

@@ -34,9 +34,9 @@ public class ServerCodeGenerator extends AbstractGenerator {
 //            "vo.java.ftl",
 //            "entity.java.ftl",
 //            "dao.java.ftl",
-            "service.java.ftl"
+            "base.java.ftl"
 //            "Impl.java.ftl",
-//            "controller.java.ftl",
+//            "api.java.ftl",
 //            "mapper.xml.ftl"
     );
 

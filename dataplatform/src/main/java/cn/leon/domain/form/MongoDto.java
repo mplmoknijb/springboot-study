@@ -1,6 +1,7 @@
 package cn.leon.domain.form;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -21,12 +22,12 @@ import lombok.NoArgsConstructor;
 public class MongoDto {
     @Id
     private String id;
-    @Field("bizKey")
-    private String bizkey;
     @Field("userId")
     private String userId;
     @Field("opsDate")
     private Date opsDate;
     @Field("detail")
-    private String detail;
+    private Map<String,String> detail;
+    @Field("bizId")
+    private String bizId;
 }

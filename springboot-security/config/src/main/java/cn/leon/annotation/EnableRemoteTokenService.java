@@ -1,5 +1,5 @@
 package cn.leon.annotation;
-import cn.leon.service.RemoteTokenService;
+import cn.leon.base.RemoteTokenService;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;

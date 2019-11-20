@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KafkaApplication implements CommandLineRunner {
+public class KafkaApplication implements CommandLineRunner{
 
     public static void main(String[] args) {
         SpringApplication.run(KafkaApplication.class, args);
@@ -17,9 +17,9 @@ public class KafkaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             MessageForm form = new MessageForm();
-            form.setTopic("show");
+            form.setTopic("test");
             form.setContent("----------》test");
             service.sendMessage(form);
         }

@@ -3,7 +3,7 @@ server:
 # =====================  原生用法  ========================
 spring:
   kafka:
-    bootstrap-servers: 172.30.34.215:9092 #多个按逗号分隔
+    bootstrap-servers: 172.16.200.34:9092 #多个按逗号分隔
     retries: 0 #  重试
     batch-size: 16384 # 每次批量发送的数据
     # producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，
@@ -43,7 +43,7 @@ spring:
       # 缓存容量
       buffer-memory: 524288
       # 服务器地址
-      bootstrap-servers: 172.30.34.215:9092
+#      bootstrap-servers: 172.16.200.34:9092
 # =====================  cloud-stream 用法  ========================
 #spring:
 #  cloud:

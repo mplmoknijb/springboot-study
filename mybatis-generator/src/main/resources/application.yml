@@ -12,7 +12,7 @@ spring:
 
 # 生成工具配置
 cn.leon:
-  moduleName: D://workspace//sixi-micro-service-ali//ali-product-service
+  moduleName: D://workspace//sixi-micro-base-ali//ali-product-base
   tables: ali_category #逗号分隔
   java:
     rootPackage: com.sixi.ali.productservice

@@ -1,12 +1,15 @@
 package cn.leon.model;
 
+import java.util.Date;
+import java.util.Map;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * @author mujian
@@ -16,11 +19,13 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "test")
 public class MongoDto {
     @Id
     private String id;
-    @Field("age")
-    private Integer age;
-    private String name;
+    @Field("userId")
+    private String userId;
+    @Field("opsDate")
+    private Date opsDate;
+    @Field("detail")
+    private String detail;
 }

@@ -24,6 +24,4 @@ public class GlobalExceptionHandler {
         log.error("================{}=============", e.getMessage());
         return ResultBean.error(500, "IO异常");
     }
-
-
 }
