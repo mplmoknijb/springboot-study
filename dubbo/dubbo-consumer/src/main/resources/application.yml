@@ -1,0 +1,27 @@
+server:
+  port: 8081
+spring:
+  dubbo:
+    server: false
+    application:
+      name: dubbo-consumer
+      logger: slf4j
+    provider:
+      #      当不配置DUBBO_PROVIDER_GROUP时，spring 加载报错
+      #      group: ${DUBBO_PROVIDER_GROUP}
+      timeout: 3000
+    registry:
+      protocol: dubbo
+      address: "zookeeper://127.0.0.1:2181"
+    protocol:
+      name: dubbo
+      port: -1
+      threadpool: cached
+      threads: 200
+      transporter: netty
+      register: true
+      #      accesslog: ${ENV_DUBBO_PROTOCOL_ACCESSLOG:${DUBBO_PROTOCOL_ACCESSLOG:true}}
+      accesslog: true
+    consumer:
+      check: false
+      retries: -1
