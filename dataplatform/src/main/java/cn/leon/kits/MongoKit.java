@@ -1,18 +1,21 @@
 package cn.leon.kits;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import cn.leon.constant.ConfigConstant;
-import cn.leon.domain.form.MongoDto;
-import cn.leon.domain.form.SearchForm;
-import cn.leon.domain.vo.SearchVo;
+import com.sixi.micro.common.utils.Assert;
+import com.sixi.search.coreservice.constant.ConfigConstant;
+import com.sixi.search.coreservice.domain.entity.MongoDto;
+import com.sixi.search.coreservice.domain.form.SearchDetailForm;
 import lombok.extern.slf4j.Slf4j;
 
 @Configuration
@@ -40,14 +43,16 @@ public class MongoKit {
     //                                   .build();
     //                }).collect(Collectors.toList());
     //    }
-    public List<SearchVo> getDatas(SearchForm form) {
+    public List<MongoDto> getDatas(SearchDetailForm form) {
         Query query = new Query(Criteria.where(ConfigConstant.ID).in(form.getIdList()));
-        return mongoTemplate.find(query, SearchVo.class, form.getBizName());
+        return mongoTemplate.find(query, MongoDto.class, form.getBizName());
     }
 
-    public SearchVo getData(SearchForm form) {
+    public MongoDto getData(SearchDetailForm form) {
+        Assert.forbidden(CollectionUtils.isEmpty(form.getIdList()), "Id不能为空");
         Query query = new Query(Criteria.where(ConfigConstant.ID).is(form.getIdList().get(0)));
-        return mongoTemplate.findOne(query, SearchVo.class, form.getBizName());
+        MongoDto mongoDto = mongoTemplate.findOne(query, MongoDto.class, form.getBizName());
+        return Objects.nonNull(mongoDto) ? mongoDto : MongoDto.builder().build();
     }
 
     /**
@@ -65,7 +70,10 @@ public class MongoKit {
     }
 
     public String saveData(MongoDto mongoDto, String bizName) {
-        return mongoTemplate.insert(mongoDto, bizName).getId();
+        log.info("=============================写入Mongo==============================");
+        String id = mongoTemplate.save(mongoDto, bizName).getId();
+        log.info(id);
+        return StringUtils.isEmpty(mongoDto.getId()) ? id : mongoDto.getId();
     }
 
 }

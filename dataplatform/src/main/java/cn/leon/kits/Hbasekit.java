@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.NavigableMap;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.hbase.Cell;
@@ -32,11 +31,9 @@ import org.apache.hadoop.hbase.filter.SubstringComparator;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hbase.thirdparty.com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.stereotype.Component;
 
-import cn.leon.config.HbaseConfig;
-import cn.leon.domain.form.HtableOpsForm;
+import com.sixi.search.coreservice.config.hbase.HbaseConfig;
+import com.sixi.search.coreservice.domain.form.HtableOpsForm;
 import lombok.SneakyThrows;
 
 /**

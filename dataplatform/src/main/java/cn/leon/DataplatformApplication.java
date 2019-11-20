@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableAsync;
 
-import cn.leon.core.DataOps;
 import cn.leon.domain.form.BaseEntity;
 import cn.leon.domain.form.StorageListForm;
 import cn.leon.kits.ConcurrentKit;
