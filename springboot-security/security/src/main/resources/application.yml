@@ -1,2 +1,9 @@
 server:
   port: 8081
+
+# 需要使用 redis 的话，放开这里
+spring:
+  redis:
+    host: 192.168.192.128
+    port: 6379
+    database: 0

@@ -21,7 +21,9 @@
 
     <modules>
         <module>security</module>
+        <module>sso</module>
     </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.security</groupId>
