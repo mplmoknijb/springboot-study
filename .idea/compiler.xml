@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="client" />
+        <module name="springboot-logs-Logback" />
+        <module name="springboot-redis" />
+        <module name="dubbo-provider" />
+        <module name="springboot-rabbitmq" />
+        <module name="springboot-aop-new" />
+        <module name="config" />
+        <module name="rabbitmq-topic" />
+        <module name="rabbitmq-routing" />
+        <module name="resource" />
+        <module name="kafka" />
+        <module name="dataplatform" />
+        <module name="hbase" />
+        <module name="security" />
+        <module name="springboot-restful" />
+        <module name="springboot-schedule" />
+        <module name="rabbitmq-hello" />
+        <module name="dubbo-consumer" />
+        <module name="rabbitmq-release" />
+        <module name="springboot-elk" />
+        <module name="common" />
+        <module name="springboot-globalexception" />
+        <module name="sprinboot-async" />
+        <module name="jgit" />
+        <module name="mongo" />
+        <module name="authorization" />
+        <module name="elastic" />
+        <module name="springboot-aop" />
+        <module name="springboot-freemarker" />
+        <module name="rabbitmq-queue" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo" target="1.8" />
+      <module name="dubbo-consumer" target="1.8" />
+      <module name="dubbo-provider" target="1.8" />
+      <module name="dubbo-server" target="1.8" />
+      <module name="elastic" target="1.8" />
+      <module name="hbase" target="1.8" />
+      <module name="jgit" target="1.8" />
+      <module name="kafka" target="1.8" />
+      <module name="mongo" target="1.8" />
+      <module name="rabbitmq" target="1.8" />
+      <module name="rabbitmq-hello" target="1.8" />
+      <module name="rabbitmq-queue" target="1.8" />
+      <module name="rabbitmq-release" target="1.8" />
+      <module name="rabbitmq-routing" target="1.8" />
+      <module name="rabbitmq-topic" target="1.8" />
+      <module name="security" target="1.8" />
+      <module name="sprinboot-async" target="1.8" />
+      <module name="springboot-aop" target="1.8" />
+      <module name="springboot-aop-new" target="1.8" />
+      <module name="springboot-elk" target="1.8" />
+      <module name="springboot-freemarker" target="1.8" />
+      <module name="springboot-globalexception" target="1.8" />
+      <module name="springboot-logs" target="1.8" />
+      <module name="springboot-logs-Logback" target="1.8" />
+      <module name="springboot-mybatis" target="1.8" />
+      <module name="springboot-quickstart" target="1.8" />
+      <module name="springboot-rabbitmq" target="1.8" />
+      <module name="springboot-redis" target="1.8" />
+      <module name="springboot-redis-cache" target="1.8" />
+      <module name="springboot-restful" target="1.8" />
+      <module name="springboot-schedule" target="1.8" />
+      <module name="springboot-security" target="1.8" />
+      <module name="springboot-study" target="1.8" />
+      <module name="sso" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="authorization" options="-parameters" />
+      <module name="client" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="config" options="-parameters" />
+      <module name="dataplatform" options="-parameters" />
+      <module name="dubbo" options="" />
+      <module name="dubbo-consumer" options="-parameters" />
+      <module name="dubbo-provider" options="-parameters" />
+      <module name="dubbo-server" options="-parameters" />
+      <module name="elastic" options="-parameters" />
+      <module name="hbase" options="-parameters" />
+      <module name="jgit" options="-parameters" />
+      <module name="kafka" options="-parameters" />
+      <module name="mongo" options="-parameters" />
+      <module name="rabbitmq-hello" options="-parameters" />
+      <module name="rabbitmq-queue" options="-parameters" />
+      <module name="rabbitmq-release" options="-parameters" />
+      <module name="rabbitmq-routing" options="-parameters" />
+      <module name="rabbitmq-topic" options="-parameters" />
+      <module name="resource" options="-parameters" />
+      <module name="security" options="-parameters" />
+      <module name="sprinboot-async" options="-parameters" />
+      <module name="springboot-aop" options="-parameters" />
+      <module name="springboot-aop-new" options="-parameters" />
+      <module name="springboot-elk" options="-parameters" />
+      <module name="springboot-freemarker" options="-parameters" />
+      <module name="springboot-globalexception" options="-parameters" />
+      <module name="springboot-logs-Logback" options="-parameters" />
+      <module name="springboot-rabbitmq" options="-parameters" />
+      <module name="springboot-redis" options="-parameters" />
+      <module name="springboot-restful" options="-parameters" />
+      <module name="springboot-schedule" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  context-path: /qucikstart
+  error:
+    path: /error
+  session:
+    timeout: 60
+cn.leon:
+  name: leon
+  title: spring boot
+  desc: ${name}
+  value: ${random.value}
+  number: ${random.int}
+  bignumber: ${random.long}
+  random1: ${random.int(10)}
+  random2: ${random.int[10,20]}

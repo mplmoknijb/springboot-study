@@ -1,0 +1,4 @@
+server:
+  context-path: /exception
+  error: /error
+  port: 8080

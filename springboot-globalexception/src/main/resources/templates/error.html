@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+<meta charset="UTF-8" />
+<title>统一异常处理</title>
+</head>
+<body>
+	<h1>result Handler</h1>
+	<hr>1:错误编码</hr>
+	<div th:text="${result.code}"></div>
+	<hr>2：错误消息</hr>
+	<div th:text="${result.msg}"></div>
+	<hr>3：错误的URL</hr>
+	<div th:text="${result.url}"></div>
+	<hr>4：异常信息</hr>
+	<div th:text="${result.data}"></div>
+</body>
+</html>

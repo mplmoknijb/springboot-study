@@ -1,0 +1,38 @@
+server.port: 1337
+spring:
+  application.name: leon
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    ip: 192.168.2.203
+    port: 3306
+    name: ali_product
+    username: root
+    password: root
+    url: jdbc:mysql://${spring.datasource.ip}:${spring.datasource.port}/${spring.datasource.name}?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+
+# 生成工具配置
+cn.leon:
+  moduleName: D://workspace//sixi-micro-base-ali//ali-product-base
+  tables: ali_category #逗号分隔
+  java:
+    rootPackage: com.sixi.ali.productservice
+    mybatis:
+      domain: entity
+      mapper: dao
+      xml: mapper
+mybatis:
+  configLocation: classpath:Mybatis.xml
+  mapperLocations: classpath:mapper/**/*.xml
+#  view:
+#    project:
+#      enable: false
+#      path: d://gitspace/self-login
+#      js: js
+#      html: module
+
+#  generator:
+#    project:
+#      enable: false
+#      name: leon
+#      path: d://gitspace/springboot-study
+
