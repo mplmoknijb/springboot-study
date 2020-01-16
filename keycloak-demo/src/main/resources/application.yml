@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: wowjoy
+  #  freemarker:
+  #    allow-request-override: false
+  #    allow-session-override: false
+  #    cache: true
+  #    charset: UTF-8
+  #    check-template-location: true
+  #    content-type: text/html
+  #    enabled: true
+  #    expose-request-attributes: false
+  #    expose-session-attributes: false
+  #    expose-spring-macro-helpers: true
+  #    prefer-file-system-access: true
+  #    suffix: .ftl
+  #    template-loader-path: classpath:/templates/
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/auth/realms/wowjoy
+        registration:
+          wowjoy:
+            client-id: wowjoy
+            client-secret: 76f426d2-68bb-492a-8548-f44ddd9f1521
+            provider: keycloak
+
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8082
+keycloak:
+  auth-server-url: http://127.0.0.1:8080/auth
+  realm: wowjoy
+  resource: wowjoy
+  #  principal-attribute: jevon
+  public-client: true
+  enabled: true
