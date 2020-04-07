@@ -1,0 +1,16 @@
+rocketmq:
+  name-server: 172.16.143.101:9876
+  producer:
+    group: demo-producer-group
+    send-message-timeout: 3000
+    compress-message-body-threshold: 4096 #压缩阈值
+    max-message-size: 4194304 #最大消息大小 4 * 1024 * 1024B
+    retry-times-when-send-failed: 2
+    retry-times-when-send-async-failed: 2
+    retry-next-server: false
+    enable-msg-trace: true
+    customized-trace-topic: SELF_TOPIC
+  consumer:
+    listeners: # 配置某个消费分组，是否监听指定 Topic 。结构为 Map<消费者分组, <Topic, Boolean>> 。默认情况下，不配置表示监听。
+      test-consumer-group:
+        topic1: false
