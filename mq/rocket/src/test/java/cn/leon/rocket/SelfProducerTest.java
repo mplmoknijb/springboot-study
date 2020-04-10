@@ -32,9 +32,7 @@ class SelfProducerTest {
 
     @Test
     void syncSendDelay() {
-        for (int i = 1; i < 19; i++) {
-            selfProducer.syncSendDelay(1, i);
-        }
+            selfProducer.syncSendDelay(1000000000, 3);
     }
 
     @Test

@@ -74,18 +74,14 @@
         <module>sprinboot-async</module>
         <module>springboot-globalexception</module>
         <module>springboot-aop-new</module>
-        <module>springboot-mybatis</module>
-        <module>springboot-redis</module>
         <module>springboot-redis-cache</module>
         <module>springboot-freemarker</module>
         <module>springboot-security</module>
         <module>dubbo</module>
-        <module>mongo</module>
-        <module>elastic</module>
-        <module>hbase</module>
         <module>dubbo</module>
         <module>jgit</module>
         <module>mq</module>
         <module>keycloak-demo</module>
+        <module>transaction</module>
     </modules>
 </project>
