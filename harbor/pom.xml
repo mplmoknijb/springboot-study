@@ -6,7 +6,6 @@
         <groupId>cn.leon</groupId>
         <artifactId>springboot-study</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.leon</groupId>
     <artifactId>harbor</artifactId>

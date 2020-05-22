@@ -31,9 +31,10 @@ public class MongoOpsServiceIml implements MongoOpsService {
     public List<MongoDto> searchPageHelper(MongoDto mongoDto, Integer page, Integer size) {
         Query query = new Query(Criteria.where("age").gte(104));
         // 排序模板
-        Sort sort = new Sort(Sort.Direction.DESC, "age");
-        PageRequest pageRequest = PageRequest.of(page, size, sort);
-        return mongoTemplate.find(query.with(pageRequest), MongoDto.class);
+//        Sort sort = new Sort(Sort.Direction.DESC, "age");
+//        PageRequest pageRequest = PageRequest.of(page, size, sort);
+//        return mongoTemplate.find(query.with(pageRequest), MongoDto.class);
+        return null;
     }
 
     @Override
@@ -46,6 +47,6 @@ public class MongoOpsServiceIml implements MongoOpsService {
         }).collect(Collectors.toList());
         BulkOperations bulkOperations = mongoTemplate.bulkOps(BulkOperations.BulkMode.UNORDERED, MongoDto.class, form.getBizName());
         bulkOperations.insert(mongoDtoList).execute();
-        mongoTemplate.inser
+        mongoTemplate.insert(bulkOperations);
     }
 }

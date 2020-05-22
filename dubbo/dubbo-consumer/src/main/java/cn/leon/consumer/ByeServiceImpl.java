@@ -2,7 +2,7 @@ package cn.leon.consumer;
 
 import org.springframework.stereotype.Service;
 
-import cn.leon.HelloService;
+import cn.leon.dubbo.provider.HelloService;
 import com.alibaba.dubbo.config.annotation.Reference;
 
 @Service

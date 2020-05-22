@@ -10,7 +10,7 @@ import java.util.concurrent.TimeoutException;
 public class Send {
     private final static String QUEUE_NAME = "hello";
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public void main(String[] args) throws IOException, TimeoutException {
         // 创建连接
         ConnectionFactory factory = new ConnectionFactory();
         // 设置 RabbitMQ 的主机名

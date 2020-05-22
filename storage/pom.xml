@@ -16,8 +16,8 @@
     <modules>
         <module>hbase</module>
         <module>mongo</module>
-        <module>springboot-redis</module>
-        <module>springboot-mybatis</module>
+        <module>redis</module>
+        <module>mybatis</module>
         <module>elastic</module>
     </modules>
     <properties>

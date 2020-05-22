@@ -6,7 +6,6 @@
         <groupId>cn.leon</groupId>
         <artifactId>seata</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.leon</groupId>
     <artifactId>product</artifactId>

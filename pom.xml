@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.3.0.RELEASE</version>
     </parent>
 
     <properties>
@@ -24,6 +24,23 @@
 
     <!-- 全局依赖设置：引入依赖会自动传递到子模块中 -->
     <dependencies>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers-bom</artifactId>
+            <version>1.14.1</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <!-- 全局依赖管理：引入依赖不会自动传递到子模块中，子模块中需要申明依赖；重要用于依赖版本管理 -->
@@ -71,17 +88,23 @@
         <module>springboot-aop</module>
         <module>springboot-logs</module>
         <module>springboot-schedule</module>
-        <module>sprinboot-async</module>
+        <module>async</module>
         <module>springboot-globalexception</module>
         <module>springboot-aop-new</module>
         <module>springboot-redis-cache</module>
         <module>springboot-freemarker</module>
         <module>springboot-security</module>
         <module>dubbo</module>
-        <module>dubbo</module>
         <module>jgit</module>
         <module>mq</module>
         <module>keycloak-demo</module>
         <module>transaction</module>
+        <module>swagger</module>
+        <module>lock</module>
+        <module>common</module>
+        <module>sonar</module>
+        <module>groovy</module>
+        <module>mybatis-generator</module>
+        <module>harbor</module>
     </modules>
 </project>

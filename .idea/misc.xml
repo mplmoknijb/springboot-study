@@ -7,8 +7,19 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/sonar/pom.xml" />
+        <option value="$PROJECT_DIR$/swagger/pom.xml" />
+        <option value="$PROJECT_DIR$/storage/pom.xml" />
+        <option value="$PROJECT_DIR$/storage/mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/transaction/test/pom.xml" />
+        <option value="$PROJECT_DIR$/lock/pom.xml" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/lock/src/main/resources/application.properties" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

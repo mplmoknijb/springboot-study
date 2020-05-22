@@ -13,7 +13,7 @@
 
     <parent>
         <groupId>cn.leon</groupId>
-        <artifactId>springboot-study</artifactId>
+        <artifactId>mq</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
