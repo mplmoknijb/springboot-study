@@ -7,8 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 public interface LockStrategy<T> {
 
-    void unlock(InterProcessMutex lock);
+    void unlock(T t);
 
     void lock(LockInfo info, long time, TimeUnit unit);
 
+    T lock(LockInfo info);
 }

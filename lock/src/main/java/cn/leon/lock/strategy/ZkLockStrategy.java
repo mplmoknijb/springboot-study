@@ -13,12 +13,14 @@ import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -26,9 +28,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ZkLockStrategy implements LockStrategy<InterProcessMutex>, InitializingBean, DisposableBean {
 
     private CuratorFramework curatorFramework;
-    private final Map<Thread, Map<String, InterProcessMutex>> holder = Maps.newConcurrentMap();
+    private final ConcurrentHashMap<Thread, Map<String, InterProcessMutex>> holder = new ConcurrentHashMap();
     private AtomicBoolean aBoolean = new AtomicBoolean(false);
     public static final String PREFIX = "/";
+
+    public ZkLockStrategy(ZkInfoProperties properties) {
+        CuratorFrameworkFactory.Builder biild = CuratorFrameworkFactory.builder()
+                .connectString(properties.getAddress())
+                .retryPolicy(new ExponentialBackoffRetry(properties.getRetrySleepTimeMs(), properties.getRetryCount()))
+                .sessionTimeoutMs(properties.getSessionTimeOutMs())
+                .connectionTimeoutMs(properties.getConnectionTimeOutMs())
+                .namespace(properties.getNameSpace());
+        val authInfo = properties.getAuthInfo();
+        if (Objects.nonNull(authInfo)) {
+            biild.authorization(authInfo.getScheme(), authInfo.getScheme().getBytes(Charset.forName("UTF-8")));
+        }
+        curatorFramework = biild.build();
+    }
 
     @Override
     public void unlock(InterProcessMutex lock) {
@@ -36,13 +52,12 @@ public class ZkLockStrategy implements LockStrategy<InterProcessMutex>, Initiali
             lock.release();
         } catch (Exception e) {
             throw new LockException("lock release failed");
-        }finally {
-            if(!lock.isOwnedByCurrentThread()){
+        } finally {
+            if (!lock.isOwnedByCurrentThread()) {
                 holder.remove(Thread.currentThread());
             }
         }
     }
-
 
     @Override
     public void lock(LockInfo info, long time, TimeUnit unit) {
@@ -84,9 +99,8 @@ public class ZkLockStrategy implements LockStrategy<InterProcessMutex>, Initiali
         return name.startsWith(PREFIX) ? name : PREFIX.concat(name);
     }
 
-
     @SneakyThrows
-    public InterProcessMutex getLock(LockInfo info) {
+    private InterProcessMutex getLock(LockInfo info) {
 //        return curatorFramework.create()
 //                .creatingParentsIfNeeded()
 //                .withMode(CreateMode.EPHEMERAL)
@@ -103,19 +117,6 @@ public class ZkLockStrategy implements LockStrategy<InterProcessMutex>, Initiali
         return lock;
     }
 
-    public ZkLockStrategy(ZkInfoProperties properties) {
-        CuratorFrameworkFactory.Builder biild = CuratorFrameworkFactory.builder()
-                .connectString(properties.getAddress())
-                .retryPolicy(new ExponentialBackoffRetry(properties.getRetrySleepTimeMs(), properties.getRetryCount()))
-                .sessionTimeoutMs(properties.getSessionTimeOutMs())
-                .connectionTimeoutMs(properties.getConnectionTimeOutMs())
-                .namespace(properties.getNameSpace());
-        val authInfo = properties.getAuthInfo();
-        if (Objects.nonNull(authInfo)) {
-            biild.authorization(authInfo.getScheme(), authInfo.getScheme().getBytes(Charset.forName("UTF-8")));
-        }
-        curatorFramework = biild.build();
-    }
 
     @Override
     public void destroy() throws Exception {
