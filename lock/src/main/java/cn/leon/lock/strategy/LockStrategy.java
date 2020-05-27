@@ -9,7 +9,7 @@ public interface LockStrategy<T> {
 
     void unlock(T t);
 
-    void lock(LockInfo info, long time, TimeUnit unit);
+    T lock(LockInfo info, long time, TimeUnit unit);
 
     T lock(LockInfo info);
 }

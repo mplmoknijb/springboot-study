@@ -39,9 +39,10 @@ class SelfLockApplicationTests {
     @Test
     public void lockTest(){
         LockInfo test = LockInfo.builder().name("test").leaseTime(3000).build();
+        int count = 0;
         lockStrategy.lock(test,5000,TimeUnit.MILLISECONDS);
-
-
+            count++;
+        System.out.println(count);
 
     }
     @Test

@@ -13,7 +13,6 @@ import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
@@ -22,14 +21,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Slf4j
 public class ZkLockStrategy implements LockStrategy<InterProcessMutex>, InitializingBean, DisposableBean {
 
     private CuratorFramework curatorFramework;
     private final ConcurrentHashMap<Thread, Map<String, InterProcessMutex>> holder = new ConcurrentHashMap();
-    private AtomicBoolean aBoolean = new AtomicBoolean(false);
     public static final String PREFIX = "/";
 
     public ZkLockStrategy(ZkInfoProperties properties) {
@@ -60,19 +57,25 @@ public class ZkLockStrategy implements LockStrategy<InterProcessMutex>, Initiali
     }
 
     @Override
-    public void lock(LockInfo info, long time, TimeUnit unit) {
+    public InterProcessMutex lock(LockInfo info, long time, TimeUnit unit) {
         Assert.isTrue(time > 0, "must greater than 0");
         InterProcessMutex lock = getLock(info);
+        boolean flag = false;
         try {
-            aBoolean.set(lock.acquire(time, unit));
+            flag = lock.acquire(time, unit);
         } catch (Exception e) {
-            aBoolean.set(false);
             throw new LockException("acquire lock failed", e);
         } finally {
-            if (aBoolean.get()) {
+            if (flag) {
                 cacheLockRecord(info, lock);
             }
         }
+        return lock;
+    }
+
+    @Override
+    public InterProcessMutex lock(LockInfo info) {
+        return this.lock(info, info.getWaitTime(), TimeUnit.MILLISECONDS);
     }
 
     private void cacheLockRecord(LockInfo info, InterProcessMutex lock) {
