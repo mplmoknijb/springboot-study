@@ -3,6 +3,7 @@ package cn.leon.lock.config;
 import cn.leon.lock.model.LockException;
 import cn.leon.lock.model.LockProperties;
 import cn.leon.lock.model.SelfLock;
+import cn.leon.lock.util.ProxyUtils;
 import com.google.common.collect.Sets;
 import org.springframework.aop.TargetSource;
 import org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator;
@@ -34,8 +35,13 @@ public class LockAdvice extends AbstractAutoProxyCreator implements Initializing
                     return bean;
                 }
                 // find class
+                Class targetClass = ProxyUtils.findTargetClass(bean);
                 // find annatation
+                if (!ProxyUtils.annotationExists(targetClass)) {
+                    return bean;
+                }
                 // fill interceptor
+
                 // createProxy
             }
         } catch (Exception e) {
