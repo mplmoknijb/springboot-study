@@ -3,6 +3,7 @@ package cn.leon.lock.model;
 import cn.leon.lock.annotation.Lock;
 import cn.leon.lock.enums.LockTypeEnum;
 import cn.leon.lock.strategy.LockStrategy;
+import lombok.Builder;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.support.AopUtils;
@@ -12,14 +13,14 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
 import java.util.Objects;
-
+@Builder
 public class LockProxy implements MethodInterceptor {
     private LockProperties lockProperties;
-    private LockStrategy lockStrategy;
+    private SelfLock selfLock;
 
-    public LockProxy(LockProperties lockProperties, LockStrategy lockStrategy) {
+    public LockProxy(LockProperties lockProperties, SelfLock selfLock) {
         this.lockProperties = lockProperties;
-        this.lockStrategy = lockStrategy;
+        this.selfLock = selfLock;
     }
 
     @Override
@@ -32,11 +33,11 @@ public class LockProxy implements MethodInterceptor {
             String name = StringUtils.hasText(lockProperties.getPrefix()) ? lockProperties.getPrefix().concat("-").concat(annatation.type().getDes()) : annatation.type().getDes();
             LockInfo build = LockInfo.builder().leaseTime(annatation.leaseTime()).waitTime(annatation.waitTime())
                     .name(name).build();
-            Object obj = lockStrategy.lock(build);
+            Object obj = selfLock.lock(build);
             try {
                return methodInvocation.proceed();
             } finally {
-                lockStrategy.unlock(obj);
+                selfLock.unlock(obj);
             }
         }
         return methodInvocation.proceed();

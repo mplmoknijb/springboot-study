@@ -2,15 +2,20 @@ package cn.leon.lock.config;
 
 import cn.leon.lock.model.LockException;
 import cn.leon.lock.model.LockProperties;
+import cn.leon.lock.model.LockProxy;
 import cn.leon.lock.model.SelfLock;
 import cn.leon.lock.util.ProxyUtils;
 import com.google.common.collect.Sets;
+import org.springframework.aop.Advisor;
 import org.springframework.aop.TargetSource;
+import org.springframework.aop.framework.AdvisedSupport;
 import org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.cglib.proxy.MethodInterceptor;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class LockAdvice extends AbstractAutoProxyCreator implements InitializingBean {
@@ -41,13 +46,25 @@ public class LockAdvice extends AbstractAutoProxyCreator implements Initializing
                     return bean;
                 }
                 // fill interceptor
-
+                if (Objects.isNull(interceptor)) {
+                    interceptor = (MethodInterceptor) new LockProxy(properties, selfLock);
+                }
                 // createProxy
+                if (!AopUtils.isAopProxy(bean)) {
+                    bean = super.wrapIfNecessary(bean, beanName, cacheKey);
+                }else {
+                    AdvisedSupport advisedSupport = ProxyUtils.getProxyTarget(bean);
+                    Advisor[] advisors = buildAdvisors(beanName, new MethodInterceptor[]{interceptor});
+                    for (Advisor advisor : advisors) {
+                        advisedSupport.addAdvisor(advisor);
+                    }
+                }
+                set.add(beanName);
+                return bean;
             }
         } catch (Exception e) {
             throw new LockException(e);
         }
-        return super.wrapIfNecessary(bean, beanName, cacheKey);
     }
 
     @Override

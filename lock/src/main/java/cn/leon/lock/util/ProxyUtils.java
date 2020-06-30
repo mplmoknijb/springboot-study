@@ -11,7 +11,13 @@ import java.lang.reflect.Method;
 
 @UtilityClass
 public class ProxyUtils {
-
+    /**
+     * fetch proxy target
+     *
+     * @param proxy
+     * @return
+     * @throws Exception
+     */
     public Class findTargetClass(Object proxy) throws Exception {
         if (proxy == null) {
             return null;
@@ -19,28 +25,20 @@ public class ProxyUtils {
         if (!AopUtils.isAopProxy(proxy)) {
             return proxy.getClass();
         }
-        return (AopUtils.isJdkDynamicProxy(proxy) ? getJdkTarget(proxy) :getCglibTarget(proxy));
-
-    }
-
-    private Class<?> getJdkTarget(Object proxy) throws Exception {
-        Field h = proxy.getClass().getSuperclass().getDeclaredField("h");
-        h.setAccessible(true);
-        AopProxy aopProxy = (AopProxy) h.get(proxy);
-        Field advised = aopProxy.getClass().getDeclaredField("advised");
-        advised.setAccessible(true);
-        Object target = ((AdvisedSupport) advised.get(aopProxy)).getTargetSource().getTarget();
+        AdvisedSupport advisedSupport = getProxyTarget(proxy);
+        Object target = advisedSupport.getTargetSource().getTarget();
         return target.getClass();
+
     }
 
-    private Class<?> getCglibTarget(Object proxy) throws Exception {
-        Field h = proxy.getClass().getDeclaredField("CGLIB$CALLBACK_0");
+    public AdvisedSupport getProxyTarget(Object proxy) throws Exception {
+        String type = AopUtils.isJdkDynamicProxy(proxy) ? "h" : "CGLIB$CALLBACK_0";
+        Field h = proxy.getClass().getDeclaredField(type);
         h.setAccessible(true);
         Object o = h.get(proxy);
         Field advised = o.getClass().getDeclaredField("advised");
         advised.setAccessible(true);
-        Object target = ((AdvisedSupport) advised.get(o)).getTargetSource().getTarget();
-        return target.getClass();
+        return (AdvisedSupport) advised.get(o);
     }
 
     public boolean annotationExists(Class<?> clazz) {
