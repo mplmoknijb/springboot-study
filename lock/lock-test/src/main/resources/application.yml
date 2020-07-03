@@ -1,0 +1,9 @@
+
+lock:
+  enabled: true
+  zk:
+    address: "172.16.143.101:2181"
+    auth-info:
+      auth: "test"
+      scheme: "test"
+    name-space: "dev"

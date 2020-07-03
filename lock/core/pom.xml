@@ -4,32 +4,46 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.leon</groupId>
-        <artifactId>springboot-study</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>lock</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>cn.leon</groupId>
-    <artifactId>lock</artifactId>
+    <artifactId>core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lock</name>
+    <name>core</name>
     <description>Demo project for Spring Boot</description>
-    <packaging>pom</packaging>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
-    <modules>
-        <module>core</module>
-        <module>lock-test</module>
-    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.12.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
