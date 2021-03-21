@@ -1,0 +1,19 @@
+
+K
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8Æû«ÑÂ.
+_
+java:S1128"DRemove this unused import 'java.util.concurrent.ThreadPoolExecutor'.(¦ÿöÊ8ˆƒ®ÑÂ.
+s
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8ì¨ÑÂ.
+U
+java:S1128":Remove this unused import 'java.util.concurrent.TimeUnit'.(Æ™ş8ˆƒ®ÑÂ.
+b
+java:S1128"GRemove this unused import 'org.springframework.boot.CommandLineRunner'.(È—ÿÅ8„ö¬ÑÂ.
+Y
+java:S1128"9Remove this unused import 'cn.leon.core.annotation.Lock'.(–Ò£úÿÿÿÿ8Æû«ÑÂ.
+e
+java:S1128"ERemove this unused import 'java.util.concurrent.LinkedBlockingDeque'.(ÌÇœüÿÿÿÿ8ˆƒ®ÑÂ.
+\
+java:S1128"<Remove this unused import 'cn.leon.core.enums.LockTypeEnum'.(àë‘¸ıÿÿÿÿ8Æû«ÑÂ.
+K
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Æû«ÑÂ.

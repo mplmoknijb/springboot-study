@@ -1,0 +1,22 @@
+
+w
+java:S1488˜"`Immediately return this expression instead of assigning it to the temporary variable "pageData".(âµ“Ç
+H
+java:S1199j"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+=	java:S131Ğ""Add a default case to this switch.(ÎÍ›ªıÿÿÿÿ
+H
+java:S1199l"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+[
+java:S2259‹"DA "NullPointerException" could be thrown; "client" is nullable here.(´Ú’
+W	java:S125‡"<This block of commented-out lines of code should be removed.(û÷î˜ûÿÿÿÿ
+R	java:S125”"<This block of commented-out lines of code should be removed.(ö¦Éä
+R	java:S125€"<This block of commented-out lines of code should be removed.(¶”ä×
+R	java:S125‰"<This block of commented-out lines of code should be removed.(¨Î³±
+R	java:S125Œ"<This block of commented-out lines of code should be removed.(¼õ÷Ö
+H
+java:S1602à",Remove useless curly braces around statement(¤Ûô…ûÿÿÿÿ
+W	java:S125…"<This block of commented-out lines of code should be removed.(ô¼Öıÿÿÿÿ
+H
+java:S1199o"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+i
+java:S3776Æ"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¦êáĞ

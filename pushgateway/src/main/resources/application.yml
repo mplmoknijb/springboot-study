@@ -1,0 +1,23 @@
+
+spring:
+  application:
+    name: pushgateway
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        pushgateway:
+          #pushgateway地址
+          baseUrl: 172.16.143.102:8080
+          #推送周期
+          pushRate: 3s
+          #job定义名
+          job : ${spring.application.name}
+          #启用推送
+          enabled: true

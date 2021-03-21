@@ -1,0 +1,10 @@
+
+O
+java:S3740"/Provide the parametrized type for this generic.(âŒª‘úÿÿÿÿ8é§ßÖ¤.
+Z
+java:S4719":Replace Charset.forName() call with StandardCharsets.UTF_8(ÇÒ†ÿÿÿÿÿ8·—ÓÖ¤.
+V	java:S125"<This block of commented-out lines of code should be removed.(¿¦ÔÖ8óãÏŞ£.
+L
+java:S1144",Remove this unused private "lockKey" method.(ƒìÊÈıÿÿÿÿ8óãÏŞ£.
+z
+java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(¡¼ÑÇ8óãÏŞ£.

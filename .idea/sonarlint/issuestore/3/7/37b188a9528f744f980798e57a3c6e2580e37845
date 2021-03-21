@@ -1,0 +1,19 @@
+
+œ
+java:S1186L"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Àø’ìúÿÿÿÿ
+L
+java:S3740"/Provide the parametrized type for this generic.(±¤²Á8¡¦¯—±.
+‰
+java:S1130G"sRemove the declaration of thrown exception 'org.springframework.beans.BeansException' which is a runtime exception.(¶”ø°
+E
+java:S3740+"/Provide the parametrized type for this generic.(»®äÚ
+I
+java:S1948",Make "properties" transient or serializable.(üÁø8¡¦¯—±.
+G
+java:S1948"*Make "selfLock" transient or serializable.(±¤²Á8¡¦¯—±.
+C
+java:S1948"-Make "interceptor" transient or serializable.(‰œù•
+L
+java:S3740"/Provide the parametrized type for this generic.(òåÿ»8¡¦¯—±.
+I
+java:S1068"3Remove this unused "applicationName" private field.(°ØÎ¡

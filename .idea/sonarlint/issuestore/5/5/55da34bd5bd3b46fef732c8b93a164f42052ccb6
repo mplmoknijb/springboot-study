@@ -1,3 +1,5 @@
 
-m
-java:S1128"PRemove this unused import 'jdk.nashorn.internal.runtime.regexp.joni.Config.log'.(“˜˜„8º“ä„£.
+^
+java:S1128"<Remove this unused import 'cn.leon.test.entity.User2Entity'.(ÈèÈ—ÿÿÿÿÿ8¢ðÏ³ª.
+Q
+java:S3740,"/Provide the parametrized type for this generic.(¤‘éòøÿÿÿÿ8ïÓõ³ª.

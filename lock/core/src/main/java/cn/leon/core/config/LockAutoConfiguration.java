@@ -20,33 +20,38 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(LockProperties.class)
 @ConditionalOnProperty(value = "lock.enabled", havingValue = "true")
 public class LockAutoConfiguration {
-    private final LockProperties lockProperties;
+  private final LockProperties lockProperties;
 
-    public LockAutoConfiguration(LockProperties lockProperties) {
-        this.lockProperties = lockProperties;
+  public LockAutoConfiguration(LockProperties lockProperties) {
+    this.lockProperties = lockProperties;
+  }
+
+  @Bean
+  public LockProxy lockProxy(SelfLock<InterProcessMutex> selfLock) {
+    return new LockProxy(lockProperties, selfLock);
+  }
+
+  @Configuration
+  @ConditionalOnProperty(value = "lock.type", havingValue = "zk")
+  @ConditionalOnClass({CuratorFrameworkFactory.class, InterProcessMutex.class, ZooKeeper.class})
+  @EnableConfigurationProperties(ZkInfoProperties.class)
+  public class zkAutoConfiguration {
+
+    @Bean
+    public LockStrategy lockStrategy(ZkInfoProperties zkInfoProperties) {
+      return new ZkLockStrategy(zkInfoProperties);
     }
 
     @Bean
-    public LockProxy lockProxy(SelfLock selfLock) {
-        return new LockProxy(lockProperties, selfLock);
+    @ConditionalOnMissingBean
+    public SelfLock<InterProcessMutex> selfLock(LockStrategy<InterProcessMutex> lockStrategy) {
+      return new SelfLock<>(lockStrategy);
     }
 
-    @Configuration
-    @ConditionalOnProperty(value = "lock.type", havingValue = "zk")
-    @ConditionalOnClass({CuratorFrameworkFactory.class, InterProcessMutex.class, ZooKeeper.class})
-    @EnableConfigurationProperties(ZkInfoProperties.class)
-    public class zkAutoConfiguration {
-
-        @Bean
-        public LockStrategy lockStrategy(ZkInfoProperties zkInfoProperties) {
-            return new ZkLockStrategy(zkInfoProperties);
-        }
-
-        @Bean
-        @ConditionalOnMissingBean
-        public SelfLock<InterProcessMutex> selfLock(LockStrategy<InterProcessMutex> lockStrategy) {
-            return new SelfLock<>(lockStrategy);
-        }
+    @Bean
+    public LockAdvice lockAdvice(
+        LockProperties properties, SelfLock selfLock, String applicationName) {
+      return new LockAdvice(properties, selfLock, applicationName);
     }
-
+  }
 }

@@ -106,5 +106,8 @@
         <module>groovy</module>
         <module>mybatis-generator</module>
         <module>harbor</module>
+        <module>netty</module>
+        <module>axon</module>
+        <module>jmh</module>
     </modules>
 </project>

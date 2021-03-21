@@ -1,0 +1,18 @@
+
+M
+java:S2629("7Use the built-in formatting to construct this argument.(ìá–€
+R
+java:S2629*"7Use the built-in formatting to construct this argument.(ŞúŒøÿÿÿÿ
+R
+java:S26295"7Use the built-in formatting to construct this argument.(çø§«øÿÿÿÿ
+>
+java:S11481"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>
+java:S1148?"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+W
+java:S3457("AFormat specifiers should be used instead of string concatenation.(ìá–€
+\
+java:S3457*"AFormat specifiers should be used instead of string concatenation.(ŞúŒøÿÿÿÿ
+\
+java:S34575"AFormat specifiers should be used instead of string concatenation.(çø§«øÿÿÿÿ
+Q	java:S125)"<This block of commented-out lines of code should be removed.(“Àò¾

@@ -24,6 +24,7 @@ public class LockAdvice extends AbstractAutoProxyCreator implements Initializing
     private LockProperties properties;
     private SelfLock selfLock;
     private String applicationName;
+    //标记防止重复
     private final Set<String> set = Sets.newHashSet();
 
     public LockAdvice(LockProperties properties, SelfLock selfLock, String applicationName) {
