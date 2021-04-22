@@ -1,7 +1,6 @@
 package cn.leon.core.config;
 
 import cn.leon.core.model.LockProperties;
-import cn.leon.core.model.LockProxy;
 import cn.leon.core.model.SelfLock;
 import cn.leon.core.model.ZkInfoProperties;
 import cn.leon.core.strategy.LockStrategy;
@@ -20,38 +19,32 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(LockProperties.class)
 @ConditionalOnProperty(value = "lock.enabled", havingValue = "true")
 public class LockAutoConfiguration {
-  private final LockProperties lockProperties;
+    private final LockProperties lockProperties;
 
-  public LockAutoConfiguration(LockProperties lockProperties) {
-    this.lockProperties = lockProperties;
-  }
+    public LockAutoConfiguration(LockProperties lockProperties) {
+        this.lockProperties = lockProperties;
+    }
+    @Configuration
+    @EnableConfigurationProperties(ZkInfoProperties.class)
+    @ConditionalOnProperty(value = "lock.type", havingValue = "zk")
+    @ConditionalOnClass({CuratorFrameworkFactory.class, InterProcessMutex.class, ZooKeeper.class})
+    public class ZkAutoConfiguration {
 
-  @Bean
-  public LockProxy lockProxy(SelfLock<InterProcessMutex> selfLock) {
-    return new LockProxy(lockProperties, selfLock);
-  }
+        @Bean
+        @ConditionalOnMissingBean(LockStrategy.class)
+        public LockStrategy lockStrategy(ZkInfoProperties zkInfoProperties) {
+            return new ZkLockStrategy(zkInfoProperties);
+        }
 
-  @Configuration
-  @ConditionalOnProperty(value = "lock.type", havingValue = "zk")
-  @ConditionalOnClass({CuratorFrameworkFactory.class, InterProcessMutex.class, ZooKeeper.class})
-  @EnableConfigurationProperties(ZkInfoProperties.class)
-  public class zkAutoConfiguration {
-
-    @Bean
-    public LockStrategy lockStrategy(ZkInfoProperties zkInfoProperties) {
-      return new ZkLockStrategy(zkInfoProperties);
+        @Bean
+        @ConditionalOnMissingBean(SelfLock.class)
+        public SelfLock<InterProcessMutex> selfLock(LockStrategy<InterProcessMutex> lockStrategy) {
+            return new SelfLock<InterProcessMutex>(lockStrategy);
+        }
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public SelfLock<InterProcessMutex> selfLock(LockStrategy<InterProcessMutex> lockStrategy) {
-      return new SelfLock<>(lockStrategy);
+    public GlobalScanner GLobalScanner(SelfLock<?> selfLock) {
+        return new GlobalScanner(lockProperties, selfLock, "test");
     }
-
-    @Bean
-    public LockAdvice lockAdvice(
-        LockProperties properties, SelfLock selfLock, String applicationName) {
-      return new LockAdvice(properties, selfLock, applicationName);
-    }
-  }
 }

@@ -3,11 +3,12 @@ package cn.leon.locktest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @Slf4j
 @SpringBootApplication
-public class LockTestApplication{
+public class LockTestApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LockTestApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LockTestApplication.class, args);
+    }
 }

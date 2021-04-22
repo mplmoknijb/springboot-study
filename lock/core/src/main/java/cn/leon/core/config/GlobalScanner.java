@@ -18,16 +18,17 @@ import org.springframework.cglib.proxy.MethodInterceptor;
 import java.util.Objects;
 import java.util.Set;
 
-public class LockAdvice extends AbstractAutoProxyCreator implements InitializingBean {
+public class GlobalScanner extends AbstractAutoProxyCreator implements InitializingBean {
 
     private MethodInterceptor interceptor;
     private LockProperties properties;
+    @SuppressWarnings("rawtypes")
     private SelfLock selfLock;
     private String applicationName;
     //标记防止重复
     private final Set<String> set = Sets.newHashSet();
 
-    public LockAdvice(LockProperties properties, SelfLock selfLock, String applicationName) {
+    public GlobalScanner(LockProperties properties, SelfLock selfLock, String applicationName) {
         this.properties = properties;
         this.selfLock = selfLock;
         this.applicationName = applicationName;
@@ -70,7 +71,7 @@ public class LockAdvice extends AbstractAutoProxyCreator implements Initializing
 
     @Override
     protected Object[] getAdvicesAndAdvisorsForBean(Class<?> aClass, String s, TargetSource targetSource) throws BeansException {
-        return new Object[0];
+        return new Object[]{interceptor};
     }
 
     @Override
