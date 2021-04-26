@@ -44,9 +44,8 @@ public class GlobalScanner extends AbstractAutoProxyCreator implements Initializ
                 // find class
                 Class<?> serviceApi = ProxyUtils.findTargetClass(bean);
                 Class<?>[] interfaces = ProxyUtils.findInterfaces(bean);
-                System.out.println(beanName);
                 // find annatation
-                if (!ProxyUtils.annotationExists(new Class[] {serviceApi}) && !ProxyUtils.annotationExists(interfaces)) {
+                if (!ProxyUtils.annotationExists(new Class[]{serviceApi}) && !ProxyUtils.annotationExists(interfaces)) {
                     return bean;
                 }
                 // fill interceptor
@@ -56,7 +55,7 @@ public class GlobalScanner extends AbstractAutoProxyCreator implements Initializ
                 // createProxy
                 if (!AopUtils.isAopProxy(bean)) {
                     bean = super.wrapIfNecessary(bean, beanName, cacheKey);
-                }else {
+                } else {
                     AdvisedSupport advisedSupport = ProxyUtils.getProxyTarget(bean);
                     Advisor[] advisors = buildAdvisors(beanName, new MethodInterceptor[]{interceptor});
                     for (Advisor advisor : advisors) {
