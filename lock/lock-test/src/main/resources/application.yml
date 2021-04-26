@@ -1,10 +1,12 @@
 
 lock:
   enabled: true
-  type: "zk"
+  type: "zookeeper"
   zk:
-    address: "172.16.143.102:2181,172.16.143.102:2182,172.16.143.102:2183"
-  prefix: "lock_demo"
+#    address: "172.16.143.102:2181,172.16.143.102:2182,172.16.143.102:2183"
+    address: "zoo1:2181,zoo2:2182,zoo3:2183"
+    name-space: "lock_demo"
+  prefix: "/"
 #      auth-info:
 #        auth: "test"
 #        scheme: "test"

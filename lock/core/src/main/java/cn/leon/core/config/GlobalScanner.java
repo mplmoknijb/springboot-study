@@ -6,6 +6,7 @@ import cn.leon.core.model.LockProxy;
 import cn.leon.core.model.SelfLock;
 import cn.leon.core.util.ProxyUtils;
 import com.google.common.collect.Sets;
+import org.aopalliance.intercept.MethodInterceptor;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.TargetSource;
 import org.springframework.aop.framework.AdvisedSupport;
@@ -13,7 +14,6 @@ import org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.cglib.proxy.MethodInterceptor;
 
 import java.util.Objects;
 import java.util.Set;
@@ -42,9 +42,11 @@ public class GlobalScanner extends AbstractAutoProxyCreator implements Initializ
                     return bean;
                 }
                 // find class
-                Class targetClass = ProxyUtils.findTargetClass(bean);
+                Class<?> serviceApi = ProxyUtils.findTargetClass(bean);
+                Class<?>[] interfaces = ProxyUtils.findInterfaces(bean);
+                System.out.println(beanName);
                 // find annatation
-                if (!ProxyUtils.annotationExists(targetClass)) {
+                if (!ProxyUtils.annotationExists(new Class[] {serviceApi}) && !ProxyUtils.annotationExists(interfaces)) {
                     return bean;
                 }
                 // fill interceptor

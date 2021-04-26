@@ -114,8 +114,7 @@ public class ZkLockStrategy implements LockStrategy<InterProcessMutex>, Initiali
         if (!CollectionUtils.isEmpty(map)) {
             lock = map.get(lockKey(info));
         }
-        if (Objects.isNull(lock)) {
-            lock = new InterProcessMutex(curatorFramework, info.getName());
+        if (Objects.isNull(lock)) { lock = new InterProcessMutex(curatorFramework, info.getName());
         }
         return lock;
     }

@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class LockService {
+public class LockService{
     private int i = 10;
 
-    @Lock(type = LockTypeEnum.ZOOKEEPER, waitTime = 30000, leaseTime = 3000)
+    @Lock(type = LockTypeEnum.ZOOKEEPER, waitTime = 30000, leaseTime = 1000)
     public void syncBiz() {
         if (i >= 0) {
             try {

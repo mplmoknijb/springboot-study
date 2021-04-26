@@ -26,7 +26,7 @@ public class LockAutoConfiguration {
     }
     @Configuration
     @EnableConfigurationProperties(ZkInfoProperties.class)
-    @ConditionalOnProperty(value = "lock.type", havingValue = "zk")
+    @ConditionalOnProperty(value = "lock.type", havingValue = "zookeeper")
     @ConditionalOnClass({CuratorFrameworkFactory.class, InterProcessMutex.class, ZooKeeper.class})
     public class ZkAutoConfiguration {
 
