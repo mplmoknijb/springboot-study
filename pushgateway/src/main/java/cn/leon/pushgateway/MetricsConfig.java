@@ -19,16 +19,17 @@ public class MetricsConfig implements CommandLineRunner {
   //          .register();
 
   public static final Gauge guage =
-      Gauge.build("my_custom_metric", "This is my custom metric.")
-          .labelNames("xids", "date")
-          .register(new CollectorRegistry());
+      Gauge.build("lock_count", "count").labelNames("hospital", "xids", "date")
+              .create();
 
   @Override
   public void run(String... args) throws Exception {
-    for (int i = 0; ; i++) {
+    for (int i = 0; i  < 100; i++) {
       PushGateway prometheusPush = new PushGateway("172.16.143.102:8080");
       String date = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss").format(new Date());
-      guage.labels("self_demo", date);
+      guage.labels("铜仁松桃中医院", "self_demo", date).set(0);
+      CollectorRegistry collectorRegistry = new CollectorRegistry();
+      guage.register(collectorRegistry);
       try {
         prometheusPush.push(guage, "lock");
       } catch (IOException e) {

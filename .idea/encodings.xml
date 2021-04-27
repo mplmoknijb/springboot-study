@@ -2,23 +2,37 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aop" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aop-new" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aop-new/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aop/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/async" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/async/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/axon/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dataplatform/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-consumer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/elk" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/elk/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/freemarker" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/freemarker/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/global-exception" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/global-exception/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/groovy/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/harbor/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgit" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jgit/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jmh/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/keycloak-demo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/keycloak/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lock/core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lock/lock-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/logs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/logs/springboot-logs-Logback" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/logs/springboot-logs-Logback/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/kafka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-hello/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-queue/src/main/java" charset="UTF-8" />
@@ -32,33 +46,20 @@
     <file url="file://$PROJECT_DIR$/mybatis-generator/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/netty/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pushgateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/redis-cache" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/redis-cache/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/redis-cache/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restful" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/restful/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/schedule" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/schedule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/search/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sonar/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-aop" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-aop-new" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-aop-new/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-aop/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-elk" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-elk/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-freemarker" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-freemarker/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-globalexception" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-globalexception/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-logs" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-logs/springboot-logs-Logback" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-logs/springboot-logs-Logback/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-quickstart" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-quickstart/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-quickstart/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-redis-cache" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-redis-cache/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-redis-cache/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-restful" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-restful/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-schedule" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-schedule/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-security" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-security/security" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-security/security/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statemachine/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statemachine/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/storage/elastic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/storage/hbase/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/storage/mongo/src/main/java" charset="UTF-8" />

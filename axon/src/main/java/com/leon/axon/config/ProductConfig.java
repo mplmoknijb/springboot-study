@@ -14,27 +14,28 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class ProductConfig {
 
-  @Autowired private EventStore eventStore;
+    @Autowired
+    private EventStore eventStore;
 
-  @Bean
-  @Scope("prototype")
-  public Product Product() {
-    return new Product();
-  }
+    @Bean
+    @Scope("prototype")
+    public Product Product() {
+        return new Product();
+    }
 
-  @Bean
-  public AggregateFactory<Product> ProductAggregateFactory() {
-    SpringPrototypeAggregateFactory<Product> aggregateFactory =
-        new SpringPrototypeAggregateFactory<>();
-    aggregateFactory.setPrototypeBeanName("product");
-    return aggregateFactory;
-  }
+    @Bean
+    public AggregateFactory<Product> ProductAggregateFactory() {
+        SpringPrototypeAggregateFactory<Product> aggregateFactory =
+                new SpringPrototypeAggregateFactory<>();
+        aggregateFactory.setPrototypeBeanName("product");
+        return aggregateFactory;
+    }
 
-  @Bean
-  public Repository<Product> ProductRepository() {
-    EventSourcingRepository<Product> repository =
-        new EventSourcingRepository<Product>(
-            ProductAggregateFactory(), eventStore);
-    return repository;
-  }
+    @Bean
+    public Repository<Product> ProductRepository() {
+        EventSourcingRepository<Product> repository =
+                new EventSourcingRepository<Product>(
+                        ProductAggregateFactory(), eventStore);
+        return repository;
+    }
 }

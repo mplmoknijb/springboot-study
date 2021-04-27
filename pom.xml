@@ -82,22 +82,21 @@
     </build>
 
     <modules>
-        <module>springboot-quickstart</module>
-        <module>springboot-elk</module>
-        <module>springboot-restful</module>
-        <module>springboot-aop</module>
-        <module>springboot-logs</module>
-        <module>springboot-schedule</module>
+        <module>elk</module>
+        <module>restful</module>
+        <module>aop</module>
+        <module>logs</module>
+        <module>schedule</module>
         <module>async</module>
-        <module>springboot-globalexception</module>
-        <module>springboot-aop-new</module>
-        <module>springboot-redis-cache</module>
-        <module>springboot-freemarker</module>
+        <module>global-exception</module>
+        <module>aop-new</module>
+        <module>redis-cache</module>
+        <module>freemarker</module>
         <module>springboot-security</module>
         <module>dubbo</module>
         <module>jgit</module>
         <module>mq</module>
-        <module>keycloak-demo</module>
+        <module>keycloak</module>
         <module>transaction</module>
         <module>swagger</module>
         <module>lock</module>
@@ -109,5 +108,6 @@
         <module>netty</module>
         <module>axon</module>
         <module>jmh</module>
+        <module>statemachine</module>
     </modules>
 </project>

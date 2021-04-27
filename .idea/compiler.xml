@@ -7,46 +7,48 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mongo" />
-        <module name="springboot-schedule" />
-        <module name="springboot-logs-Logback" />
+        <module name="aop" />
         <module name="jmh" />
         <module name="rocket" />
-        <module name="springboot-elk" />
         <module name="harbor" />
-        <module name="keycloak-demo" />
-        <module name="sonar" />
-        <module name="springboot-restful" />
-        <module name="rabbitmq-release" />
         <module name="redis" />
         <module name="swagger" />
-        <module name="rabbitmq-hello" />
         <module name="authorization" />
         <module name="rabbitmq-queue" />
-        <module name="security" />
-        <module name="common" />
-        <module name="springboot-aop-new" />
         <module name="springboot-rabbitmq" />
-        <module name="client" />
         <module name="rabbitmq-topic" />
         <module name="jgit" />
-        <module name="hbase" />
-        <module name="netty" />
         <module name="order" />
-        <module name="dataplatform" />
-        <module name="product" />
         <module name="test" />
         <module name="resource" />
-        <module name="mutli-datasource" />
         <module name="lock-test" />
-        <module name="springboot-globalexception" />
-        <module name="springboot-aop" />
+        <module name="elk" />
         <module name="core" />
-        <module name="async" />
-        <module name="springboot-freemarker" />
+        <module name="global-exception" />
         <module name="groovy" />
-        <module name="dubbo-provider" />
+        <module name="aop-new" />
         <module name="kafka" />
+        <module name="mongo" />
+        <module name="keycloak" />
+        <module name="springboot-logs-Logback" />
+        <module name="restful" />
+        <module name="sonar" />
+        <module name="rabbitmq-release" />
+        <module name="rabbitmq-hello" />
+        <module name="security" />
+        <module name="search" />
+        <module name="freemarker" />
+        <module name="common" />
+        <module name="client" />
+        <module name="statemachine" />
+        <module name="hbase" />
+        <module name="netty" />
+        <module name="dataplatform" />
+        <module name="product" />
+        <module name="mutli-datasource" />
+        <module name="async" />
+        <module name="schedule" />
+        <module name="dubbo-provider" />
         <module name="elastic" />
         <module name="axon" />
         <module name="pushgateway" />
@@ -58,24 +60,31 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="account" target="1.8" />
+      <module name="aop" target="1.8" />
+      <module name="aop-new" target="1.8" />
       <module name="async" target="1.8" />
       <module name="axon" target="1.8" />
       <module name="common" target="1.8" />
       <module name="core" target="1.8" />
+      <module name="dataplatform" target="1.8" />
       <module name="dubbo" target="1.8" />
       <module name="dubbo-consumer" target="1.8" />
       <module name="dubbo-provider" target="1.8" />
       <module name="dubbo-server" target="1.8" />
       <module name="elastic" target="1.8" />
+      <module name="elk" target="1.8" />
+      <module name="freemarker" target="1.8" />
+      <module name="global-exception" target="1.8" />
       <module name="groovy" target="1.8" />
       <module name="harbor" target="1.8" />
       <module name="hbase" target="1.8" />
       <module name="jgit" target="1.8" />
       <module name="jmh" target="1.8" />
       <module name="kafka" target="1.8" />
-      <module name="keycloak-demo" target="1.8" />
+      <module name="keycloak" target="1.8" />
       <module name="lock" target="1.8" />
       <module name="lock-test" target="1.8" />
+      <module name="logs" target="1.8" />
       <module name="mongo" target="1.8" />
       <module name="mq" target="1.8" />
       <module name="multi-moudle" target="1.5" />
@@ -93,26 +102,22 @@
       <module name="rabbitmq-routing" target="1.8" />
       <module name="rabbitmq-topic" target="1.8" />
       <module name="redis" target="1.8" />
+      <module name="redis-cache" target="1.8" />
+      <module name="restful" target="1.8" />
       <module name="rocket" target="1.8" />
+      <module name="schedule" target="1.8" />
+      <module name="search" target="1.8" />
       <module name="seata" target="1.8" />
       <module name="security" target="1.8" />
       <module name="sonar" target="1.8" />
-      <module name="springboot-aop" target="1.8" />
-      <module name="springboot-aop-new" target="1.8" />
-      <module name="springboot-elk" target="1.8" />
-      <module name="springboot-freemarker" target="1.8" />
-      <module name="springboot-globalexception" target="1.8" />
-      <module name="springboot-logs" target="1.8" />
       <module name="springboot-logs-Logback" target="1.8" />
       <module name="springboot-mybatis" target="1.8" />
       <module name="springboot-quickstart" target="1.8" />
       <module name="springboot-rabbitmq" target="1.8" />
-      <module name="springboot-redis-cache" target="1.8" />
-      <module name="springboot-restful" target="1.8" />
-      <module name="springboot-schedule" target="1.8" />
       <module name="springboot-security" target="1.8" />
       <module name="springboot-study" target="1.8" />
       <module name="sso" target="1.8" />
+      <module name="statemachine" target="1.8" />
       <module name="storage" target="1.8" />
       <module name="swagger" target="1.8" />
       <module name="test" target="1.8" />
@@ -122,6 +127,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="account" options="-parameters" />
+      <module name="aop" options="-parameters" />
+      <module name="aop-new" options="-parameters" />
       <module name="async" options="-parameters" />
       <module name="authorization" options="-parameters" />
       <module name="axon" options="-parameters" />
@@ -135,13 +142,16 @@
       <module name="dubbo-provider" options="-parameters" />
       <module name="dubbo-server" options="-parameters" />
       <module name="elastic" options="-parameters" />
+      <module name="elk" options="-parameters" />
+      <module name="freemarker" options="-parameters" />
+      <module name="global-exception" options="-parameters" />
       <module name="groovy" options="-parameters" />
       <module name="harbor" options="-parameters" />
       <module name="hbase" options="-parameters" />
       <module name="jgit" options="-parameters" />
       <module name="jmh" options="-parameters" />
       <module name="kafka" options="-parameters" />
-      <module name="keycloak-demo" options="-parameters" />
+      <module name="keycloak" options="-parameters" />
       <module name="lock" options="" />
       <module name="lock-test" options="-parameters" />
       <module name="mongo" options="-parameters" />
@@ -158,18 +168,15 @@
       <module name="rabbitmq-topic" options="-parameters" />
       <module name="redis" options="-parameters" />
       <module name="resource" options="-parameters" />
+      <module name="restful" options="-parameters" />
       <module name="rocket" options="-parameters" />
+      <module name="schedule" options="-parameters" />
+      <module name="search" options="-parameters" />
       <module name="security" options="-parameters" />
       <module name="sonar" options="-parameters" />
-      <module name="springboot-aop" options="-parameters" />
-      <module name="springboot-aop-new" options="-parameters" />
-      <module name="springboot-elk" options="-parameters" />
-      <module name="springboot-freemarker" options="-parameters" />
-      <module name="springboot-globalexception" options="-parameters" />
       <module name="springboot-logs-Logback" options="-parameters" />
       <module name="springboot-rabbitmq" options="-parameters" />
-      <module name="springboot-restful" options="-parameters" />
-      <module name="springboot-schedule" options="-parameters" />
+      <module name="statemachine" options="-parameters" />
       <module name="swagger" options="-parameters" />
       <module name="test" options="-parameters" />
     </option>

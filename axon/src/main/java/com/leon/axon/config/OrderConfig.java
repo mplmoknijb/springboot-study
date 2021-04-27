@@ -13,26 +13,27 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class OrderConfig {
-  @Autowired private EventStore eventStore;
+    @Autowired
+    private EventStore eventStore;
 
-  @Bean
-  @Scope("prototype")
-  public Order orderAggregate() {
-    return new Order();
-  }
+    @Bean
+    @Scope("prototype")
+    public Order orderAggregate() {
+        return new Order();
+    }
 
-  @Bean
-  public AggregateFactory<Order> orderAggregateAggregateFactory() {
-    SpringPrototypeAggregateFactory<Order> aggregateFactory =
-        new SpringPrototypeAggregateFactory<>();
-    aggregateFactory.setPrototypeBeanName("order");
-    return aggregateFactory;
-  }
+    @Bean
+    public AggregateFactory<Order> orderAggregateAggregateFactory() {
+        SpringPrototypeAggregateFactory<Order> aggregateFactory =
+                new SpringPrototypeAggregateFactory<>();
+        aggregateFactory.setPrototypeBeanName("order");
+        return aggregateFactory;
+    }
 
-  @Bean
-  public Repository<Order> orderAggregateRepository() {
-    EventSourcingRepository<Order> repository =
-        new EventSourcingRepository<Order>(orderAggregateAggregateFactory(), eventStore);
-    return repository;
-  }
+    @Bean
+    public Repository<Order> orderAggregateRepository() {
+        EventSourcingRepository<Order> repository =
+                new EventSourcingRepository<Order>(orderAggregateAggregateFactory(), eventStore);
+        return repository;
+    }
 }

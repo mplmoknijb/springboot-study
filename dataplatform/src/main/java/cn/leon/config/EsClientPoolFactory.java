@@ -1,8 +1,6 @@
 package cn.leon.config;
 
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.Lists;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
@@ -13,8 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import com.google.common.collect.Lists;
-import com.sixi.micro.common.utils.Assert;
+import java.util.List;
 
 /**
  * @author mujian
@@ -34,7 +31,7 @@ public class EsClientPoolFactory implements PooledObjectFactory<RestHighLevelCli
     @Override
     public PooledObject<RestHighLevelClient> makeObject() {
         RestHighLevelClient client = null;
-        Assert.forbidden(StringUtils.isEmpty(elasticProperties.getHost()), "ElasticSearch host is null！");
+//        Assert.forbidden(StringUtils.isEmpty(elasticProperties.getHost()), "ElasticSearch host is null！");
         List<HttpHost> httpHosts = Lists.newArrayList();
         String[] urls = elasticProperties.getHost().split(",");
         for (String url : urls) {

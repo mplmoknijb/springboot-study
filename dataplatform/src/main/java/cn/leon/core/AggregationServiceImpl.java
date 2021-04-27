@@ -5,8 +5,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sixi.search.coreservice.domain.form.AggregationForm;
-import com.sixi.search.coreservice.kits.Elastickit;
+import cn.leon.domain.form.AggregationForm;
+import cn.leon.kits.Elastickit;
 
 @Service
 public class AggregationServiceImpl implements AggregationService {

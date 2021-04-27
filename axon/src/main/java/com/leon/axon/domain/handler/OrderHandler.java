@@ -1,6 +1,6 @@
 package com.leon.axon.domain.handler;
 
-import com.leon.axon.applicaiton.cmd.OrderCreateCommand;
+import com.leon.axon.applicaiton.cmd.CreateOrderCommand;
 import com.leon.axon.domain.aggregate.Order;
 import com.leon.axon.domain.aggregate.Product;
 import com.leon.axon.infrastructure.model.OrderProduct;
@@ -26,7 +26,7 @@ public class OrderHandler {
 
 
     @CommandHandler
-    public void handle(OrderCreateCommand command) throws Exception {
+    public void handle(CreateOrderCommand command) throws Exception {
         Map<String, OrderProduct> products = new HashMap<>();
         command.getProducts().forEach((productId,number)->{
             log.debug("Loading product information with productId: {}",productId);

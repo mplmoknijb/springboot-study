@@ -1,13 +1,13 @@
 package cn.leon.domain.form;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author mujian
@@ -43,7 +43,8 @@ public class SearchForm {
     private Date startDt;
     private Date endDt;
     @Builder.Default
-    private Integer page = 0;
+    private Integer pageSize = 0;
     @Builder.Default
-    private Integer num = 100;
+    private Integer pageNum = 100;
+    private Map<String,String> sort;
 }

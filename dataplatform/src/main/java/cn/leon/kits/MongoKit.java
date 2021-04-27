@@ -13,9 +13,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import com.sixi.micro.common.utils.Assert;
-import com.sixi.search.coreservice.constant.ConfigConstant;
-import com.sixi.search.coreservice.domain.entity.MongoDto;
-import com.sixi.search.coreservice.domain.form.SearchDetailForm;
+import cn.leon.constant.ConfigConstant;
+import cn.leon.domain.entity.MongoDto;
+import cn.leon.domain.form.SearchDetailForm;
 import lombok.extern.slf4j.Slf4j;
 
 @Configuration

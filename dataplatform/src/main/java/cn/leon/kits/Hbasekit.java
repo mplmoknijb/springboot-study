@@ -32,8 +32,8 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hbase.thirdparty.com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sixi.search.coreservice.config.hbase.HbaseConfig;
-import com.sixi.search.coreservice.domain.form.HtableOpsForm;
+import cn.leon.config.hbase.HbaseConfig;
+import cn.leon.domain.form.HtableOpsForm;
 import lombok.SneakyThrows;
 
 /**

@@ -1,8 +1,8 @@
 package cn.leon.core;
 
-import com.sixi.search.coreservice.domain.form.StorageForm;
-import com.sixi.search.coreservice.domain.form.StorageListForm;
-import com.sixi.search.coreservice.domain.form.UpdateIndexForm;
+import cn.leon.domain.form.StorageForm;
+import cn.leon.domain.form.StorageListForm;
+import cn.leon.domain.form.UpdateIndexForm;
 
 /**
  * @author mujian

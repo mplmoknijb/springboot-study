@@ -1,8 +1,8 @@
 package cn.leon.core;
 
-import java.util.Map;
+import cn.leon.domain.form.AggregationForm;
 
-import com.sixi.search.coreservice.domain.form.AggregationForm;
+import java.util.Map;
 
 public interface AggregationService {
     /**
