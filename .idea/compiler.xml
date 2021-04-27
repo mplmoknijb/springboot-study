@@ -23,6 +23,7 @@
         <module name="resource" />
         <module name="lock-test" />
         <module name="elk" />
+        <module name="multi-moudle" />
         <module name="core" />
         <module name="global-exception" />
         <module name="groovy" />
@@ -30,13 +31,12 @@
         <module name="kafka" />
         <module name="mongo" />
         <module name="keycloak" />
-        <module name="springboot-logs-Logback" />
         <module name="restful" />
         <module name="sonar" />
         <module name="rabbitmq-release" />
         <module name="rabbitmq-hello" />
-        <module name="security" />
         <module name="search" />
+        <module name="security" />
         <module name="freemarker" />
         <module name="common" />
         <module name="client" />
@@ -64,6 +64,7 @@
       <module name="aop-new" target="1.8" />
       <module name="async" target="1.8" />
       <module name="axon" target="1.8" />
+      <module name="cache" target="1.8" />
       <module name="common" target="1.8" />
       <module name="core" target="1.8" />
       <module name="dataplatform" target="1.8" />
@@ -84,6 +85,7 @@
       <module name="keycloak" target="1.8" />
       <module name="lock" target="1.8" />
       <module name="lock-test" target="1.8" />
+      <module name="logback" target="1.8" />
       <module name="logs" target="1.8" />
       <module name="mongo" target="1.8" />
       <module name="mq" target="1.8" />
@@ -102,7 +104,6 @@
       <module name="rabbitmq-routing" target="1.8" />
       <module name="rabbitmq-topic" target="1.8" />
       <module name="redis" target="1.8" />
-      <module name="redis-cache" target="1.8" />
       <module name="restful" target="1.8" />
       <module name="rocket" target="1.8" />
       <module name="schedule" target="1.8" />
@@ -110,11 +111,9 @@
       <module name="seata" target="1.8" />
       <module name="security" target="1.8" />
       <module name="sonar" target="1.8" />
-      <module name="springboot-logs-Logback" target="1.8" />
       <module name="springboot-mybatis" target="1.8" />
       <module name="springboot-quickstart" target="1.8" />
       <module name="springboot-rabbitmq" target="1.8" />
-      <module name="springboot-security" target="1.8" />
       <module name="springboot-study" target="1.8" />
       <module name="sso" target="1.8" />
       <module name="statemachine" target="1.8" />
@@ -154,6 +153,7 @@
       <module name="keycloak" options="-parameters" />
       <module name="lock" options="" />
       <module name="lock-test" options="-parameters" />
+      <module name="logback" options="-parameters" />
       <module name="mongo" options="-parameters" />
       <module name="multi-moudle" options="" />
       <module name="mutli-datasource" options="-parameters" />
@@ -174,7 +174,6 @@
       <module name="search" options="-parameters" />
       <module name="security" options="-parameters" />
       <module name="sonar" options="-parameters" />
-      <module name="springboot-logs-Logback" options="-parameters" />
       <module name="springboot-rabbitmq" options="-parameters" />
       <module name="statemachine" options="-parameters" />
       <module name="swagger" options="-parameters" />

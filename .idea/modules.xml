@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/aop-new/aop-new.iml" filepath="$PROJECT_DIR$/aop-new/aop-new.iml" />
       <module fileurl="file://$PROJECT_DIR$/async/async.iml" filepath="$PROJECT_DIR$/async/async.iml" />
       <module fileurl="file://$PROJECT_DIR$/axon/axon.iml" filepath="$PROJECT_DIR$/axon/axon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cache/cache.iml" filepath="$PROJECT_DIR$/cache/cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/lock/core/core.iml" filepath="$PROJECT_DIR$/lock/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/dataplatform/dataplatform.iml" filepath="$PROJECT_DIR$/dataplatform/dataplatform.iml" />
@@ -29,6 +30,7 @@
       <module fileurl="file://$PROJECT_DIR$/logs/logs.iml" filepath="$PROJECT_DIR$/logs/logs.iml" />
       <module fileurl="file://$PROJECT_DIR$/storage/mongo/mongo.iml" filepath="$PROJECT_DIR$/storage/mongo/mongo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq/mq.iml" filepath="$PROJECT_DIR$/mq/mq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multi-moudle/multi-moudle.iml" filepath="$PROJECT_DIR$/multi-moudle/multi-moudle.iml" />
       <module fileurl="file://$PROJECT_DIR$/transaction/seata/mutli-datasource/mutli-datasource.iml" filepath="$PROJECT_DIR$/transaction/seata/mutli-datasource/mutli-datasource.iml" />
       <module fileurl="file://$PROJECT_DIR$/storage/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/storage/mybatis/mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis-generator/mybatis-generator.iml" filepath="$PROJECT_DIR$/mybatis-generator/mybatis-generator.iml" />
@@ -43,20 +45,17 @@
       <module fileurl="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-routing/rabbitmq-routing.iml" filepath="$PROJECT_DIR$/mq/rabbitmq/rabbitmq-routing/rabbitmq-routing.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-topic/rabbitmq-topic.iml" filepath="$PROJECT_DIR$/mq/rabbitmq/rabbitmq-topic/rabbitmq-topic.iml" />
       <module fileurl="file://$PROJECT_DIR$/storage/redis/redis.iml" filepath="$PROJECT_DIR$/storage/redis/redis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/redis-cache/redis-cache.iml" filepath="$PROJECT_DIR$/redis-cache/redis-cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/restful/restful.iml" filepath="$PROJECT_DIR$/restful/restful.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq/rocket/rocket.iml" filepath="$PROJECT_DIR$/mq/rocket/rocket.iml" />
       <module fileurl="file://$PROJECT_DIR$/schedule/schedule.iml" filepath="$PROJECT_DIR$/schedule/schedule.iml" />
       <module fileurl="file://$PROJECT_DIR$/search/search.iml" filepath="$PROJECT_DIR$/search/search.iml" />
       <module fileurl="file://$PROJECT_DIR$/transaction/seata/seata.iml" filepath="$PROJECT_DIR$/transaction/seata/seata.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-security/security/security.iml" filepath="$PROJECT_DIR$/springboot-security/security/security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security/security.iml" filepath="$PROJECT_DIR$/security/security.iml" />
       <module fileurl="file://$PROJECT_DIR$/sonar/sonar.iml" filepath="$PROJECT_DIR$/sonar/sonar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/logs/springboot-logs-Logback/springboot-logs-Logback.iml" filepath="$PROJECT_DIR$/logs/springboot-logs-Logback/springboot-logs-Logback.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-mybatis/springboot-mybatis.iml" filepath="$PROJECT_DIR$/springboot-mybatis/springboot-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/mq/springboot-rabbitmq/springboot-rabbitmq.iml" filepath="$PROJECT_DIR$/mq/springboot-rabbitmq/springboot-rabbitmq.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-security/springboot-security.iml" filepath="$PROJECT_DIR$/springboot-security/springboot-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/springboot-study.iml" filepath="$PROJECT_DIR$/.idea/springboot-study.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-security/sso/sso.iml" filepath="$PROJECT_DIR$/springboot-security/sso/sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security/sso/sso.iml" filepath="$PROJECT_DIR$/security/sso/sso.iml" />
       <module fileurl="file://$PROJECT_DIR$/statemachine/statemachine.iml" filepath="$PROJECT_DIR$/statemachine/statemachine.iml" />
       <module fileurl="file://$PROJECT_DIR$/storage/storage.iml" filepath="$PROJECT_DIR$/storage/storage.iml" />
       <module fileurl="file://$PROJECT_DIR$/swagger/swagger.iml" filepath="$PROJECT_DIR$/swagger/swagger.iml" />
