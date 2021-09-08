@@ -1,11 +1,16 @@
 
 lock:
   enabled: true
+  prefix: "/"
+#  type: "redis"
+#  redlock:
+#    single:
+#      address: "redis://172.16.143.102:6379"
+#      database: 13
   type: "zookeeper"
   zk:
     address: "172.16.143.102:2181,172.16.143.102:2182,172.16.143.102:2183"
-    name-space: "lock_demo"
-  prefix: "/"
+    name-space: "test"
 #      auth-info:
 #        auth: "test"
 #        scheme: "test"

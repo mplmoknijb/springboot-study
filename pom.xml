@@ -60,13 +60,6 @@
             搜索public static void main()方法标记为可运行的类。它提供内置的依赖解析器，用于设置版本号匹配Spring引导依赖�?? 你可以覆盖任何你想要的版本，但是它将默认为Boot的所选版本集 -->
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -90,9 +83,9 @@
         <module>async</module>
         <module>global-exception</module>
         <module>aop-new</module>
-        <module>redis-cache</module>
+        <module>cache</module>
         <module>freemarker</module>
-        <module>springboot-security</module>
+        <module>security</module>
         <module>dubbo</module>
         <module>jgit</module>
         <module>mq</module>
@@ -109,5 +102,6 @@
         <module>axon</module>
         <module>jmh</module>
         <module>statemachine</module>
+        <module>webflux</module>
     </modules>
 </project>
