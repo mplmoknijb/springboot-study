@@ -5,7 +5,6 @@ import cn.leon.core.model.SingleNodeProperties;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.Redisson;
-import org.redisson.RedissonRedLock;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -28,6 +27,7 @@ public class RedisLockStrategy implements LockStrategy<RLock> {
 
     @Override
     public void unlock(RLock rLock) {
+        rLock.unlock();
     }
 
     @Override
