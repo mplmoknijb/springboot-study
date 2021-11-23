@@ -12,14 +12,14 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-@Order(1)
+@Order(2)
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-public class WebFluxFilter implements WebFilter {
+public class WebFluxFilter2 implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
-        log.info("=========1==========");
+        log.info("=========2==========");
         return chain.filter(exchange)
                 .contextWrite(ctx -> ctx.put(ReactiveRequestContextHolder.CONTEXT_KEY, request));
     }
