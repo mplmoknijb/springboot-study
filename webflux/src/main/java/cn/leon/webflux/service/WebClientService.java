@@ -2,6 +2,7 @@ package cn.leon.webflux.service;
 
 import cn.leon.webflux.dao.ReactorRepository;
 import cn.leon.webflux.model.TestDTO;
+import cn.leon.webflux.util.ReactiveRequestContextHolder;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.reactive.ClientHttpConnector;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -57,7 +59,18 @@ public class WebClientService {
     private ReactorRepository reactorRepository;
 
     public Mono<TestDTO> invoke() throws Exception {
-
+        Mono<ServerHttpRequest> request = ReactiveRequestContextHolder.getRequest();
+        return request.flatMap(req -> {
+            log.info(req.toString());
+            return reactorRepository.findByLastName("demo")
+                    .collectList()
+                    .flatMap(entityList -> {
+                        entityList.forEach(reactorEntity -> {
+                            log.info("id: {}, name: {}, last-name: {}", reactorEntity.getId(), reactorEntity.getName(), reactorEntity.getLastName());
+                        });
+                        return Mono.empty();
+                    });
+        });
 //        return reactorRepository.save(ReactorEntity.builder().lastName("demo")
 //                .name("test")
 //                .build())
@@ -66,7 +79,7 @@ public class WebClientService {
 //                            log.info("id: {}, name: {}, last-name: {}", reactorEntity.getId(), reactorEntity.getName(), reactorEntity.getLastName());
 //                            return Mono.empty();
 //                        }));
-        throw new Exception("error !");
+//        throw new Exception("error !");
 //        return reactorRepository.findByLastName("demo")
 //                .collectList()
 //                .flatMap(entityList -> {
@@ -75,12 +88,5 @@ public class WebClientService {
 //                    });
 //                    return Mono.empty();
 //                });
-
-//        return webClient
-//                .post()
-//                .uri("/v1/alpha")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .retrieve()
-//                .bodyToMono(TestDTO.class);
     }
 }
