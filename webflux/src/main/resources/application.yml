@@ -8,3 +8,23 @@ logging:
       netty:
         http:
           client: INFO
+spring:
+  r2dbc:
+    url: r2dbcs:mysql://127.0.0.1:3306/r2dbc
+    username: root
+    password: root
+#    pool:
+#      initial-size: 10
+#      max-size: 30
+#      max-idle-time: 15s
+#      validation-query: SELECT 1
+#    properties:
+#      connect-timeout: 10
+#      ssl: false
+#      max-create-connection-time: 3
+#      max-acquire-time: 5
+#      max-life-time: 15
+  data:
+    r2dbc:
+      repositories:
+        enabled: true

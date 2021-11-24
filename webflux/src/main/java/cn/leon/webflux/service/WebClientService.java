@@ -1,10 +1,11 @@
 package cn.leon.webflux.service;
 
+import cn.leon.webflux.dao.ReactorRepository;
 import cn.leon.webflux.model.TestDTO;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.reactive.ClientHttpConnector;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
@@ -33,7 +34,7 @@ public class WebClientService {
                 .clientConnector(reactorClientHttpConnector)
                 // filter
                 .filter(ExchangeFilterFunction.ofRequestProcessor(clientRequest -> {
-                    log.info("Request[url:{},method:{},body:{},headers:{}", clientRequest.url(), clientRequest.method(), clientRequest.body(), clientRequest.attributes());
+//                    log.info("Request[url:{},method:{},body:{},headers:{}", clientRequest.url(), clientRequest.method(), clientRequest.body(), clientRequest.attributes());
                     return Mono.just(clientRequest);
                 }))
                 .filter(ExchangeFilterFunction.ofResponseProcessor(clientResponse -> {
@@ -52,13 +53,33 @@ public class WebClientService {
         webClient = builder.build();
     }
 
+    @Autowired
+    private ReactorRepository reactorRepository;
+
     public Mono<TestDTO> invoke() {
-        // reactor netty http client
-        return webClient
-                .post()
-                .uri("/v1/alpha")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(TestDTO.class);
+
+//        return reactorRepository.save(ReactorEntity.builder().lastName("demo")
+//                .name("test")
+//                .build())
+//                .flatMap(entity -> reactorRepository.findByLastName("demo")
+//                        .flatMap(reactorEntity -> {
+//                            log.info("id: {}, name: {}, last-name: {}", reactorEntity.getId(), reactorEntity.getName(), reactorEntity.getLastName());
+//                            return Mono.empty();
+//                        }));
+        return reactorRepository.findByLastName("demo")
+                .collectList()
+                .flatMap(entityList -> {
+                    entityList.forEach(reactorEntity -> {
+                        log.info("id: {}, name: {}, last-name: {}", reactorEntity.getId(), reactorEntity.getName(), reactorEntity.getLastName());
+                    });
+                    return Mono.empty();
+                });
+
+//        return webClient
+//                .post()
+//                .uri("/v1/alpha")
+//                .accept(MediaType.APPLICATION_JSON)
+//                .retrieve()
+//                .bodyToMono(TestDTO.class);
     }
 }

@@ -19,7 +19,7 @@ public class WebFluxFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
-        log.info("=========1==========");
+//        log.info("=========1==========");
         return chain.filter(exchange)
                 .contextWrite(ctx -> ctx.put(ReactiveRequestContextHolder.CONTEXT_KEY, request));
     }

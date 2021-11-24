@@ -37,6 +37,21 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- 自动化配置响应式的 Spring Data R2DBC -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>dev.miku</groupId>-->
+<!--            <artifactId>r2dbc-mysql</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash; jasync 的 r2dbc-mysql 驱动 &ndash;&gt;-->
+        <dependency>
+            <groupId>com.github.jasync-sql</groupId>
+            <artifactId>jasync-r2dbc-mysql</artifactId>
+<!--            <version>1.0.11</version>-->
+        </dependency>
     </dependencies>
 
     <build>
