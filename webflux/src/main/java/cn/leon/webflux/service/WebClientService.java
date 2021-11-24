@@ -56,7 +56,7 @@ public class WebClientService {
     @Autowired
     private ReactorRepository reactorRepository;
 
-    public Mono<TestDTO> invoke() {
+    public Mono<TestDTO> invoke() throws Exception {
 
 //        return reactorRepository.save(ReactorEntity.builder().lastName("demo")
 //                .name("test")
@@ -66,14 +66,15 @@ public class WebClientService {
 //                            log.info("id: {}, name: {}, last-name: {}", reactorEntity.getId(), reactorEntity.getName(), reactorEntity.getLastName());
 //                            return Mono.empty();
 //                        }));
-        return reactorRepository.findByLastName("demo")
-                .collectList()
-                .flatMap(entityList -> {
-                    entityList.forEach(reactorEntity -> {
-                        log.info("id: {}, name: {}, last-name: {}", reactorEntity.getId(), reactorEntity.getName(), reactorEntity.getLastName());
-                    });
-                    return Mono.empty();
-                });
+        throw new Exception("error !");
+//        return reactorRepository.findByLastName("demo")
+//                .collectList()
+//                .flatMap(entityList -> {
+//                    entityList.forEach(reactorEntity -> {
+//                        log.info("id: {}, name: {}, last-name: {}", reactorEntity.getId(), reactorEntity.getName(), reactorEntity.getLastName());
+//                    });
+//                    return Mono.empty();
+//                });
 
 //        return webClient
 //                .post()

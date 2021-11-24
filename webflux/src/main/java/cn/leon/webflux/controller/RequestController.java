@@ -17,7 +17,7 @@ public class RequestController {
     private WebClientService webClientService;
 
     @GetMapping("/req")
-    public Mono<TestDTO> req() {
+    public Mono<TestDTO> req() throws Exception {
 //        Mono<ServerHttpRequest> request = ReactiveRequestContextHolder.getRequest();
 //        return request.flatMap(req -> {
 ////            log.info(req.toString());
