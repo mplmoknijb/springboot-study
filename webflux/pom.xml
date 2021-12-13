@@ -2,11 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+<!--        <parent>-->
+<!--            <groupId>cn.leon</groupId>-->
+<!--            <artifactId>springboot-study</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </parent>-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.6</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cn.leon</groupId>
     <artifactId>webflux</artifactId>
@@ -20,12 +24,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>2.5.6</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>1.3.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -41,16 +51,44 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+            <version>2.5.6</version>
+            <!--            <exclusions>-->
+            <!--                <exclusion>-->
+            <!--                    <artifactId>r2dbc-spi</artifactId>-->
+            <!--                    <groupId>io.r2dbc</groupId>-->
+            <!--                </exclusion>-->
+            <!--            </exclusions>-->
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>dev.miku</groupId>-->
-<!--            <artifactId>r2dbc-mysql</artifactId>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; jasync 的 r2dbc-mysql 驱动 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>dev.miku</groupId>-->
+        <!--            <artifactId>r2dbc-mysql</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; jasync 的 r2dbc-mysql 驱动 &ndash;&gt;-->
         <dependency>
             <groupId>com.github.jasync-sql</groupId>
             <artifactId>jasync-r2dbc-mysql</artifactId>
-<!--            <version>1.0.11</version>-->
+            <version>1.0.11</version>
+            <!--            <exclusions>-->
+            <!--                <exclusion>-->
+            <!--                    <artifactId>r2dbc-spi</artifactId>-->
+            <!--                    <groupId>io.r2dbc</groupId>-->
+            <!--                </exclusion>-->
+            <!--            </exclusions>-->
+        </dependency>
+        <dependency>
+            <groupId>com.playtika.reactivefeign</groupId>
+            <artifactId>feign-reactor-core</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.playtika.reactivefeign</groupId>
+            <artifactId>feign-reactor-webclient</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.playtika.reactivefeign</groupId>
+            <artifactId>feign-reactor-spring-configuration</artifactId>
+            <version>3.1.5</version>
         </dependency>
     </dependencies>
 

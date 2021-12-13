@@ -3,3 +3,8 @@
 #  paht: "repopath\.git"
 #  username: "username"
 #  password: "password"
+server:
+  port: 8088
+spring:
+  application:
+    name: jgit

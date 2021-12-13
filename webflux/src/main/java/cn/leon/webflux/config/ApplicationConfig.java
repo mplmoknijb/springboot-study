@@ -24,6 +24,7 @@
 //                .option(ConnectionFactoryOptions.DATABASE, "r2dbc")
 //                .option(ConnectionFactoryOptions.CONNECT_TIMEOUT, Duration.ofSeconds(3))
 //                .build();
-//        return ConnectionFactories.get(options);
+//        ConnectionFactory connectionFactory = ConnectionFactories.get(options);
+//        return connectionFactory;
 //    }
 //}

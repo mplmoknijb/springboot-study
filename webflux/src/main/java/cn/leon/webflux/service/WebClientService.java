@@ -12,6 +12,7 @@ import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -58,6 +59,8 @@ public class WebClientService {
     @Autowired
     private ReactorRepository reactorRepository;
 
+
+    @Transactional
     public Mono<TestDTO> invoke() throws Exception {
         Mono<ServerHttpRequest> request = ReactiveRequestContextHolder.getRequest();
         return request.flatMap(req -> {

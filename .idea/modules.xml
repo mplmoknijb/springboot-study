@@ -60,6 +60,7 @@
       <module fileurl="file://$PROJECT_DIR$/storage/storage.iml" filepath="$PROJECT_DIR$/storage/storage.iml" />
       <module fileurl="file://$PROJECT_DIR$/swagger/swagger.iml" filepath="$PROJECT_DIR$/swagger/swagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/transaction/test/test.iml" filepath="$PROJECT_DIR$/transaction/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testlog4j/testlog4j.iml" filepath="$PROJECT_DIR$/testlog4j/testlog4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/transaction/transaction.iml" filepath="$PROJECT_DIR$/transaction/transaction.iml" />
       <module fileurl="file://$PROJECT_DIR$/webflux/webflux.iml" filepath="$PROJECT_DIR$/webflux/webflux.iml" />
     </modules>

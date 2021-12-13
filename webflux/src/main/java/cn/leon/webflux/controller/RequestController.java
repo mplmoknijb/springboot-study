@@ -1,5 +1,6 @@
 package cn.leon.webflux.controller;
 
+import cn.leon.webflux.client.FeignClient;
 import cn.leon.webflux.model.TestDTO;
 import cn.leon.webflux.service.WebClientService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,9 @@ public class RequestController {
     @Autowired
     private WebClientService webClientService;
 
+    @Autowired
+    private FeignClient feignClient;
+
     @GetMapping("/req")
     public Mono<TestDTO> req() throws Exception {
 //        Mono<ServerHttpRequest> request = ReactiveRequestContextHolder.getRequest();
@@ -24,5 +28,11 @@ public class RequestController {
 //            return webClientService.invoke();
 //        });
         return webClientService.invoke();
+    }
+
+
+    @GetMapping("echo")
+    public Mono<String> invoke(String context){
+        return feignClient.echo(context);
     }
 }

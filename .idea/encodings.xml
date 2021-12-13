@@ -68,6 +68,8 @@
     <file url="file://$PROJECT_DIR$/storage/mybatis/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/storage/redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/swagger/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/testlog4j/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/testlog4j/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transaction/seata/account/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transaction/seata/mutli-datasource/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transaction/seata/mutli-datasource/src/main/resources" charset="UTF-8" />

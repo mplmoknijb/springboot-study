@@ -49,6 +49,7 @@
         <module name="mutli-datasource" />
         <module name="async" />
         <module name="schedule" />
+        <module name="testlog4j" />
         <module name="dubbo-provider" />
         <module name="elastic" />
         <module name="axon" />
@@ -121,6 +122,7 @@
       <module name="storage" target="1.8" />
       <module name="swagger" target="1.8" />
       <module name="test" target="1.8" />
+      <module name="testlog4j" target="1.8" />
       <module name="transaction" target="1.8" />
       <module name="webflux" target="11" />
     </bytecodeTargetLevel>
@@ -180,6 +182,7 @@
       <module name="statemachine" options="-parameters" />
       <module name="swagger" options="-parameters" />
       <module name="test" options="-parameters" />
+      <module name="testlog4j" options="-parameters" />
       <module name="webflux" options="-parameters" />
     </option>
   </component>
