@@ -103,5 +103,6 @@
         <module>jmh</module>
         <module>statemachine</module>
         <module>webflux</module>
+        <module>data</module>
     </modules>
 </project>

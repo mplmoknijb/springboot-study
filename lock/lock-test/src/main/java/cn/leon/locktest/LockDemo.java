@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
-public class LockDemo  implements CommandLineRunner {
+public class LockDemo implements CommandLineRunner {
 
     private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS,
             new LinkedBlockingDeque<Runnable>(2));

@@ -27,7 +27,9 @@ public class RedisLockStrategy implements LockStrategy<RLock> {
 
     @Override
     public void unlock(RLock rLock) {
-        rLock.unlock();
+        if (rLock.isLocked() && rLock.isHeldByCurrentThread()) {
+            rLock.unlock();
+        }
     }
 
     @Override

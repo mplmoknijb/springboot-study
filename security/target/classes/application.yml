@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+# ��Ҫʹ�� redis �Ļ����ſ�����
+spring:
+  redis:
+    host: 192.168.192.128
+    port: 6379
+    database: 0

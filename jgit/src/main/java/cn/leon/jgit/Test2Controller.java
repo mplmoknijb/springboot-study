@@ -10,6 +10,7 @@ public class Test2Controller {
 
     @GetMapping("/echo")
     public String echo(String context){
+        System.out.println(context);
         return context;
     }
 }

@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 public class LockService{
     private int i = 10;
 
-    @Lock(type = LockTypeEnum.REDIS, waitTime = 30000, leaseTime = 1000)
+    @Lock(type = LockTypeEnum.REDIS, waitTime = 5000L, leaseTime = 3000L)
     public void syncBiz() {
         if (i >= 0) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             log.info(Thread.currentThread().getName() + ":  i = {}  ", i);
         }
         i--;

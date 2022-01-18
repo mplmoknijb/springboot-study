@@ -5,7 +5,6 @@ import cn.leon.core.model.LockProperties;
 import cn.leon.core.model.LockProxy;
 import cn.leon.core.model.SelfLock;
 import cn.leon.core.util.ProxyUtils;
-import com.google.common.collect.Sets;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.TargetSource;
@@ -15,6 +14,7 @@ import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -26,7 +26,7 @@ public class GlobalScanner extends AbstractAutoProxyCreator implements Initializ
     private SelfLock selfLock;
     private String applicationName;
     //标记防止重复
-    private final Set<String> set = Sets.newHashSet();
+    private final Set<String> set = new HashSet<>();
 
     public GlobalScanner(LockProperties properties, SelfLock selfLock, String applicationName) {
         this.properties = properties;

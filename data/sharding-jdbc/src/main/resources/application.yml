@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    hikari:
+      master:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding_1?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: root
+      slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding_2?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: root
+    type: com.zaxxer.hikari.HikariDataSource
+#  shardingsphere:
+#    datasource:
+#      names: ds-s1,ds-s2
+#      ds-s1:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.jdbc.Driver
+#        jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding_1?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+#        username: root
+#        password: root
+#      ds-s2:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.jdbc.Driver
+#        jdbc-url: jdbc:mysql://127.0.0.1:3306/sharding_2?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+#        username: root
+#        password: root
+#    sharding:
+#      tables:
+#        meta1:
+#          actualDataNodes: ds-s1.meta1
+#        meta2:
+#          actualDataNodes: ds-s2.meta2
