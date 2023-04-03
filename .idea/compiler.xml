@@ -7,62 +7,55 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="kubernetes" />
         <module name="aop" />
         <module name="jmh" />
         <module name="rocket" />
         <module name="harbor" />
-        <module name="spring-cloud-alibaba-sentinel" />
+        <module name="springboot-elk" />
+        <module name="springboot-restful" />
         <module name="redis" />
-        <module name="service-miya" />
         <module name="swagger" />
         <module name="rabbitmq-queue" />
-        <module name="service-zuul" />
         <module name="springboot-rabbitmq" />
         <module name="jgit" />
         <module name="rabbitmq-topic" />
         <module name="order" />
-        <module name="cluster-eureka-server" />
         <module name="test" />
         <module name="lock-test" />
         <module name="elk" />
-        <module name="zipkin-client" />
+        <module name="springboot-globalexception" />
         <module name="multi-moudle" />
         <module name="core" />
         <module name="global-exception" />
         <module name="sharding-jdbc" />
         <module name="groovy" />
         <module name="aop-new" />
-        <module name="eureka-client" />
+        <module name="springboot-freemarker" />
         <module name="kafka" />
-        <module name="cluster-eureka-client" />
         <module name="mongo" />
         <module name="keycloak" />
+        <module name="springboot-schedule" />
         <module name="restful" />
-        <module name="config-client" />
         <module name="webflux" />
         <module name="sonar" />
         <module name="rabbitmq-release" />
         <module name="rabbitmq-hello" />
         <module name="search" />
         <module name="security" />
-        <module name="service-ribbon" />
         <module name="freemarker" />
         <module name="common" />
-        <module name="server-zipkin" />
-        <module name="self-spring-cloud-native-core" />
-        <module name="stream" />
+        <module name="springboot-aop-new" />
         <module name="statemachine" />
+        <module name="springboot-security" />
         <module name="hbase" />
         <module name="netty" />
         <module name="product" />
         <module name="dataplatform" />
         <module name="mutli-datasource" />
-        <module name="center" />
-        <module name="service-feign" />
+        <module name="springboot-aop" />
+        <module name="mutli-datasourece" />
         <module name="schedule" />
         <module name="async" />
-        <module name="config-server" />
         <module name="springboot-redis" />
         <module name="testlog4j" />
         <module name="dubbo-provider" />
@@ -75,23 +68,53 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ac" target="1.8" />
+      <module name="account (1) (io.seata)" target="1.5" />
+      <module name="bo" target="1.8" />
+      <module name="bussiness" target="1.8" />
+      <module name="capture-java" target="1.8" />
+      <module name="center" target="1.8" />
+      <module name="cluster-eureka-client" target="1.8" />
+      <module name="cluster-eureka-server" target="1.8" />
+      <module name="config-client" target="1.8" />
+      <module name="config-server" target="1.8" />
       <module name="dubbo-server" target="1.8" />
+      <module name="eureka-client" target="1.8" />
+      <module name="examples" target="1.8" />
+      <module name="kubernetes" target="1.8" />
       <module name="logback" target="1.8" />
       <module name="redis" target="1.8" />
       <module name="seata-compensation" target="1.8" />
+      <module name="self-spring-cloud-native-core" target="1.8" />
+      <module name="server-zipkin" target="1.8" />
+      <module name="service-feign" target="1.8" />
+      <module name="service-miya" target="1.8" />
+      <module name="service-ribbon" target="1.8" />
+      <module name="service-zuul" target="1.8" />
+      <module name="spring-cloud-alibaba-sentinel" target="1.8" />
+      <module name="spring-cloud-cluster" target="1.8" />
+      <module name="spring-cloud-sleuth" target="1.8" />
       <module name="springboot-mybatis" target="1.8" />
       <module name="springboot-quickstart" target="1.8" />
+      <module name="springcloud-study" target="1.8" />
       <module name="sso" target="1.8" />
+      <module name="storage" target="1.8" />
+      <module name="stream" target="1.5" />
+      <module name="zipkin-client" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ac" options="-parameters" />
       <module name="account" options="-parameters" />
       <module name="aop" options="-parameters" />
       <module name="aop-new" options="-parameters" />
       <module name="async" options="-parameters" />
       <module name="authorization" options="-parameters" />
       <module name="axon" options="-parameters" />
+      <module name="bo" options="-parameters" />
+      <module name="bussiness" options="-parameters" />
+      <module name="capture-java" options="-parameters" />
       <module name="center" options="-parameters" />
       <module name="client" options="-parameters" />
       <module name="common" options="-parameters" />
@@ -105,6 +128,7 @@
       <module name="dubbo-server" options="-parameters" />
       <module name="elastic" options="-parameters" />
       <module name="elk" options="-parameters" />
+      <module name="examples" options="" />
       <module name="freemarker" options="-parameters" />
       <module name="global-exception" options="-parameters" />
       <module name="groovy" options="-parameters" />
@@ -121,6 +145,7 @@
       <module name="mongo" options="-parameters" />
       <module name="multi-moudle" options="" />
       <module name="mutli-datasource" options="-parameters" />
+      <module name="mutli-datasourece" options="-parameters" />
       <module name="netty" options="-parameters" />
       <module name="order" options="-parameters" />
       <module name="product" options="-parameters" />
@@ -136,14 +161,24 @@
       <module name="rocket" options="-parameters" />
       <module name="schedule" options="-parameters" />
       <module name="search" options="-parameters" />
+      <module name="seata" options="" />
       <module name="seata-compensation" options="-parameters" />
       <module name="security" options="-parameters" />
       <module name="self-spring-cloud-native-core" options="-parameters" />
       <module name="sharding-jdbc" options="-parameters" />
       <module name="sonar" options="-parameters" />
+      <module name="springboot-aop" options="-parameters" />
+      <module name="springboot-aop-new" options="-parameters" />
+      <module name="springboot-elk" options="-parameters" />
+      <module name="springboot-freemarker" options="-parameters" />
+      <module name="springboot-globalexception" options="-parameters" />
       <module name="springboot-rabbitmq" options="-parameters" />
       <module name="springboot-redis" options="-parameters" />
+      <module name="springboot-restful" options="-parameters" />
+      <module name="springboot-schedule" options="-parameters" />
+      <module name="springboot-security" options="-parameters" />
       <module name="statemachine" options="-parameters" />
+      <module name="storage" options="-parameters" />
       <module name="swagger" options="-parameters" />
       <module name="test" options="-parameters" />
       <module name="testlog4j" options="-parameters" />

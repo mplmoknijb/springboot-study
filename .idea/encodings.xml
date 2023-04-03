@@ -21,12 +21,16 @@
     <file url="file://$PROJECT_DIR$/data/redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/data/sharding-jdbc/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/data/sharding-jdbc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dataplatform/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-consumer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dubbo/dubbo-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/elk" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/elk/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/freemarker" charset="UTF-8" />
@@ -42,17 +46,25 @@
     <file url="file://$PROJECT_DIR$/keycloak/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lock/core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lock/lock-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lock/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lock/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/logs" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/logs/logback" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/logs/logback/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/logs/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/logs/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/kafka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-hello/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-queue/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-release/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-routing/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rabbitmq/rabbitmq-topic/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq/rabbitmq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq/rabbitmq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/rocket/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mq/springboot-rabbitmq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/multi-moudle/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-generator/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-generator/src/main/resources" charset="UTF-8" />
@@ -63,11 +75,12 @@
     <file url="file://$PROJECT_DIR$/schedule" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/schedule/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/search/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/seata-compensation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/security" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/security/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/security/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sonar/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statemachine/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/statemachine/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/swagger/src/main/java" charset="UTF-8" />
@@ -78,37 +91,11 @@
     <file url="file://$PROJECT_DIR$/transaction/seata/mutli-datasource/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transaction/seata/order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transaction/seata/product/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/transaction/seata/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/transaction/seata/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/transaction/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/transaction/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transaction/test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/webflux/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/center/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/center/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/config-client/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/config-client/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/config-server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/config-server/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/eureka-client/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/eureka-client/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/kubernetes/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/kubernetes/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/self-spring-cloud-native-core/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/self-spring-cloud-native-core/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/service-feign/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/service-feign/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/service-ribbon/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/service-ribbon/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/service-zuul/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/service-zuul/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-alibaba-sentinel/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-alibaba-sentinel/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-cluster/cluster-eureka-client/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-cluster/cluster-eureka-client/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-cluster/cluster-eureka-server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-cluster/cluster-eureka-server/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-sleuth/server-zipkin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-sleuth/server-zipkin/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-sleuth/service-miya/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-sleuth/service-miya/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-sleuth/zipkin-client/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../springcloud-study/spring-cloud-sleuth/zipkin-client/src/main/resources" charset="UTF-8" />
   </component>
 </project>

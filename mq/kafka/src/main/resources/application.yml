@@ -1,47 +1,47 @@
 server:
   port: 9900
 # =====================  原生用法  ========================
-spring:
-  kafka:
-    bootstrap-servers: 172.16.200.34:9092 #多个按逗号分隔
-    retries: 0 #  重试
-    batch-size: 16384 # 每次批量发送的数据
-    # producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，
-    # producer会阻塞或者抛出异常，以“block.on.buffer.full”来表明。
-    # 这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。
-    # 一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
-    buffer-memory: 33554432
-    #key序列化方式
-    key-serializer: org.apache.kafka.common.serialization.StringSerializer
-    value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    properties:
-      linger.ms: 1
-    #消费者的配置
-    consumer:
-      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
-      # earliest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
-      # latest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据
-      # none:topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常
-      auto-offset-reset: latest
-      #是否开启自动提交
-      enable-auto-commit: false
-      #自动提交的时间间隔
-      auto-commit-interval: 100ms
-      #key的解码方式
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      #value的解码方式
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        session.timeout.ms: 15000
-      group-id: test-consumer-group #在/usr/local/etc/kafka/consumer.properties中有配置
-    producer:
-      # key/value的序列化
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      # 批量抓取
-      batch-size: 65536
-      # 缓存容量
-      buffer-memory: 524288
+#spring:
+#  kafka:
+#    bootstrap-servers: 172.16.255.141:30092 #多个按逗号分隔
+#    retries: 0 #  重试
+#    batch-size: 16384 # 每次批量发送的数据
+#    # producer可以用来缓存数据的内存大小。如果数据产生速度大于向broker发送的速度，
+#    # producer会阻塞或者抛出异常，以“block.on.buffer.full”来表明。
+#    # 这项设置将和producer能够使用的总内存相关，但并不是一个硬性的限制，因为不是producer使用的所有内存都是用于缓存。
+#    # 一些额外的内存会用于压缩（如果引入压缩机制），同样还有一些用于维护请求。
+#    buffer-memory: 33554432
+#    #key序列化方式
+#    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    properties:
+#      linger.ms: 1
+#    #消费者的配置
+#    consumer:
+#      #Kafka中没有初始偏移或如果当前偏移在服务器上不再存在时,默认区最新 ，有三个选项 【latest, earliest, none】
+#      # earliest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
+#      # latest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据
+#      # none:topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常
+#      auto-offset-reset: latest
+#      #是否开启自动提交
+#      enable-auto-commit: false
+#      #自动提交的时间间隔
+#      auto-commit-interval: 100ms
+#      #key的解码方式
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      #value的解码方式
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      properties:
+#        session.timeout.ms: 15000
+#      group-id: test #在/usr/local/etc/kafka/consumer.properties中有配置
+#    producer:
+#      # key/value的序列化
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      # 批量抓取
+#      batch-size: 65536
+#      # 缓存容量
+#      buffer-memory: 524288
       # 服务器地址
 #      bootstrap-servers: 172.16.200.34:9092
 # =====================  cloud-stream 用法  ========================
@@ -50,17 +50,17 @@ spring:
 #    stream:
 #      bindings:
 #        ali_product_input: #消费者绑定的消息通道
-#          destination: ali.product.exchange  #消费者绑定的交换器
-#          group: ali.product.group                  #和此交换器绑定的队列，消息持久化必须有队列才行
+#          destination: test.exchange  #消费者绑定的交换器
+#          group: test.group                  #和此交换器绑定的队列，消息持久化必须有队列才行
 #        default-binder: kafka #默认的binder是kafka
 #      kafka:
-#        bootstrap-servers: 172.30.34.215:9092 #kafka服务地址
+#        bootstrap-servers: 172.16.255.141:30092 #kafka服务地址
 #        consumer:
-#          group-id:
+#          group-id: test
 #        producer:
 #          key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
 #          value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
-#          client-id: producer1
+#          client-id: test
 
 #canal.conf:
 #  canalServerHost: 172.30.34.215:11111          # 对应单机模式下的canal server的ip:port
@@ -83,3 +83,34 @@ spring:
 #        - groupId: g1                           # 分组id, 如果是MQ模式将用到该值
 #          outerAdapters:                        # 分组内适配器列表
 #            - name: logger                        # 日志打印适配器
+
+spring:
+  cloud:
+    stream:
+      function:
+        definition: order
+      bindings:
+        order-out-0:
+          destination: order-topic
+          content-type: application/json
+        order-in-0:
+          destination: order-topic
+          group: order-group
+          consumer:
+            concurrency: 2
+            maxAttempts: 2
+      kafka:
+        binder:
+          brokers: 172.16.255.141:30092
+          auto-create-topics: true
+#          required-acks: 1
+        bindings:
+          order-out-0:
+            producer:
+              group: order-group
+              transactional: true
+          order-in-0:
+            consumer:
+              delayLevelWhenNextConsume: -1
+
+

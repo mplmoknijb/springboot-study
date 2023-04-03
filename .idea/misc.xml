@@ -28,11 +28,10 @@
         <option value="$PROJECT_DIR$/security/pom.xml" />
         <option value="$PROJECT_DIR$/webflux/pom.xml" />
         <option value="$PROJECT_DIR$/testlog4j/pom.xml" />
-        <option value="$PROJECT_DIR$/../springcloud-study/pom.xml" />
-        <option value="$PROJECT_DIR$/../springcloud-study/kubernetes/pom.xml" />
         <option value="$PROJECT_DIR$/../springcloud-study/self-spring-cloud-kubernetes/pom.xml" />
-        <option value="$PROJECT_DIR$/../springcloud-study/self-spring-cloud-native-core/pom.xml" />
         <option value="$PROJECT_DIR$/data/sharding-jdbc/pom.xml" />
+        <option value="$PROJECT_DIR$/../springcloud-study/examples/order/pom.xml" />
+        <option value="$PROJECT_DIR$/capture-java/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
